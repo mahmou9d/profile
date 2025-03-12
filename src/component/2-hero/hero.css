@@ -1,0 +1,143 @@
+section.hero{
+    margin-top: 3rem;
+    
+}
+
+section.hero .left-section{
+    
+    
+}
+section.hero .left-section .parent-avater{
+    display: flex;
+    align-items: end;
+    
+}
+section.hero .avater{
+    width: 120px;
+    border: 1px dashed darkorange;
+    padding: 1px;
+    box-shadow: inset 0px 0px 2px 2px darkorange;
+    border-radius: 50%;
+    min-height: 88px;
+    
+}
+section.hero .left-section .parent-avater .icon-verified_user{
+    color: rgb(0, 106, 255);
+    margin-bottom: 0.8rem;
+}
+
+section.hero h1.title{
+    font-size: 2.5rem;
+    line-height: 2.45rem;
+    margin: 24px 0 ;
+    color:  var(--title);
+}
+
+
+section.hero p.sub-title{
+    
+    line-height: 1.5rem;
+    margin-bottom: 32px;
+    color: var(--subtitle);
+}
+
+section.hero .all-icons{
+    font-size: 1.9rem;
+    gap: 1.5rem;
+    color: #a7a7a7;
+    transition: 0.5s;
+}
+
+section.hero .all-icons  .icon-twitter:hover{
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 0.4;
+    color: var(--title);
+}
+
+
+section.hero .all-icons  .icon-instagram:hover{
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 0.4;
+    color: var(--title);
+}
+
+section.hero .all-icons  .icon-github:hover{
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 0.4;
+    color: var(--title);
+}
+
+section.hero .all-icons  .icon-linkedin-square:hover{
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 0.4;
+    color: var(--title);
+}
+section.hero .right-section{
+    width: 1000px;
+    height: 350px;
+}
+
+
+section.hero .right-section div canvas{
+    width: 400px;
+    height: 500px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 800px ) {
+    section.hero .right-section{
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

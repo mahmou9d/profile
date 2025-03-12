@@ -1,0 +1,189 @@
+:root{
+    --primary: #000;
+    --seconder: #3a3333bf;
+    --border: #c5ce21;
+    --padding: 3rem;
+    --title: #ffff00e0;
+    --subtitle: rgba(255, 238, 0, 0.651);
+}
+html{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: sans-serif;
+    letter-spacing: 0.4px;
+}
+
+*, *:before, *:after {box-sizing: inherit;}  
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+.light{
+    --primary: #d3d1d1;
+    --title:#000000ac;
+    --seconder: #0000008a;
+    --subtitle:#0000007a;
+}
+body{
+    background-color: var(--primary);
+    color: #fff;
+    
+}
+.container{
+    border:0.5px dotted rgba(255, 140, 0, 0.385);
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    background-color:  var(--seconder);
+    padding: 0.5rem var(--padding);
+    box-shadow: 0px 0px 10px 1px #675d05;
+}
+.light .container{
+    background-color: #ffffff70;
+    box-shadow: 0px 0px 10px 1px #ff98008c;
+}
+.divider{
+    border-bottom: 1px dashed #444605;
+    margin: 3rem 0;
+    width: calc(100% + var(--padding) + var(--padding));
+    margin-left: calc(var(--padding))*-1;
+    box-shadow: 0px 0px 3px 0px #675d05;
+    margin-left: -48px;
+}
+.light .divider{
+    box-shadow: 0px 0px 10px 1px #ff98008c;
+    border-bottom: 1px dashed rgba(255, 140, 0, 0.719);
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: initial;
+}
+.fixed{
+    display: flex;
+}
+
+button:disabled{
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+    ::-webkit-scrollbar {
+        width: 0.7rem;
+    }
+    
+    ::-webkit-scrollbar-track {
+        border: 7px solid #292c3b;
+        box-shadow: inset 0 0 2.5px 2px rgba(0, 0, 0, 0.5);
+        border-radius: 4px;
+    
+        background-color: #d4d4d8;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 2px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    
+    html {
+        scrollbar-color: #ff98008c #0000008c ;
+    }
+    
+    .scroll {
+        background-color: rgba(25, 118, 210, 0.85);
+        width: 2.6rem;
+        height: 2.6rem;
+        border-radius: 50%;
+        position: fixed;
+        bottom: 2rem;
+        right: 4%;
+        text-align: center;
+        border: 1.6px solid rgb(255, 239, 10);
+        font-size: 1.5rem;
+        color: #c5ce21;
+        
+    }
+    
+    .scroll:hover {
+        
+        background-color: rgb(25, 118, 210);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1000px ) {
+    .container{
+        --padding: 1.7rem;
+        width: 98%;
+        padding: 0 var(--padding);
+        padding: 0 1rem;
+    }
+    .divider{
+        
+        width: calc(100% + var(--padding) + var(--padding) - 22px );
+        margin-left: calc((var(--padding) - 0.7rem)*-1) ;
+    
+    }
+    
+}
+@media (max-width: 500px ) {
+    .container{
+        width: 98%;
+        padding: 0 calc();
+    }
+    .scroll{
+        width: 2.2rem;
+        height: 2.2rem;
+        opacity: 0.4;
+        font: 1.1em ;
+    }
+}
