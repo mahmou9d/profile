@@ -31,13 +31,13 @@ const Header = () => {
 
       <nav>
         <div className="a .flex">
-          <a href="/">Home</a>
+          <Link href="/">Home</Link>
         </div>
         <div className="a .flex">
-          <a href="projects">Projects</a>
+          <Link href="projects">Projects</Link>
         </div>
         <div className="a .flex">
-          <a href="About">About</a>
+          <Link href="About">About</Link>
         </div>
         {/* <div className="a .flex">
           <a href="#contact">contact</a>
