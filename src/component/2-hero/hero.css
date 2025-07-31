@@ -1,143 +1,131 @@
-section.hero{
-    margin-top: 3rem;
-    
+section.hero {
+  margin-top: 3rem;
 }
 
-section.hero .left-section{
-    
-    
+section.hero .left-section {
+  width: 75%;
 }
-section.hero .left-section .parent-avater{
-    display: flex;
-    align-items: end;
-    
+section.hero .left-section .parent-avater {
+  display: flex;
+  align-items: end;
 }
-section.hero .avater{
-    width: 120px;
-    border: 1px dashed darkorange;
-    padding: 1px;
-    box-shadow: inset 0px 0px 2px 2px darkorange;
-    border-radius: 50%;
-    min-height: 88px;
-    
+section.hero .avater {
+  width: 150px;
+  border: 1px dashed darkorange;
+  padding: 3px;
+  box-shadow: inset 0px 0px 2px 1px darkorange;
+  border-radius: 50%;
+  /* min-height: 88px; */
+  height: 150px;
 }
-section.hero .left-section .parent-avater .icon-verified_user{
-    color: rgb(0, 106, 255);
-    margin-bottom: 0.8rem;
-}
-
-section.hero h1.title{
-    font-size: 2.5rem;
-    line-height: 2.45rem;
-    margin: 24px 0 ;
-    color:  var(--title);
+section.hero .left-section .parent-avater .icon-verified_user {
+  color: rgb(0, 106, 255);
+  margin-bottom: 0.8rem;
+  margin-left: 7px;
 }
 
-
-section.hero p.sub-title{
-    
-    line-height: 1.5rem;
-    margin-bottom: 32px;
-    color: var(--subtitle);
+section.hero h1.title {
+  font-size: 2.5rem;
+  line-height: 2.45rem;
+  margin: 24px 0;
+  color: var(--title);
+  background: linear-gradient(90deg, #f09819, #edde5d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
-section.hero .all-icons{
-    font-size: 1.9rem;
-    gap: 1.5rem;
-    color: #a7a7a7;
-    transition: 0.5s;
+section.hero p.sub-title {
+  line-height: 1.7rem;
+  margin-bottom: 32px;
+  color: var(--subtitle);
+  font-size: large;
+  letter-spacing: 2px;
 }
 
-section.hero .all-icons  .icon-twitter:hover{
+section.hero .all-icons {
+  font-size: 1.9rem;
+  gap: 1.5rem;
+  color: #a7a7a7 !important;
+  /* transition: 0.5s; */
+}
+.icon-twitter,
+.icon-github,
+.icon-linkedin-square {
+  color: darkgoldenrod;
+}
+.icon-twitter:hover {
+  /* font-size: 2rem; */
+  cursor: pointer;
+  transition: 0.4s;
+  color: var(--title);
+}
+.social {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  border: 1px solid rgb(255, 191, 0);
+}
+.social a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* .icon-instagram:hover{
     font-size: 2rem;
     cursor: pointer;
     transition: 0.4;
     color: var(--title);
+} */
+.hover1:hover {
+  box-shadow: inset 0 0 14px 2px #ff9800;
+  color: var(--title);
+}
+.hover2:hover {
+  box-shadow: inset 0 0 14px 2px #ff9800;
+  color: var(--title);
+}
+.hover3:hover {
+  box-shadow: inset 0 0 14px 2px #ff9800;
+  color: var(--title);
+}
+.icon-twitter:hover {
+  /* font-size: 2rem; */
+  cursor: pointer;
+  transition: 0.4s;
+  color: var(--title);
+}
+.icon-github:hover {
+  /* font-size: 2rem; */
+  cursor: pointer;
+  transition: 0.4s;
+  color: var(--title);
 }
 
-
-section.hero .all-icons  .icon-instagram:hover{
-    font-size: 2rem;
-    cursor: pointer;
-    transition: 0.4;
-    color: var(--title);
+.icon-linkedin-square:hover {
+  /* font-size: 2rem; */
+  cursor: pointer;
+  transition: 0.4s;
+  color: var(--title);
+}
+section.hero .right-section {
+  width: 25%;
+  height: 350px;
 }
 
-section.hero .all-icons  .icon-github:hover{
-    font-size: 2rem;
-    cursor: pointer;
-    transition: 0.4;
-    color: var(--title);
+section.hero .right-section div canvas {
+  width: 400px;
+  height: 500px;
 }
 
-section.hero .all-icons  .icon-linkedin-square:hover{
-    font-size: 2rem;
-    cursor: pointer;
-    transition: 0.4;
-    color: var(--title);
+@media (max-width: 800px) {
+  section.hero .right-section {
+    display: none;
+  }
 }
-section.hero .right-section{
-    width: 1000px;
-    height: 350px;
-}
-
-
-section.hero .right-section div canvas{
-    width: 400px;
-    height: 500px;
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media (max-width: 800px ) {
-    section.hero .right-section{
-        display: none;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

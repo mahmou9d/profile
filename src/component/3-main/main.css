@@ -1,8 +1,10 @@
 main.fixed{
-    gap: 2.rem;
-    
+        display: flex;
+flex-direction: column;
+align-items: center;
+gap: 28px;
 } 
-
+/* 
 main section.left-section{
     display: flex;
 flex-direction: column;
@@ -55,11 +57,12 @@ main section.right-section{
     padding: 5px;
     border-radius: 20px;
     border: 2px dashed #d17300;
-    
+    height: 360px;
 }
 .card img{
     width: 270px;
     border-radius: 20px;
+    height: 50%;
 }
 
 
@@ -145,6 +148,22 @@ main section.right-section{
 }
 .light .card:hover{
     background-color: #46434352;
+} */
+
+
+
+.button{
+    width: 350px;
+    height: 80px;
+    font-size: 18px;
+    color: #ffffff;
+    background: linear-gradient( #ff6a00, #ee0979);
+    border-radius: 50px;
+}
+
+
+.button:active{
+    scale: 0.9;
 }
 
 
@@ -164,12 +183,7 @@ main section.right-section{
 
 
 
-
-
-
-
-
-@media (max-width: 600px ) {
+/* @media (max-width: 600px ) {
     main.fixed{
         gap: 2.4rem;
         flex-direction: column;
@@ -195,4 +209,4 @@ main section.right-section{
         justify-content: center;
     }
 
-}
+} */

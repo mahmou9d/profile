@@ -14,8 +14,8 @@ footer ul{
 
 footer ul a{
     color: #ffffffcc;
-    font-size: 1rem;
-    font-weight: 400;
+    font-size: 17px;
+    font-weight: bolder;
     transition: 0.5s;
 }
 .light footer ul a{
@@ -36,7 +36,7 @@ footer p{
     color: var(--title);
 }
 .light footer p{
-    color: darkorange;
+    color: rgb(188, 105, 4);
 }
 
 
