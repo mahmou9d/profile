@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./Header.css";
+import "./header.css";
 import { Link } from "react-router";
 const Header = () => {
   const [showModel, setshowModel] = useState(false);
