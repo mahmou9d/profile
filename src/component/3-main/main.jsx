@@ -55,7 +55,10 @@ const Main = () => {
           className="mySwiper"
         >
           <SwiperSlide>
-            <a href="https://charming-eclair-8948ea.netlify.app/">
+            <a
+              href="https://charming-eclair-8948ea.netlify.app/"
+              target="_blank"
+            >
               <img
                 width={"100%"}
                 height={"100%"}
@@ -65,7 +68,10 @@ const Main = () => {
             </a>
           </SwiperSlide>
           <SwiperSlide>
-            <a href="https://statuesque-conkies-a26f3f.netlify.app/">
+            <a
+              href="https://statuesque-conkies-a26f3f.netlify.app/"
+              target="_blank"
+            >
               <img
                 width={"100%"}
                 height={"100%"}
@@ -75,7 +81,10 @@ const Main = () => {
             </a>
           </SwiperSlide>
           <SwiperSlide>
-            <a href="https://guileless-tiramisu-18d615.netlify.app/">
+            <a
+              href="https://guileless-tiramisu-18d615.netlify.app/"
+              target="_blank"
+            >
               <img
                 width={"100%"}
                 height={"100%"}
@@ -85,12 +94,15 @@ const Main = () => {
             </a>
           </SwiperSlide>
         </Swiper>
-        <Link to={"projects"} onClick={()=>{  setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }, 300); }}>
-          <button className="button">
-            More projects
-          </button>
+        <Link
+          to={"projects"}
+          onClick={() => {
+            setTimeout(() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }, 300);
+          }}
+        >
+          <button className="button">More projects</button>
         </Link>
       </main>
     );
