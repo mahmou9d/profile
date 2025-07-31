@@ -1,5 +1,5 @@
 import React from 'react';
-import './Contact.css';
+import './contact.css';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import doneanimation from '../../../public/animation/Animation - 1737719651152.json'
 
