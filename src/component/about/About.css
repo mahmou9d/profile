@@ -1,0 +1,46 @@
+
+.products{
+    display: flex;
+flex-wrap: wrap;
+gap: 20px;
+justify-content: space-between;
+}
+.title{
+        font-size: 45px;
+    padding-bottom: 30px;
+      background: linear-gradient(90deg, #f09819, #edde5d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+.total{
+    width: 300px;
+    height: 200px;
+    background-color: gray;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+border-radius: 50px;
+}
+.total h1{
+    font-size: 100px;
+}
+
+.total p{
+    font-size: 20px;
+}
+.total:hover{
+    color: #ffb603;
+    transition: 0.4s;
+}
+.total:active{
+    scale: 0.9;
+}
+
+@media (max-width:800px) {
+    .products{
+        justify-content: center;
+    }
+}

@@ -9,7 +9,7 @@
 html{
     box-sizing: border-box;
     scroll-behavior: smooth;
-    font-family: sans-serif;
+    font-family: math;
     letter-spacing: 0.4px;
 }
 
@@ -30,33 +30,37 @@ html{
 }
 body{
     background-color: var(--primary);
-    color: #fff;
+    color: #ffffffb3;
     
 }
 .container{
-    border:0.5px dotted rgba(255, 140, 0, 0.385);
+    border:0.5px solid rgb(0, 0, 0);
     margin-left: auto;
     margin-right: auto;
     width: 80%;
     background-color:  var(--seconder);
     padding: 0.5rem var(--padding);
-    box-shadow: 0px 0px 10px 1px #675d05;
+        box-shadow: 0px 0px 11px 12px #2524249d;
+    border-radius: 20px;
 }
 .light .container{
+    border:0.5px solid rgba(255, 255, 255, 0.54);
+        box-shadow: 0px 0px 3px 0px #2524249d;
+
     background-color: #ffffff70;
-    box-shadow: 0px 0px 10px 1px #ff98008c;
+    /* box-shadow: 0px 0px 10px 1px #ff98008c; */
 }
 .divider{
-    border-bottom: 1px dashed #444605;
+    border-bottom: 1px solid #403f3f;
     margin: 3rem 0;
     width: calc(100% + var(--padding) + var(--padding));
     margin-left: calc(var(--padding))*-1;
-    box-shadow: 0px 0px 3px 0px #675d05;
+        box-shadow: 0px 0px 1px 0px #9E9E9E;
     margin-left: -48px;
 }
 .light .divider{
-    box-shadow: 0px 0px 10px 1px #ff98008c;
-    border-bottom: 1px dashed rgba(255, 140, 0, 0.719);
+    box-shadow: 0px 0px 10px 1px #ffffff70;
+    border-bottom: 1px solid #ffffff70;
 }
 li{
     list-style: none;
@@ -99,17 +103,17 @@ button:disabled{
     }
     
     .scroll {
-        background-color: rgba(25, 118, 210, 0.85);
-        width: 2.6rem;
-        height: 2.6rem;
-        border-radius: 50%;
-        position: fixed;
-        bottom: 2rem;
-        right: 4%;
-        text-align: center;
-        border: 1.6px solid rgb(255, 239, 10);
-        font-size: 1.5rem;
-        color: #c5ce21;
+    background-color: rgba(25, 118, 210, 0.85);
+    width: 2.8rem;
+    height: 2.6rem;
+    border-radius: 45%;
+    position: fixed;
+    bottom: 2rem;
+    right: 4%;
+    text-align: center;
+    border: 2px solid #FF9800;
+    font-size: 1.5rem;
+    color: #ffffff;
         
     }
     
