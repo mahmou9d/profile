@@ -1,5 +1,6 @@
 section.hero {
   margin-top: 3rem;
+  display: flex;
 }
 
 section.hero .left-section {
@@ -11,12 +12,12 @@ section.hero .left-section .parent-avater {
 }
 section.hero .avater {
   width: 150px;
-  border: 1px dashed darkorange;
-  padding: 3px;
-  box-shadow: inset 0px 0px 2px 1px darkorange;
   border-radius: 50%;
-  /* min-height: 88px; */
   height: 150px;
+  object-fit: cover;
+  border: 1px solid #0947ff;
+  padding: 3px;
+  box-shadow: inset 0px 0px 20px 3px #0038ff;
 }
 section.hero .left-section .parent-avater .icon-verified_user {
   color: rgb(0, 106, 255);
@@ -29,7 +30,11 @@ section.hero h1.title {
   line-height: 2.45rem;
   margin: 24px 0;
   color: var(--title);
-  background: linear-gradient(90deg, #f09819, #edde5d);
+  background: linear-gradient(
+    181deg,
+    rgba(0, 51, 255, 1) 30%,
+    #068398 45%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -45,6 +50,7 @@ section.hero p.sub-title {
 }
 
 section.hero .all-icons {
+  display: flex;
   font-size: 1.9rem;
   gap: 1.5rem;
   color: #a7a7a7 !important;
@@ -53,7 +59,7 @@ section.hero .all-icons {
 .icon-twitter,
 .icon-github,
 .icon-linkedin-square {
-  color: darkgoldenrod;
+  color: var(--mainColor);
 }
 .icon-twitter:hover {
   /* font-size: 2rem; */
@@ -68,31 +74,37 @@ section.hero .all-icons {
   justify-content: center;
   align-items: center;
   border-radius: 50px;
-  border: 1px solid rgb(255, 191, 0);
+  border: 1px solid var(--secmainCol);
 }
 .social a {
-  width: 100%;
+  /* width: 100%; */
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+    background: linear-gradient(90deg, #001fff, #00ebff, #3800ff, #5900ff, #ff00ca);
+  background-size: 300% 300%;
+  animation: border 6s ease infinite;
+  border-radius: 50px;
+  padding: 4px !important;
 }
-/* .icon-instagram:hover{
-    font-size: 2rem;
-    cursor: pointer;
-    transition: 0.4;
-    color: var(--title);
-} */
+.front{
+  background-color: black;
+    width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  padding: 10px;
+}
 .hover1:hover {
-  box-shadow: inset 0 0 14px 2px #ff9800;
+  box-shadow: inset 0 0 14px 2px var(--secmainCol);
   color: var(--title);
 }
 .hover2:hover {
-  box-shadow: inset 0 0 14px 2px #ff9800;
+  box-shadow: inset 0 0 14px 2px var(--secmainCol);
   color: var(--title);
 }
 .hover3:hover {
-  box-shadow: inset 0 0 14px 2px #ff9800;
+  box-shadow: inset 0 0 14px 2px var(--secmainCol);
   color: var(--title);
 }
 .icon-twitter:hover {
@@ -127,5 +139,16 @@ section.hero .right-section div canvas {
 @media (max-width: 800px) {
   section.hero .right-section {
     display: none;
+  }
+}
+@keyframes border {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }

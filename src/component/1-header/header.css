@@ -9,23 +9,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: linear-gradient(to right, #c02425, #f0cb35);
-  border-radius: 50px;
-  width: 107px;
   align-items: center;
-  height: 109px;
-  /* box-shadow: 0 0 9px 1px darkorange; */
-   background: linear-gradient(90deg, #ff6a00, #ee0979);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-}
-.logo h1 {
-  font-size: 50px;
-}
-.logo p {
-  font-size: 24px;
 }
 .a {
   position: relative;
@@ -35,7 +19,7 @@ header {
   inline-size: 6.5rem;
   aspect-ratio: 1;
   font-size: 1rem;
-  color: #ffb500d6;
+  color: var(--mainColor);
   background-color: #3838381c;
   border-radius: 50%;
   transition: color 0.6s ease-in-out;
@@ -78,7 +62,7 @@ header nav {
 .a:hover,
 .a:focus-visible,
 .a:focus-within {
-  color: rgb(255, 140, 0);
+  color: var(--secmainCol);
   outline: 1px solid transparent;
 }
 .a:nth-child(1):hover,
@@ -151,7 +135,7 @@ header .menu {
   display: none;
 }
 
-header .fixed {
+header .fixedd {
   position: fixed;
   inset: 0;
   z-index: 1;
@@ -171,7 +155,7 @@ header .fixed {
   }
 }
 
-header .fixed ul.modal {
+header .fixedd ul.modal {
   animation: mymove 0.77s 1;
   width: 85%;
   margin-left: auto;
@@ -182,23 +166,23 @@ header .fixed ul.modal {
   background-color: #383838;
   height: 350px;
 }
-.light header .fixed ul.modal {
+.light header .fixedd ul.modal {
   background-color: #ffffff4d;
 }
 header ul.modal li {
   border-radius: 80px;
   list-style: none;
-  border-bottom: 1px solid rgba(255, 255, 0, 0.449);
+  border-bottom: 1px solid var(--mainColor);
   padding-top: 0.5rem;
   padding-bottom: 0.77rem;
   display: flex;
   justify-content: center;
-  box-shadow: inset 0px 0px 0px 0px #ffeb3b;
+  box-shadow: inset 0px 0px 0px 0px var(--secmainCol);
   margin-bottom: 5px;
   text-transform: uppercase;
 }
 .light header ul.modal li {
-  border-bottom: 1px solid #ffc107;
+  border-bottom: 1px solid var(--mainColor);
 }
 
 header ul.modal li:last-child {
@@ -213,7 +197,7 @@ header ul.modal li a {
   color: #000000;
 }
 header ul.modal li a:hover {
-  color: rgba(255, 255, 0, 0.841);
+  color: var(--mainColor);
   transition: 0.5s;
   font-size: 1.5rem;
 }
@@ -224,16 +208,16 @@ header ul.modal button {
 
 .icon-clear {
   font-size: 30px;
-  color: #ffeb3b;
+  color: var(--secmainCol);
 }
 .icon-clear:hover {
-  color: darkorange;
+  color: var(--mainColor);
   rotate: 360deg;
 }
 
 .mode {
   font-size: 25px;
-  box-shadow: inset 0px 0px 8px 7px #ff9800;
+  box-shadow: inset 0px 0px 8px 7px var(--secmainCol);
   opacity: 0.5;
   border: none;
 }
@@ -241,7 +225,7 @@ header ul.modal button {
 .icon-menu {
   font-size: 20px;
   opacity: 0.5;
-  box-shadow: inset 0px 0px 8px -2px #ffeb3b;
+  box-shadow: inset 0px 0px 8px -2px var(--mainColor);
 }
 
 @media (max-width: 800px) {

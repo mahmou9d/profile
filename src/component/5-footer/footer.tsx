@@ -1,10 +1,10 @@
 import React from 'react';
-import './Footer.css';
+import './footer.css';
 
 const Footer =() => {
     return (
-      <footer className="fixed">
-        <ul className="fixed">
+      <footer className="fixedd">
+        <ul className="fixedd">
           <li>
             <a href="">About</a>
           </li>
@@ -19,7 +19,7 @@ const Footer =() => {
           </li> */}
         </ul>
 
-        <p>© 2025 Mahmoud Mohammed. All rights reserved.</p>
+        <p>© 2025 <span>Mahmoud Mohammed</span>. All rights reserved.</p>
       </footer>
     );
 }

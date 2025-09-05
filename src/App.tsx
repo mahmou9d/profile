@@ -1,28 +1,35 @@
-// @ts-nocheck
 import { useEffect, useState } from "react";
 import Header from "./component/1-header/header";
 import Hero from "./component/2-hero/hero";
 import Main from "./component/3-main/main";
 import Contact from "./component/4-contact/contact";
 import Footer from "./component/5-footer/footer";
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Projects from "./component/6-projects/Projects";
 import About from "./component/about/About";
-function App() {
+
+const App = () => {
+  const [showScrollBTN, setShowScrollBTN] = useState<boolean>(false);
+
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    const handleScroll = () => {
       if (window.scrollY > 200) {
-        setshowScrollBTN(true);
+        setShowScrollBTN(true);
       } else {
-        setshowScrollBTN(false);
+        setShowScrollBTN(false);
       }
-    });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  const [showScrollBTN, setshowScrollBTN] = useState(false);
   return (
     <BrowserRouter>
-      <div id="up" className="container">
+      <div id="up" className="containerr">
         <Header />
         <div className="divider" />
         <Routes>
@@ -38,12 +45,8 @@ function App() {
               </div>
             }
           />
-
           <Route path="/projects" element={<Projects />} />
-          {/* <Main /> */}
-
           <Route path="/about" element={<About />} />
-          {/* <Contact /> */}
         </Routes>
         <div className="divider" />
         <Footer />
@@ -56,6 +59,6 @@ function App() {
       </div>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

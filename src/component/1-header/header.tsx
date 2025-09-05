@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import "./Header.css";
+import "./header.css";
 import { Link } from "react-router";
 const Header = () => {
-  const [showModel, setshowModel] = useState(false);
-  const [Theme, setTheme] = useState(
+  const [showModel, setshowModel] = useState<boolean>(false);
+  const [Theme, setTheme] = useState<string | null>(
     localStorage.getItem("currantMode") ?? "dark"
   );
   useEffect(() => {
@@ -16,10 +16,13 @@ const Header = () => {
     }
   }, [Theme]);
   return (
-    <header className="flex">
-      <Link to={"/"} className="logo">
-        <h1>My</h1>
-        <p>profile</p>
+    <header className="flex justify-between pb-0 mb-[-25px] p-6">
+      <Link to={"/"} className="flex flex-col justify-center items-center">
+        <img
+          style={{ width: "200px" }}
+          src="/public/mahmoud-high-resolution-logo-transparent.png"
+          alt=""
+        />
       </Link>
       <button
         onClick={() => {
@@ -28,16 +31,15 @@ const Header = () => {
         className="menu icon-menu"
       ></button>
       {/* <div /> */}
-
       <nav>
         <div className="a .flex">
-          <a href="/">Home</a>
+          <Link to="/">Home</Link>
         </div>
         <div className="a .flex">
-          <a href="projects">Projects</a>
+          <Link to="projects">Projects</Link>
         </div>
         <div className="a .flex">
-          <a href="About">About</a>
+          <Link to="About">About</Link>
         </div>
         {/* <div className="a .flex">
           <a href="#contact">contact</a>
@@ -59,13 +61,12 @@ const Header = () => {
           <span className="icon-sun icon"> </span>
         )}
       </button>
-
       {showModel && (
         <div
           onClick={() => {
             setshowModel(false);
           }}
-          className="fixed"
+          className="fixedd"
         >
           <ul className="modal">
             <button

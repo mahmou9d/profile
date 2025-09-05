@@ -9,6 +9,15 @@ section.contact .title{
     font-size: 2.1rem;
     color: var(--title);
     margin-bottom: 1rem;
+      background: linear-gradient(
+    181deg,
+    rgba(0, 51, 255, 1) 30%,
+    #068398 45%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 
@@ -31,15 +40,15 @@ section.contact label{
 section.contact #email,
 section.contact #massage{
     all: unset;
-    background-color: #464343;
+    background-color: transparent;
     border-radius: 7px;
-    border: 1px solid rgba(249, 198, 135, 0.403);
+    border: 1px solid  #03A9F4;
     width: 16rem;
     padding: 0.5rem 1rem;
     margin-left: 1rem;
     margin-bottom: 20px;
     transition: 0.3s;
-    color :rgba(255, 251, 0, 0.671);
+    color :#ffffff;
     padding-right: 2px;
 }
 .light section.contact #email,.light section.contact #massage{
@@ -49,15 +58,15 @@ section.contact #massage{
 
 section.contact #email:focus,
 section.contact #massage:focus{
-    border: 1px dashed rgb(255, 191, 0);
-    box-shadow: 0px 0px 10px 1px #ff98008c;
+    border: 1px solid  #03A9F4;
+    box-shadow: 0px 0px 10px 1px #03A9F4;
 }
 
 
 section.contact #email:hover,
 section.contact #massage:hover{
-    border: 1px dashed #ff8c00;
-    box-shadow: 0px 0px 10px 1px #ff98008c;
+    border: 1px solid  #03A9F4;
+    box-shadow: 0px 0px 10px 1px #03A9F4;
 }
 section.contact #massage{
     min-height: 9rem;
@@ -71,27 +80,46 @@ section.contact #massage{
     width: 11rem;
     display: flex;
     justify-content: center;
-    background-color: #6c6c6c87;
-    
-    padding: 0.75rem 0;
     text-align: center;
     font-size: 1.2rem;
     font-weight: bolder;
     border-radius: 50px;
     color: #ffffff;
-    opacity: 0.5;
+    opacity: 1;
     text-transform:capitalize;
     transition: 0.3s;
     margin-top: 1.8rem;
     text-transform: uppercase;
+      padding: 3px;
+  background: linear-gradient(
+    90deg,
+    #001fff,
+    #00ebff,
+    #3800ff,
+    #5900ff,
+    #ff00ca
+  );
+  background-size: 300% 300%;
+  animation: border 6s ease infinite;
+}
+.submitmessage{
+    width: 11rem;
+    color: #fff !important;
+      border-radius: 50px;
+  padding: 10px;
+  color: var(--secmainCol);
+  transition: box-shadow 0.2s ease-in-out 0.2s, color 0.2s ease-in-out 0.3s;
+  background-color: black;
+}
+.submitmessage:hover{
+    box-shadow:inset 0px 0px 12px 0px #007bff;
 }
 .light .submit{
     color: var(--title);
-    box-shadow: 0px 0px 3px 0px #FF9800;
+    box-shadow: 0px 0px 3px 0px #0088ff;
 }
 .submit:hover{
-    opacity: 1;
-    border: 1.5px dotted rgb(255, 140, 0);
+
     
 }
 .p{

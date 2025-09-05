@@ -1,6 +1,6 @@
 footer{
     justify-content: space-between;
-    
+    display: flex;
     padding-bottom: 2rem;
     color: #fff;
 }
@@ -38,7 +38,9 @@ footer p{
 .light footer p{
     color: rgb(188, 105, 4);
 }
-
+footer p span{
+    color: #03A9F4;
+}
 
 
 

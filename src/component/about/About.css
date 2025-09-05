@@ -8,7 +8,11 @@ justify-content: space-between;
 .title{
         font-size: 45px;
     padding-bottom: 30px;
-      background: linear-gradient(90deg, #f09819, #edde5d);
+  background: linear-gradient(
+    181deg,
+    rgba(0, 51, 255, 1) 30%,
+    #068398 45%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -32,7 +36,7 @@ border-radius: 50px;
     font-size: 20px;
 }
 .total:hover{
-    color: #ffb603;
+    color: #03A9F4;
     transition: 0.4s;
 }
 .total:active{
