@@ -32,7 +32,7 @@ html{
     --primaryy: #616592;
     --title:#000000ac;
     --seconderr: #0000008a;
-    --subtitle:#0000007a;
+    --subtitle:#000000aa;
 }
 body{
     background-color: var(--primaryy);
@@ -171,11 +171,12 @@ button:disabled{
 
 
 @media (max-width: 1000px ) {
-    .container{
+    .containerr{
         --padding: 1.7rem;
-        width: 98%;
+        width: 100%;
         padding: 0 var(--padding);
         padding: 0 1rem;
+        /* padding: 0.5rem var(--padding); */
     }
     .divider{
         

@@ -16,7 +16,7 @@ const Header = () => {
     }
   }, [Theme]);
   return (
-    <header className="flex justify-between pb-0 mb-[-25px] p-6">
+    <header>
       <Link to={"/"} className="flex flex-col justify-center items-center">
         <img
           style={{ width: "200px" }}
@@ -79,10 +79,10 @@ const Header = () => {
               <a href="/">Home</a>
             </li>
             <li>
-              <a href="artical">Article</a>
+              <a href="projects">Projects</a>
             </li>
             <li>
-              <a href="projects">Projects</a>
+              <a href="About">About</a>
             </li>
             {/* 
             <li>

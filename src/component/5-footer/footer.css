@@ -36,12 +36,14 @@ footer p{
     color: var(--title);
 }
 .light footer p{
-    color: rgb(188, 105, 4);
+    color: #000000
 }
 footer p span{
     color: #03A9F4;
 }
-
+.light footer p span{
+    color: #006898;
+}
 
 
 

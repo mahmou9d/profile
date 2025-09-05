@@ -25,6 +25,7 @@ section.contact .subtitle{
     font-size: 1.1rem;
     color: var(--subtitle);
     margin-bottom: 1rem;
+    font-size: x-large;
 }
 
 section.contact label{
@@ -190,7 +191,17 @@ section.contact #massage{
 
 }
 
+@media (max-width: 1000px ) {
 
+section.contact #email,
+section.contact #massage{
+    width: 14rem;
+    padding: 0.5rem 20px;
+}
+
+
+
+}
 
 
 

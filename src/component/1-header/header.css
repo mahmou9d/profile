@@ -4,6 +4,8 @@ header {
   display: flex;
   padding-bottom: 0px;
   margin-bottom: -25px;
+  align-items: center;
+  gap: 15px;
 }
 .logo {
   display: flex;
@@ -141,19 +143,6 @@ header .fixedd {
   z-index: 1;
   background-color: rgba(120, 120, 120, 0.719);
 }
-@keyframes mymove {
-  0% {
-    scale: 0;
-  }
-
-  75% {
-    scale: 1.1;
-  }
-
-  100% {
-    scale: 1;
-  }
-}
 
 header .fixedd ul.modal {
   animation: mymove 0.77s 1;
@@ -234,5 +223,18 @@ header ul.modal button {
   }
   header .menu {
     display: block;
+  }
+}
+@keyframes mymove {
+  0% {
+    scale: 0;
+  }
+
+  75% {
+    scale: 1.1;
+  }
+
+  100% {
+    scale: 1;
   }
 }

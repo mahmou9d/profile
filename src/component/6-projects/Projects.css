@@ -46,7 +46,7 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
-
+font-size: 35px;
 }
 .pragraph p {
   font-size: 18px;
@@ -97,10 +97,11 @@
     height: 100%;
   }
   .project img {
-    width: 100%;
+    width: 95%;
     border-radius: 20px;
     padding-right: 0;
     border-right: none;
+      height: auto;
   }
   .pragraph{
     width: 280px;
