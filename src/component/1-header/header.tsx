@@ -20,7 +20,7 @@ const Header = () => {
       <Link to={"/"} className="flex flex-col justify-center items-center">
         <img
           style={{ width: "200px" }}
-          src="/public/mahmoud-high-resolution-logo-transparent.png"
+          src="./mahmoud-high-resolution-logo-transparent.webp"
           alt=""
         />
       </Link>

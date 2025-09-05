@@ -2,7 +2,7 @@ export const myProjects = [
   {
     projectTitle: "Modern Profile",
     category: ["Simple"],
-    imgPath: "./images/Screenshot 2025-09-05 222801.png",
+    imgPath: "/images/Screenshot 2025-09-05 222801.webp",
     link: "https://famous-swan-6e1bb4.netlify.app/",
     desc: `A modern developer portfolio built with Next.js, TypeScript, Tailwind CSS, and Aceternity UI.`,
     href: "https://github.com/mahmou9d/NextProfile",
@@ -10,7 +10,7 @@ export const myProjects = [
   {
     projectTitle: "Prime Ecom",
     category: ["Simple"],
-    imgPath: "./images/Screenshot 2025-09-05 224742.png",
+    imgPath: "/images/Screenshot 2025-09-05 224742.webp",
     link: "https://guileless-tiramisu-18d615.netlify.app/",
     desc: `E-commerce app built with React, Redux Toolkit & TypeScript — featuring product browsing, search, auth, cart, wishlist, and discounts.`,
     href: "https://github.com/mahmou9d/advancedE-commerce",
@@ -18,7 +18,7 @@ export const myProjects = [
   {
     projectTitle: "E-commerce",
     category: ["Complex"],
-    imgPath: "./images/Screenshot 2025-09-05 222413.png",
+    imgPath: "/images/Screenshot 2025-09-05 222413.webp",
     link: "https://benevolent-beignet-116c19.netlify.app/",
     desc: `E-commerce landing page built with React & SCSS — responsive, dynamic UI with cart and localStorage.
 `,
@@ -27,7 +27,7 @@ export const myProjects = [
   {
     projectTitle: "E-commerce",
     category: ["Complex"],
-    imgPath: "./images/Screenshot 2025-09-05 232737.png",
+    imgPath: "/images/Screenshot 2025-09-05 232737.webp",
     link: "https://poetic-truffle-8702f4.netlify.app/",
     desc: `E-commerce landing page built with Next.js, TypeScript, Tailwind & Shadcn — responsive, dynamic UI with cart using Redux Toolkit and Stripe integration.`,
     href: "https://github.com/mahmou9d/super-store",
@@ -35,7 +35,7 @@ export const myProjects = [
   {
     projectTitle: "E-commerce",
     category: ["Complex"],
-    imgPath: "./images/Screenshot 2025-09-05 222730.png",
+    imgPath: "/images/Screenshot 2025-09-05 222730.webp",
     link: "https://guileless-donut-c16f52.netlify.app/",
     desc: `Responsive e-commerce frontend built with React & Context API — featuring hero slider, category tabs, search, and cart with localStorage persistence.`,
     href: "https://github.com/mahmou9d/ecoo",
@@ -43,7 +43,7 @@ export const myProjects = [
   {
     projectTitle: "Dashboard",
     category: ["Complex"],
-    imgPath: "./images/Screenshot 2025-06-26 160415.png",
+    imgPath: "/images/Screenshot 2025-06-26 160415.webp",
     link: "https://statuesque-conkies-a26f3f.netlify.app/",
     desc: `Modern React dashboard with responsive layout, charts (Nivo/Recharts), key stats, revenue graph, and transactions panel.`,
     href: "https://github.com/mahmou9d/dashboard",
@@ -51,7 +51,7 @@ export const myProjects = [
   {
     projectTitle: "CRUD APP",
     category: ["Complex"],
-    imgPath: "./images/Screenshot 2025-09-05 231543.png",
+    imgPath: "/images/Screenshot 2025-09-05 231543.webp",
     link: "https://curd-mk8q.vercel.app/",
     desc: `React + Redux Toolkit CRUD app with real backend — add, view, read, and delete books. Form handled with React Hook Form & Yup.
 `,
@@ -60,7 +60,7 @@ export const myProjects = [
   {
     projectTitle: "Advanced Todolist",
     category: ["Complex"],
-    imgPath: "./images/Screenshot 2025-09-05 230324.png",
+    imgPath: "/images/Screenshot 2025-09-05 230324.webp",
     link: "https://list-advanced.web.app",
     desc: `Task management app built with React & Context API — Arabic UI, CRUD tasks, filters, and localStorage persistence.`,
     href: "https://github.com/mahmou9d/todolist-advanced",
@@ -68,7 +68,7 @@ export const myProjects = [
   {
     projectTitle: "Weather APP",
     category: ["Simple"],
-    imgPath: "./images/Screenshot 2025-04-23 180418.png",
+    imgPath: "/images/Screenshot 2025-04-23 180418.webp",
     link: "https://peaceful-pothos-2d7a29.netlify.app",
     desc: `React weather app — shows real-time city, date, temperatures, condition & icon. Responsive UI, supports English & Arabic.
 `,
@@ -78,7 +78,7 @@ export const myProjects = [
   {
     projectTitle: "Landing Page",
     category: ["Complex"],
-    imgPath: "./images/Screenshot 2025-07-31 120310.png",
+    imgPath: "/images/Screenshot 2025-07-31 120310.webp",
     desc: `Hero section built with React, SCSS & Framer Motion — gradient headline, benefits, email input, and smooth animations.`,
     link: "https://timely-florentine-bb449e.netlify.app/",
     href: "https://github.com/mahmou9d/React_Scss",
@@ -87,7 +87,7 @@ export const myProjects = [
 //   {
 //     projectTitle: "Profile",
 //     category: ["Simple"],
-//     imgPath: "./images/Screenshot 2025-07-31 144813.png",
+//     imgPath: "/images/Screenshot 2025-07-31 144813.webp",
 //     link: "https://profile2-u8vk.vercel.app/",
 //     desc: `Hero section using Next.js, Tailwind CSS, Shadcn UI, and Framer Motion.
 // It includes a bold intro with the developer’s name, a short description, a “Download CV” button, social icons, and animated visuals. The layout is clean, responsive, and modern`,

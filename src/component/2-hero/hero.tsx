@@ -23,7 +23,7 @@ const Hero = () => {
             animate={{ transform: "scale(1.1)" }}
             transition={{ damping: 6, type: "spring", stiffness: 100 }}
             className="avater"
-            src="./images/WhatsApp Image 2025-07-29 at 1.48.11 AM.jpeg"
+            src="/images/WhatsApp Image 2025-07-29 at 1.48.11 AM.webp"
             alt=""
           />
           <div className="icon-verified_user"></div>
@@ -46,8 +46,8 @@ const Hero = () => {
             </a>
           </div>
           <div className="social hover2 ">
-            <a href="https://github.com/mahmou9d" >
-              <FaGithub className="icon-github front"/>
+            <a href="https://github.com/mahmou9d">
+              <FaGithub className="icon-github front" />
             </a>
           </div>
           {/* <a className="icon-instagram"></a> */}

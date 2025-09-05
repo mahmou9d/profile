@@ -25,33 +25,39 @@ const Main = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <a href="https://charming-eclair-8948ea.netlify.app/">
+          <a
+            href="https://benevolent-beignet-116c19.netlify.app/"
+            target="_blank"
+          >
             <img
               width={"100%"}
               height={"100%"}
-              src=".\images\Screenshot 2025-07-30 162348.png"
+              src="./images/Screenshot 2025-09-05 222413.webp"
               alt=""
               style={{ borderRadius: "10px" }}
             />
           </a>
         </SwiperSlide>
         <SwiperSlide>
-          <a href="https://statuesque-conkies-a26f3f.netlify.app/">
+          <a href="https://famous-swan-6e1bb4.netlify.app/" target="_blank">
             <img
               width={"100%"}
               height={"100%"}
-              src=".\images\Screenshot 2025-06-26 160415.png"
+              src="/images/Screenshot 2025-09-05 222801.webp"
               alt=""
               style={{ borderRadius: "10px" }}
             />
           </a>
         </SwiperSlide>
         <SwiperSlide>
-          <a href="https://guileless-tiramisu-18d615.netlify.app/">
+          <a
+            href="https://guileless-tiramisu-18d615.netlify.app/"
+            target="_blank"
+          >
             <img
               width={"100%"}
               height={"100%"}
-              src=".\images\Screenshot 2025-07-30 160805.png"
+              src="/images/Screenshot 2025-09-05 224742.webp"
               alt=""
               style={{ borderRadius: "10px" }}
             />
@@ -74,90 +80,3 @@ const Main = () => {
 };
 
 export default Main;
-//    <section className="fixed  left-section">
-//   <button
-//     onClick={() => {
-//       setcurrentActive("all");
-//       setArr(myProjects);
-//     }}
-//     className={currentActive === "all" ? "active" : null}
-//   >
-//     all projects
-//   </button>
-
-//   <button
-//     onClick={() => {
-//       handleClick("Simple");
-//     }}
-//     className={currentActive === "Simple" ? "active" : null}
-//   >
-//     Simple Projects
-//   </button>
-
-//   <button
-//     onClick={() => {
-//       handleClick("Complex");
-//     }}
-//     className={currentActive === "Complex" ? "active" : null}
-//   >
-//     Complex Projects
-//   </button>
-//   {/* <button
-//     onClick={() => {
-//         handleClick("react");
-//     }}
-//     className={currentActive === "react" ? "active" : null}
-//     >
-//     React & MUI
-//     </button>
-//     <button
-//     onClick={() => {
-//         handleClick("node");
-//     }}
-//     className={currentActive === "node" ? "active" : null}
-//     >
-//     Node & Express
-//     </button> */}
-// </section>
-
-// <section className=" fixed right-section">
-//   <AnimatePresence>
-//     {arr.map((item) => {
-//       return (
-//         <motion.article
-//           layout
-//           initial={{ transform: "scale(0.1)" }}
-//           animate={{ transform: "scale(1)" }}
-//           transition={{ type: "spring", damping: 8, stiffness: 50 }}
-//           key={item.imgPath}
-//           className="card"
-//         >
-//           <img width={266} src={item?.imgPath} alt="" />
-
-//           <div style={{ width: "266px" }} className="box">
-//             <h1 className="title">{item.projectTitle}</h1>
-//             <p className="sub-title">{item.desc}</p>
-
-//             <div className="fixed icons">
-//               <div style={{ gap: "11px" }} className="fixed">
-//                 <div className="icon-link"></div>
-//                 <a
-//                   href={item.href}
-//                   className="icon-github"
-//                 ></a>
-//               </div>
-
-//               <a className="link fixed" href={item.link}>
-//                 more
-//                 <span
-//                   style={{ alignSelf: "end" }}
-//                   className="icon-arrow_forward"
-//                 ></span>
-//               </a>
-//             </div>
-//           </div>
-//         </motion.article>
-//       );
-//     })}
-//   </AnimatePresence>
-// </section>
