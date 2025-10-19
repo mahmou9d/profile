@@ -34,7 +34,7 @@ export const myProjects = [
     category: ["Simple"],
     imgPath: "/images/Screenshot 2025-10-19 132415.png",
     link: "https://vegecommerce-ct1s.vercel.app/",
-    desc: `E-commerce app built with Next.js, Redux Toolkit, and TypeScript — featuring product browsing, search, cart, wishlist, and secure checkout.`,
+    desc: `E-commerce app with real backend built with Next.js, Redux Toolkit featuring product browsing, search, cart, wishlist, and secure checkout.`,
     href: "https://github.com/mahmou9d/vegecommerce",
     iconLists: [
       "/images/nextjs.svg",
@@ -50,7 +50,7 @@ export const myProjects = [
     category: ["Simple"],
     imgPath: "/images/Screenshot 2025-09-05 222801.webp",
     link: "https://famous-swan-6e1bb4.netlify.app/",
-    desc: `A modern developer portfolio built with Next.js, TypeScript, Tailwind CSS, and Aceternity UI.`,
+    desc: `A modern and responsive developer portfolio beautifully built with Next.js, TypeScript, Tailwind CSS, and Aceternity UI.`,
     href: "https://github.com/mahmou9d/NextProfile",
     iconLists: [
       "/images/nextjs.svg",
@@ -61,7 +61,7 @@ export const myProjects = [
   },
 
   {
-    projectTitle: "E-commerce",
+    projectTitle: "M&MSTORE",
     category: ["Complex"],
     imgPath: "/images/Screenshot 2025-09-05 222413.webp",
     link: "https://benevolent-beignet-116c19.netlify.app/",
@@ -76,11 +76,11 @@ export const myProjects = [
     ],
   },
   {
-    projectTitle: "E-commerce",
+    projectTitle: "SmartWatch",
     category: ["Complex"],
     imgPath: "/images/Screenshot 2025-09-05 232737.webp",
     link: "https://poetic-truffle-8702f4.netlify.app/",
-    desc: `E-commerce landing page built with Next.js, TypeScript, Tailwind & Shadcn — responsive, dynamic UI with cart using Redux Toolkit and Stripe integration.`,
+    desc: `E-commerce landing page built with Next.js, TypeScript, Tailwind & Shadcn — responsive, dynamic UI with cart using Stripe integration.`,
     href: "https://github.com/mahmou9d/super-store",
     iconLists: [
       "/images/nextjs.svg",
@@ -92,11 +92,11 @@ export const myProjects = [
     ],
   },
   {
-    projectTitle: "E-commerce",
+    projectTitle: "Make",
     category: ["Complex"],
     imgPath: "/images/Screenshot 2025-09-05 222730.webp",
     link: "https://guileless-donut-c16f52.netlify.app/",
-    desc: `Responsive e-commerce frontend built with React & Context API — featuring hero slider, category tabs, search, and cart with localStorage persistence.`,
+    desc: `Responsive e-commerce frontend built with React & Context API — featuring hero slider, category search, and cart with localStorage persistence.`,
     href: "https://github.com/mahmou9d/ecoo",
     iconLists: ["/images/re.svg", "/images/tail.svg"],
   },
