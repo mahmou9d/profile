@@ -52,7 +52,8 @@ const Header = () => {
           setshowModel(true);
         }}
         className="menu"
-      ><Menu/>
+      >
+        <Menu />
       </button>
       {/* <div /> */}
       <nav>
@@ -80,7 +81,7 @@ const Header = () => {
         style={{
           ...container,
           justifyContent: Theme === "dark" ? "flex-end" : "flex-start",
-          background:"linear-gradient(135deg, #1e1e2f, #34344a)",
+          background: "linear-gradient(135deg, #1e1e2f, #34344a)",
         }}
       >
         <motion.div
@@ -94,7 +95,7 @@ const Header = () => {
             ...handle,
             background: "linear-gradient(135deg, #60a5fa, #3b82f6)",
             color: Theme === "dark" ? "#111" : "#fff",
-            boxShadow:"0 0 18px #03A9F4",
+            boxShadow: "0 0 18px #03A9F4",
           }}
         >
           {Theme === "dark" ? <Moon size={20} /> : <Sun size={22} />}
@@ -131,13 +132,13 @@ const Header = () => {
               }}
             ></button>
             <li>
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="/projects">Projects</a>
+              <Link to="projects">Projects</Link>
             </li>
             <li>
-              <a href="/About">About</a>
+              <Link to="About">About</Link>
             </li>
             {/* 
             <li>
@@ -145,7 +146,6 @@ const Header = () => {
             </li> */}
           </ul>
         </div>
-        
       )}
     </header>
   );
