@@ -6,20 +6,22 @@ const Footer =() => {
       <footer className="fixedd">
         <ul className="fixedd">
           <li>
-            <a href="">About</a>
+            <a href="/">Home</a>
           </li>
           <li>
-            <a href="">Article</a>
+            <a href="/projects">Projects</a>
           </li>
           <li>
-            <a href="">Projects</a>
+            <a href="/About">My Skills</a>
           </li>
           {/* <li>
             <a href="">contact</a>
           </li> */}
         </ul>
 
-        <p>© 2025 <span>Mahmoud Mohammed</span>. All rights reserved.</p>
+        <p>
+          © 2025 <span>Mahmoud Mohammed</span>. All rights reserved.
+        </p>
       </footer>
     );
 }

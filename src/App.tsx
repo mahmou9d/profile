@@ -7,6 +7,7 @@ import Footer from "./component/5-footer/footer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Projects from "./component/6-projects/Projects";
 import About from "./component/about/About";
+import Skills from "./component/skills/Skills";
 
 const App = () => {
   const [showScrollBTN, setShowScrollBTN] = useState<boolean>(false);
@@ -39,6 +40,8 @@ const App = () => {
               <div>
                 <Hero />
                 <div className="divider" />
+                <Skills />
+                <div className="divider" />
                 <Main />
                 <div className="divider" />
                 <Contact />
@@ -48,7 +51,7 @@ const App = () => {
           <Route path="/projects" element={<Projects />} />
           <Route path="/about" element={<About />} />
         </Routes>
-        <div className="divider" />
+        <div style={{marginBottom:"10px"}} className="my-20 divider " />
         <Footer />
         <a
           style={{ opacity: showScrollBTN ? 1 : 0, transition: "1s" }}

@@ -18,63 +18,67 @@ import { SiShadcnui } from "react-icons/si";
 export const aboutproduct = [
   {
     id: 1,
-    icon: <FaHtml5 />,
+    icon: "/svg/html-5-svgrepo-com.svg",
     title: "HTML",
   },
   {
-    icon: <FaCss3 />,
+    icon: "/svg/css-3-svgrepo-com.svg",
     title: "CSS",
   },
   {
-    icon: <DiJsBadge />,
+    icon: "/svg/js-official-svgrepo-com.svg",
     title: "JS",
   },
   {
-    icon: <SiTypescript />,
+    icon: "/svg/typescript-official-svgrepo-com.svg",
     title: "Typescript",
   },
   {
-    icon: <SiBootstrap />,
+    icon: "/svg/bootstrap-svgrepo-com.svg",
     title: "Bootstrap",
   },
   {
-    icon: <RiTailwindCssFill />,
+    icon: "/svg/tailwind-svgrepo-com.svg",
     title: "TailwindCss",
   },
   {
-    icon: <SiSass />,
+    icon: "/svg/scss-svgrepo-com.svg",
     title: "Scss",
   },
   {
-    icon: <SiNextdotjs />,
+    icon: "/images/nextjs.svg",
     title: "NextJs",
   },
   {
-    icon: <FaGitAlt />,
+    icon: "/svg/git-svgrepo-com.svg",
     title: "Git & GitHup",
   },
   {
-    icon: <FaReact />,
+    icon: "/svg/react-svgrepo-com.svg",
     title: "ReactJs",
   },
   {
-    icon: <SiRedux />,
+    icon: "/svg/redux-logo-svgrepo-com.svg",
     title: "ReduxToolkit",
   },
   {
-    icon: <SiReactrouter />,
+    icon: "/svg/react-router-svgrepo-com.svg",
     title: "React-Router",
   },
   {
-    icon: <SiReacthookform />,
+    icon: "/images/hookform.svg",
     title: "React-Hook-Form",
   },
   {
-    icon: <SiMui />,
+    icon: "/svg/material-ui-svgrepo-com.svg",
     title: "Mui",
   },
   {
-    icon: <SiShadcnui />,
+    icon: "/images/stream.svg",
     title: "Shadcn",
+  },
+  {
+    icon: "https://getstream.io/_astro-assets/stream.svg",
+    title: "stream",
   },
 ];

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import "./header.css";
 import { Link } from "react-router";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, Moon, Sun } from "lucide-react";
 const Header = () => {
   const [showModel, setshowModel] = useState<boolean>(false);
   const [Theme, setTheme] = useState<string | null>(
@@ -15,6 +17,27 @@ const Header = () => {
       document.body.classList.add("dark");
     }
   }, [Theme]);
+  const container = {
+    width: 90,
+    height: 45,
+    borderRadius: 50,
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    padding: 6,
+    border: "1px solid rgba(255,255,255,0.15)",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.25)",
+  };
+
+  const handle = {
+    width: 35,
+    height: 35,
+    borderRadius: "50%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: 18,
+  };
   return (
     <header>
       <Link to={"/"} className="flex flex-col justify-center items-center">
@@ -28,8 +51,9 @@ const Header = () => {
         onClick={() => {
           setshowModel(true);
         }}
-        className="menu icon-menu"
-      ></button>
+        className="menu"
+      ><Menu/>
+      </button>
       {/* <div /> */}
       <nav>
         <div className="a .flex">
@@ -53,6 +77,37 @@ const Header = () => {
           );
           setTheme(localStorage.getItem("currantMode"));
         }}
+        style={{
+          ...container,
+          justifyContent: Theme === "dark" ? "flex-end" : "flex-start",
+          background:"linear-gradient(135deg, #1e1e2f, #34344a)",
+        }}
+      >
+        <motion.div
+          layout
+          transition={{
+            type: "spring",
+            duration: 0.3,
+            bounce: 0.3,
+          }}
+          style={{
+            ...handle,
+            background: "linear-gradient(135deg, #60a5fa, #3b82f6)",
+            color: Theme === "dark" ? "#111" : "#fff",
+            boxShadow:"0 0 18px #03A9F4",
+          }}
+        >
+          {Theme === "dark" ? <Moon size={20} /> : <Sun size={22} />}
+        </motion.div>
+      </button>
+      {/* <button
+        onClick={() => {
+          localStorage.setItem(
+            "currantMode",
+            Theme === "dark" ? "light" : "dark"
+          );
+          setTheme(localStorage.getItem("currantMode"));
+        }}
         className="mode"
       >
         {Theme === "dark" ? (
@@ -60,7 +115,7 @@ const Header = () => {
         ) : (
           <span className="icon-sun icon"> </span>
         )}
-      </button>
+      </button> */}
       {showModel && (
         <div
           onClick={() => {

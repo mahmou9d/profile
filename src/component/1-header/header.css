@@ -18,9 +18,9 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  inline-size: 6.5rem;
+  inline-size: 5.5rem;
   aspect-ratio: 1;
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: var(--mainColor);
   background-color: #3838381c;
   border-radius: 50%;
@@ -112,7 +112,7 @@ header button {
   border-radius: 50%;
   width: 67px;
   height: 67px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   background-color: #3838389e;
   color: #fff;
   font-size: 1rem;
@@ -211,18 +211,37 @@ header ul.modal button {
   border: none;
 }
 
-.icon-menu {
+.menu {
   font-size: 20px;
-  opacity: 0.5;
+  opacity: 0.8;
   box-shadow: inset 0px 0px 8px -2px var(--mainColor);
 }
 
 @media (max-width: 800px) {
+  header button {
+  width: 50px;
+  height: 50px;
+  margin-top: 20px;
+  font-size: 1rem;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  header{
+    padding: 2px;
+  }
   header nav {
     display: none;
   }
   header .menu {
     display: block;
+      display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  opacity: 0.8;
+  box-shadow: inset 0px 0px 8px -2px var(--mainColor);
   }
 }
 @keyframes mymove {

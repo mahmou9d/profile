@@ -6,6 +6,7 @@ export const myProjects = [
     link: "https://list-advanced.web.app",
     desc: "used: React and Redux and localstorage",
     href: "https://github.com/mahmou9d/todolist-advanced",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
   },
   {
     projectTitle: "Simple ToDoList",
@@ -14,6 +15,7 @@ export const myProjects = [
     link: "https://todolist-e8e08.web.app",
     desc: "used: React and localstorage",
     href: "https://github.com/mahmou9d/simple-ToDoList",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
   },
   {
     projectTitle: "Weather APP",
@@ -22,6 +24,7 @@ export const myProjects = [
     link: "https://peaceful-pothos-2d7a29.netlify.app",
     desc: "used: React and API",
     href: "https://github.com/mahmou9d/weather",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
   },
   {
     projectTitle: "E-commerce",
@@ -30,6 +33,7 @@ export const myProjects = [
     link: "https://charming-eclair-8948ea.netlify.app",
     desc: "used: React and localstorage",
     href: "https://github.com/mahmou9d/ecommerces",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
   },
   {
     projectTitle: "E-commerce",
@@ -38,6 +42,7 @@ export const myProjects = [
     link: "https://spontaneous-dusk-8c5b7a.netlify.app/",
     desc: "used: React and localstorage",
     href: "https://github.com/mahmou9d/ecoo",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
   },
   {
     projectTitle: "CRUD APP",
@@ -46,6 +51,7 @@ export const myProjects = [
     link: "https://redux-edcc6.web.app/",
     desc: "used: React and ReduxToolkit",
     href: "https://github.com/mahmou9d/ReduxToolkit",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
   },
   {
     projectTitle: "Dashboard",
@@ -54,6 +60,7 @@ export const myProjects = [
     link: "https://statuesque-conkies-a26f3f.netlify.app/",
     desc: "used: React",
     href: "https://github.com/mahmou9d/ecommerces",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
   },
 
   {
@@ -61,11 +68,13 @@ export const myProjects = [
     category: ["Complex"],
     imgPath: "./images/8.jpg",
     desc: "used: React and Redux",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
   },
   {
     projectTitle: "javaScript project",
     category: ["Complex"],
     imgPath: "./images/9.jpg",
     desc: "used: React and Redux",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
   },
 ];

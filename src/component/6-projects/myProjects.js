@@ -1,20 +1,65 @@
 export const myProjects = [
   {
+    projectTitle: "Prime Ecom",
+    category: ["Simple"],
+    imgPath: "/images/Screenshot 2025-10-19 133052.png",
+    link: "https://guileless-tiramisu-18d615.netlify.app/",
+    desc: `E-commerce app built with React, Redux Toolkit & TypeScript — featuring product browsing, search, auth, cart, wishlist, and discounts.`,
+    href: "https://github.com/mahmou9d/advancedE-commerce",
+    iconLists: [
+      "/images/re.svg",
+      "/images/tail.svg",
+      "/images/ts.svg",
+      "/images/icons8-redux-48.png",
+      "/images/hookform.svg",
+    ],
+  },
+  {
+    projectTitle: "Meeting Clone",
+    category: ["Simple"],
+    imgPath: "/images/Screenshot 2025-10-19 132556.png",
+    link: "https://meeting-clone.vercel.app/",
+    desc: `Video meeting app built with Next.js, Stream, and TypeScript — offering real-time calls, chat, scheduling, and screen sharing.`,
+    href: "https://github.com/mahmou9d/Meeting-Clone",
+    iconLists: [
+      "/images/nextjs.svg",
+      "/images/re.svg",
+      "/images/tail.svg",
+      "/images/ts.svg",
+      "https://getstream.io/_astro-assets/stream.svg",
+    ],
+  },
+  {
+    projectTitle: "XtraMarket",
+    category: ["Simple"],
+    imgPath: "/images/Screenshot 2025-10-19 132415.png",
+    link: "https://vegecommerce-ct1s.vercel.app/",
+    desc: `E-commerce app built with Next.js, Redux Toolkit, and TypeScript — featuring product browsing, search, cart, wishlist, and secure checkout.`,
+    href: "https://github.com/mahmou9d/vegecommerce",
+    iconLists: [
+      "/images/nextjs.svg",
+      "/images/re.svg",
+      "/images/tail.svg",
+      "/images/ts.svg",
+      "/images/icons8-redux-48.png",
+      "/images/stream.svg",
+    ],
+  },
+  {
     projectTitle: "Modern Profile",
     category: ["Simple"],
     imgPath: "/images/Screenshot 2025-09-05 222801.webp",
     link: "https://famous-swan-6e1bb4.netlify.app/",
     desc: `A modern developer portfolio built with Next.js, TypeScript, Tailwind CSS, and Aceternity UI.`,
     href: "https://github.com/mahmou9d/NextProfile",
+    iconLists: [
+      "/images/nextjs.svg",
+      "/images/re.svg",
+      "/images/tail.svg",
+      "/images/ts.svg",
+    ],
   },
-  {
-    projectTitle: "Prime Ecom",
-    category: ["Simple"],
-    imgPath: "/images/Screenshot 2025-09-05 224742.webp",
-    link: "https://guileless-tiramisu-18d615.netlify.app/",
-    desc: `E-commerce app built with React, Redux Toolkit & TypeScript — featuring product browsing, search, auth, cart, wishlist, and discounts.`,
-    href: "https://github.com/mahmou9d/advancedE-commerce",
-  },
+
   {
     projectTitle: "E-commerce",
     category: ["Complex"],
@@ -23,6 +68,12 @@ export const myProjects = [
     desc: `E-commerce landing page built with React & SCSS — responsive, dynamic UI with cart and localStorage.
 `,
     href: "https://github.com/mahmou9d/ecommerces",
+    iconLists: [
+      "/images/re.svg",
+      "/images/tail.svg",
+      "/images/ts.svg",
+      "/images/scss-svgrepo-com.svg",
+    ],
   },
   {
     projectTitle: "E-commerce",
@@ -31,6 +82,14 @@ export const myProjects = [
     link: "https://poetic-truffle-8702f4.netlify.app/",
     desc: `E-commerce landing page built with Next.js, TypeScript, Tailwind & Shadcn — responsive, dynamic UI with cart using Redux Toolkit and Stripe integration.`,
     href: "https://github.com/mahmou9d/super-store",
+    iconLists: [
+      "/images/nextjs.svg",
+      "/images/re.svg",
+      "/images/tail.svg",
+      "/images/ts.svg",
+      "/images/icons8-redux-48.png",
+      "/images/stream.svg",
+    ],
   },
   {
     projectTitle: "E-commerce",
@@ -39,6 +98,7 @@ export const myProjects = [
     link: "https://guileless-donut-c16f52.netlify.app/",
     desc: `Responsive e-commerce frontend built with React & Context API — featuring hero slider, category tabs, search, and cart with localStorage persistence.`,
     href: "https://github.com/mahmou9d/ecoo",
+    iconLists: ["/images/re.svg", "/images/tail.svg"],
   },
   {
     projectTitle: "Dashboard",
@@ -47,15 +107,20 @@ export const myProjects = [
     link: "https://statuesque-conkies-a26f3f.netlify.app/",
     desc: `Modern React dashboard with responsive layout, charts (Nivo/Recharts), key stats, revenue graph, and transactions panel.`,
     href: "https://github.com/mahmou9d/dashboard",
+    iconLists: ["/images/re.svg", "/images/tail.svg"],
   },
   {
     projectTitle: "CRUD APP",
     category: ["Complex"],
     imgPath: "/images/Screenshot 2025-09-05 231543.webp",
     link: "https://curd-mk8q.vercel.app/",
-    desc: `React + Redux Toolkit CRUD app with real backend — add, view, read, and delete books. Form handled with React Hook Form & Yup.
-`,
+    desc: `React + Redux Toolkit CRUD app with real backend — add, view, read, and delete books. Form handled with React Hook Form & Yup.`,
     href: "https://github.com/mahmou9d/curd",
+    iconLists: [
+      "/images/re.svg",
+      "/images/tail.svg",
+      "/images/icons8-redux-48.png",
+    ],
   },
   {
     projectTitle: "Advanced Todolist",
@@ -64,6 +129,7 @@ export const myProjects = [
     link: "https://list-advanced.web.app",
     desc: `Task management app built with React & Context API — Arabic UI, CRUD tasks, filters, and localStorage persistence.`,
     href: "https://github.com/mahmou9d/todolist-advanced",
+    iconLists: ["/images/re.svg", "/images/icons8-redux-48.png"],
   },
   {
     projectTitle: "Weather APP",
@@ -73,6 +139,7 @@ export const myProjects = [
     desc: `React weather app — shows real-time city, date, temperatures, condition & icon. Responsive UI, supports English & Arabic.
 `,
     href: "https://github.com/mahmou9d/weather",
+    iconLists: ["/images/re.svg"],
   },
 
   {
@@ -82,6 +149,7 @@ export const myProjects = [
     desc: `Hero section built with React, SCSS & Framer Motion — gradient headline, benefits, email input, and smooth animations.`,
     link: "https://timely-florentine-bb449e.netlify.app/",
     href: "https://github.com/mahmou9d/React_Scss",
+    iconLists: ["/images/re.svg", "/images/scss-svgrepo-com.svg"],
   },
 ];
 //   {

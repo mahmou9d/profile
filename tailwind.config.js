@@ -3,10 +3,7 @@ import tailwindAnimate from "tailwindcss-animate";
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
-  content: [
-    "./index.html",
-    "./src/**/*.{js,jsx}", // لو مش شغال TypeScript ممكن تشيل ts,tsx
-  ],
+  content: ["./index.html", "./src/**/*.{js,jsx}", "./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       borderRadius: {

@@ -1,18 +1,19 @@
-section.contact .icon-envelope{
-    color: #babab9eb;
-    margin-right: 1rem;
-    font-size: 2rem;
+section.contact .icon-envelope {
+  color: #babab9eb;
+  margin-right: 1rem;
+  font-size: 2rem;
 }
 
-
-section.contact .title{
-    font-size: 2.1rem;
-    color: var(--title);
-    margin-bottom: 1rem;
-      background: linear-gradient(
-    181deg,
-    rgba(0, 51, 255, 1) 30%,
-    #068398 45%
+section.contact .title {
+  font-size: 2.1rem;
+  color: var(--title);
+  margin-bottom: 1rem;
+  background: linear-gradient(
+    135deg,
+    #0033ff 10%,
+    #007bff 35%,
+    #00b8d9 70%,
+    #068398 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -20,229 +21,164 @@ section.contact .title{
   color: transparent;
 }
 
-
-section.contact .subtitle{
-    font-size: 1.1rem;
-    color: var(--subtitle);
-    margin-bottom: 1rem;
-    font-size: x-large;
+section.contact .subtitle {
+  line-height: 1.7rem;
+  margin-bottom: 32px;
+  color: var(--subtitle);
+  font-size: 18px;
+  letter-spacing: 2px;
+  opacity: 0.7;
 }
 
-section.contact label{
-    color: var(--subtitle);
-    font-size: 1rem;
+section.contact label {
+  color: var(--subtitle);
+  font-size: 1rem;
 }
 
-.div{
-    margin-bottom: 25px;
-    display: flex;
+.div {
+  margin-bottom: 25px;
+  display: flex;
 }
 
 section.contact #email,
-section.contact #massage{
-    all: unset;
-    background-color: transparent;
-    border-radius: 7px;
-    border: 1px solid  #03A9F4;
-    width: 16rem;
-    padding: 0.5rem 1rem;
-    margin-left: 1rem;
-    margin-bottom: 20px;
-    transition: 0.3s;
-    color :#ffffff;
-    padding-right: 2px;
+section.contact #massage {
+  all: unset;
+  background-color: transparent;
+  border-radius: 7px;
+  border: 1px solid #03a9f4;
+  width: 16rem;
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  margin-bottom: 20px;
+  transition: 0.3s;
+  color: #ffffff;
+  padding-right: 2px;
 }
-.light section.contact #email,.light section.contact #massage{
-    color: #000000ab;
-    background-color: #4643433b;
+.light section.contact #email,
+.light section.contact #massage {
+  color: #000000ab;
+  background-color: #4643433b;
 }
 
 section.contact #email:focus,
-section.contact #massage:focus{
-    border: 1px solid  #03A9F4;
-    box-shadow: 0px 0px 10px 1px #03A9F4;
+section.contact #massage:focus {
+  border: 1px solid #03a9f4;
+  box-shadow: 0px 0px 10px 1px #03a9f4;
 }
-
 
 section.contact #email:hover,
-section.contact #massage:hover{
-    border: 1px solid  #03A9F4;
-    box-shadow: 0px 0px 10px 1px #03A9F4;
+section.contact #massage:hover {
+  border: 1px solid #03a9f4;
+  box-shadow: 0px 0px 10px 1px #03a9f4;
 }
-section.contact #massage{
-    min-height: 9rem;
-    width: 16rem;
-    resize: vertical;
+section.contact #massage {
+  min-height: 9rem;
+  width: 16rem;
+  resize: vertical;
 }
 
-
-
-.submit{
-    width: 11rem;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: bolder;
-    border-radius: 50px;
-    color: #ffffff;
-    opacity: 1;
-    text-transform:capitalize;
-    transition: 0.3s;
-    margin-top: 1.8rem;
-    text-transform: uppercase;
-      padding: 3px;
+.submit {
+  width: 11rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  border-radius: 50px;
+  color: #ffffff;
+  opacity: 1;
+  text-transform: capitalize;
+  transition: 0.3s;
+  margin-top: 1.8rem;
+  text-transform: uppercase;
+  padding: 3px;
   background: linear-gradient(
-    90deg,
-    #001fff,
-    #00ebff,
-    #3800ff,
-    #5900ff,
-    #ff00ca
+    135deg,
+    #001fff 0%,
+    #007bff 25%,
+    #00e5ff 50%,
+    #7a00ff 75%,
+    #ff00c8 100%
   );
+
   background-size: 300% 300%;
   animation: border 6s ease infinite;
 }
-.submitmessage{
-    width: 11rem;
-    color: #fff !important;
-      border-radius: 50px;
+.submitmessage {
+  background-color: #000000d9;
+  width: 350px;
+  height: 40px;
+  border-radius: 50px;
   padding: 10px;
   color: var(--secmainCol);
   transition: box-shadow 0.2s ease-in-out 0.2s, color 0.2s ease-in-out 0.3s;
-  background-color: black;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.submitmessage:hover{
-    box-shadow:inset 0px 0px 12px 0px #007bff;
+.submitmessage:hover {
+  box-shadow: inset 0px 0px 6px 0px #007bff;
+  color: white;
 }
-.light .submit{
-    color: var(--title);
-    box-shadow: 0px 0px 3px 0px #0088ff;
+.light .submit {
+  color: var(--title);
+  box-shadow: 0px 0px 3px 0px #0088ff;
 }
-.submit:hover{
+.submit:hover {
+}
+.p {
+  display: flex;
+}
+.p .lo {
+  width: 74px;
+  height: 34px;
+}
+.light .p {
+  color: #464343;
+}
 
-    
+.class {
+  display: flex;
+  justify-content: space-between;
 }
-.p{
+
+@media (max-width: 786px) {
+  section.contact .animation {
+    display: none;
+  }
+
+  section.contact form {
     display: flex;
-}
-.p .lo{
-    width: 74px;
-    height: 34px;
-}
-.light .p{
+    flex-direction: column;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-    color: #464343;
-}
-
-
-.class{
+  section.contact form div {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    /* align-items: start; */
+  }
+  section.contact #email,
+  section.contact #massage {
+    width: 100%;
+    margin-left: 0;
+    padding: 0.8rem 0;
+    margin-top: 1rem;
+  }
+
+  section.contact .submit {
+    /* width: 30%; */
+    align-self: center;
+  }
 }
 
-
-
-
-
-
-
-
-@media (max-width: 600px ) {
-    section.contact .animation{
-        display: none;
-    }
-
-    section.contact form{
-        display: flex;
-        flex-direction: column;
-        width: 95%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    
-
-    
-    section.contact form div{
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-    }
-    section.contact #email,
-    section.contact #massage{
-        width: 100%;
-        margin-left: 0;
-        padding: 0.8rem 0;
-        margin-top: 1rem;
-    
-    }
-
-    section.contact .submit{
-        width: 30%;
-        align-self: center;
-    }
-
-
-
-
-
-
-
-}
-
-@media (max-width: 1000px ) {
-
-section.contact #email,
-section.contact #massage{
+@media (max-width: 1000px) {
+  section.contact #email,
+  section.contact #massage {
     width: 14rem;
     padding: 0.5rem 20px;
+  }
 }
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

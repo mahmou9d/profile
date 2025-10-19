@@ -5,7 +5,7 @@ import App from "./App";
 
 const rootElement = document.getElementById("root");
 
-// لازم نتأكد إن TypeScript فاهم إن العنصر ده مش null
+
 if (rootElement) {
   createRoot(rootElement).render(
     <StrictMode>

@@ -1,7 +1,7 @@
 footer{
     justify-content: space-between;
     display: flex;
-    padding-bottom: 2rem;
+    /* padding-bottom: ; */
     color: #fff;
 }
 
@@ -14,8 +14,8 @@ footer ul{
 
 footer ul a{
     color: #ffffffcc;
-    font-size: 17px;
-    font-weight: bolder;
+    font-size: 12px;
+    font-weight: 600;
     transition: 0.5s;
 }
 .light footer ul a{
@@ -24,25 +24,53 @@ footer ul a{
 
 footer ul a:hover{
     color: color(var(--subtitle));
-    font-size: 1.009rem;
+    /* font-size: 1.009rem; */
     
-    font-weight: 500;
+    font-weight: 700;
 }
 .light footer ul a:hover{
-    color: darkorange;
+    color: black;
 }
 
 footer p{
-    color: var(--title);
+      line-height: 1.7rem;
+  margin-bottom: 10px;
+  color: var(--subtitle);
+  font-size: 12px;
+  letter-spacing: 2px;
+  opacity: 0.7;
+  font-weight: 600;
 }
 .light footer p{
     color: #000000
 }
 footer p span{
-    color: #03A9F4;
+      background: linear-gradient(
+  135deg,
+  #0033ff 10%,
+  #007bff 35%,
+  #00b8d9 70%,
+  #068398 100%
+);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 .light footer p span{
-    color: #006898;
+      background: linear-gradient(
+  135deg,
+  #0033ff 10%,
+  #007bff 35%,
+  #00b8d9 70%,
+  #068398 100%
+);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 
@@ -62,7 +90,10 @@ footer p span{
 @media(max-width: 800px){
     footer{
         flex-direction: column;
-        gap: 2rem;
+        gap: 10px;
+    }
+    footer ul {
+        justify-content: space-evenly;
     }
 }
 
