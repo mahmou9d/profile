@@ -113,7 +113,7 @@ header button {
   width: 67px;
   height: 67px;
   /* margin-top: 20px; */
-  background-color: #3838389e;
+  /* background-color: #3838389e; */
   color: #fff;
   font-size: 1rem;
   padding: 20px;
@@ -141,7 +141,7 @@ header .fixedd {
   position: fixed;
   inset: 0;
   z-index: 1;
-  background-color: rgba(120, 120, 120, 0.719);
+  /* background-color: #0101677d; */
 }
 
 header .fixedd ul.modal {
@@ -152,11 +152,11 @@ header .fixedd ul.modal {
   margin-top: 2rem;
   border-radius: 1rem;
   padding: 1rem 2rem;
-  background-color: #383838;
+  background-color: #0101677d;
   height: 350px;
 }
 .light header .fixedd ul.modal {
-  background-color: #ffffff4d;
+  background-color: #0101677d;
 }
 header ul.modal li {
   border-radius: 80px;
@@ -187,12 +187,12 @@ header ul.modal li a {
 }
 header ul.modal li a:hover {
   color: var(--mainColor);
-  transition: 0.5s;
-  font-size: 1.5rem;
+  /* transition: 0.5s; */
+  /* font-size: 1.5rem; */
 }
 header ul.modal button {
   border: none;
-  padding-bottom: 50px;
+  /* padding-bottom: 50px; */
 }
 
 .icon-clear {
@@ -201,7 +201,8 @@ header ul.modal button {
 }
 .icon-clear:hover {
   color: var(--mainColor);
-  rotate: 360deg;
+  /* rotate: 180deg; */
+  scale: 1.4;
 }
 
 .mode {

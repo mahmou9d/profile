@@ -134,10 +134,10 @@ const Header = () => {
               <a href="/">Home</a>
             </li>
             <li>
-              <a href="projects">Projects</a>
+              <a href="/projects">Projects</a>
             </li>
             <li>
-              <a href="About">About</a>
+              <a href="/About">About</a>
             </li>
             {/* 
             <li>
@@ -145,6 +145,7 @@ const Header = () => {
             </li> */}
           </ul>
         </div>
+        
       )}
     </header>
   );
