@@ -9,7 +9,7 @@ import { FaGithub } from "react-icons/fa6";
 
 const words = `I'm Mahmoud Mohamed, a Front-End Developer and second-year Computer
             and Information student. I build responsive web apps using HTML,
-            CSS, JavaScript, React, and Next.js. I'm experienced with
+            CSS, JavaScript, React, Next.js and React Native. I'm experienced with
             TypeScript, Redux, React Router, Shadcn UI, and Tailwind. I
             follow best practices using Git/GitHub and constantly work on real
             projects to sharpen my skills.`;
