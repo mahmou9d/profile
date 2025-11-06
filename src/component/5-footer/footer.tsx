@@ -7,16 +7,19 @@ const Footer =() => {
         <p className="text-[#ffffff] text-sm">
           © 2025 Mahmoud — All rights reserved.
         </p>
-        <p className="text-[#ffffff] text-sm mt-2">
+        <p className="text-[#ffffff]  text-sm mt-2">
           📧{" "}
           <a
             href="mailto:mohnud0987@gmail.com"
-            className="text-[#ffffff] hover:underline"
+            className="dark:text-[#ffffff] hover:underline"
           >
             mohnud0987@gmail.com
           </a>{" "}
           | 📞{" "}
-          <a href="tel:01009014597" className="text-[#ffffff] hover:underline">
+          <a
+            href="tel:01009014597"
+            className="dark:text-[#ffffff] hover:underline"
+          >
             01009014597
           </a>
         </p>
