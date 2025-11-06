@@ -17,45 +17,46 @@ import { SiShadcnui } from "react-icons/si";
 
 export const aboutproduct = [
   {
-    id: 1,
-    icon: "/svg/html-5-svgrepo-com.svg",
-    title: "HTML",
+    icon: "/svg/react.svg",
+    title: "ReactNative",
   },
-  {
-    icon: "/svg/css-3-svgrepo-com.svg",
-    title: "CSS",
+    {
+    icon: "/images/nextjs.svg",
+    title: "NextJs",
   },
-  {
+    {
+    icon: "/images/stream.svg",
+    title: "Shadcn",
+  },
+    {
+    icon: "/svg/react-svgrepo-com.svg",
+    title: "ReactJs",
+  },
+    {
+    icon: "/svg/typescript-official-svgrepo-com.svg",
+    title: "Typescript",
+  },
+    {
     icon: "/svg/js-official-svgrepo-com.svg",
     title: "JS",
   },
+    {
+    icon: "/svg/tailwind-svgrepo-com.svg",
+    title: "TailwindCss",
+  },
+
+
   {
-    icon: "/svg/typescript-official-svgrepo-com.svg",
-    title: "Typescript",
+    icon: "/svg/scss-svgrepo-com.svg",
+    title: "Scss",
   },
   {
     icon: "/svg/bootstrap-svgrepo-com.svg",
     title: "Bootstrap",
   },
   {
-    icon: "/svg/tailwind-svgrepo-com.svg",
-    title: "TailwindCss",
-  },
-  {
-    icon: "/svg/scss-svgrepo-com.svg",
-    title: "Scss",
-  },
-  {
-    icon: "/images/nextjs.svg",
-    title: "NextJs",
-  },
-  {
     icon: "/svg/git-svgrepo-com.svg",
     title: "Git & GitHup",
-  },
-  {
-    icon: "/svg/react-svgrepo-com.svg",
-    title: "ReactJs",
   },
   {
     icon: "/svg/redux-logo-svgrepo-com.svg",
@@ -73,12 +74,18 @@ export const aboutproduct = [
     icon: "/svg/material-ui-svgrepo-com.svg",
     title: "Mui",
   },
-  {
-    icon: "/images/stream.svg",
-    title: "Shadcn",
-  },
+
   {
     icon: "https://getstream.io/_astro-assets/stream.svg",
     title: "stream",
+  },
+    {
+    id: 1,
+    icon: "/svg/html-5-svgrepo-com.svg",
+    title: "HTML",
+  },
+  {
+    icon: "/svg/css-3-svgrepo-com.svg",
+    title: "CSS",
   },
 ];

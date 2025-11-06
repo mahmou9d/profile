@@ -3,24 +3,22 @@ import './footer.css';
 
 const Footer =() => {
     return (
-      <footer className="fixedd">
-        <ul className="fixedd">
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <a href="/projects">Projects</a>
-          </li>
-          <li>
-            <a href="/About">My Skills</a>
-          </li>
-          {/* <li>
-            <a href="">contact</a>
-          </li> */}
-        </ul>
-
-        <p>
-          © 2025 <span>Mahmoud Mohammed</span>. All rights reserved.
+      <footer className="text-center mt-2 py-2">
+        <p className="text-[#ffffff] text-sm">
+          © 2025 Mahmoud — All rights reserved.
+        </p>
+        <p className="text-[#ffffff] text-sm mt-2">
+          📧{" "}
+          <a
+            href="mailto:mohnud0987@gmail.com"
+            className="text-[#ffffff] hover:underline"
+          >
+            mohnud0987@gmail.com
+          </a>{" "}
+          | 📞{" "}
+          <a href="tel:01009014597" className="text-[#ffffff] hover:underline">
+            01009014597
+          </a>
         </p>
       </footer>
     );

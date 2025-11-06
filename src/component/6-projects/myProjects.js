@@ -1,5 +1,22 @@
 export const myProjects = [
   {
+    projectTitle: "CarePlus Clinic",
+    category: ["Simple"],
+    imgPath: "/images/Screenshot 2025-11-06 110958.png",
+    link: "https://patient-pi.vercel.app/",
+    desc: `Clinic management app built with React, TypeScript & Redux Toolkit — for booking appointments and managing patient profiles.`,
+    href: "https://github.com/mahmou9d/Patient",
+    iconLists: [
+      "/images/nextjs.svg",
+      "/images/re.svg",
+      "/images/tail.svg",
+      "/images/ts.svg",
+      // "/images/icons8-redux-48.png",
+      "/images/stream.svg",
+      // "/images/hookform.svg",
+    ],
+  },
+  {
     projectTitle: "Prime Ecom",
     category: ["Simple"],
     imgPath: "/images/Screenshot 2025-10-19 133052.png",
