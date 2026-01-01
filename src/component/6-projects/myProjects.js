@@ -1,10 +1,26 @@
 export const myProjects = [
   {
+    projectTitle: "XtraMarket",
+    category: ["Simple"],
+    imgPath: "/images/Screenshot 2025-10-19 132415.png",
+    link: "https://vegecommerce-ct1s.vercel.app/",
+    desc: `E-commerce app with Next.js,RTK Query. Features product browsing, cart, wishlist, checkout, and admin dashboard. Built with real backend API.`,
+    href: "https://github.com/mahmou9d/vegecommerce",
+    iconLists: [
+      "/images/nextjs.svg",
+      "/images/re.svg",
+      "/images/tail.svg",
+      "/images/ts.svg",
+      "/images/icons8-redux-48.png",
+      "/images/stream.svg",
+    ],
+  },
+  {
     projectTitle: "CarePlus Clinic",
     category: ["Simple"],
     imgPath: "/images/Screenshot 2025-11-06 110958.png",
     link: "https://patient-pi.vercel.app/",
-    desc: `Clinic management app built with React, TypeScript & Redux Toolkit — for booking appointments and managing patient profiles.`,
+    desc: `Clinic management app built with Next.js, TypeScript & Redux Toolkit — for booking appointments and managing patient profiles.`,
     href: "https://github.com/mahmou9d/Patient",
     iconLists: [
       "/images/nextjs.svg",
@@ -46,22 +62,7 @@ export const myProjects = [
       "https://getstream.io/_astro-assets/stream.svg",
     ],
   },
-  {
-    projectTitle: "XtraMarket",
-    category: ["Simple"],
-    imgPath: "/images/Screenshot 2025-10-19 132415.png",
-    link: "https://vegecommerce-ct1s.vercel.app/",
-    desc: `E-commerce app with real backend built with Next.js, Redux Toolkit featuring product browsing, search, cart, wishlist, and secure checkout.`,
-    href: "https://github.com/mahmou9d/vegecommerce",
-    iconLists: [
-      "/images/nextjs.svg",
-      "/images/re.svg",
-      "/images/tail.svg",
-      "/images/ts.svg",
-      "/images/icons8-redux-48.png",
-      "/images/stream.svg",
-    ],
-  },
+
   {
     projectTitle: "Modern Profile",
     category: ["Simple"],
@@ -126,38 +127,38 @@ export const myProjects = [
     href: "https://github.com/mahmou9d/dashboard",
     iconLists: ["/images/re.svg", "/images/tail.svg"],
   },
-  {
-    projectTitle: "CRUD APP",
-    category: ["Complex"],
-    imgPath: "/images/Screenshot 2025-09-05 231543.webp",
-    link: "https://curd-mk8q.vercel.app/",
-    desc: `React + Redux Toolkit CRUD app with real backend — add, view, read, and delete books. Form handled with React Hook Form & Yup.`,
-    href: "https://github.com/mahmou9d/curd",
-    iconLists: [
-      "/images/re.svg",
-      "/images/tail.svg",
-      "/images/icons8-redux-48.png",
-    ],
-  },
-  {
-    projectTitle: "Advanced Todolist",
-    category: ["Complex"],
-    imgPath: "/images/Screenshot 2025-09-05 230324.webp",
-    link: "https://list-advanced.web.app",
-    desc: `Task management app built with React & Context API — Arabic UI, CRUD tasks, filters, and localStorage persistence.`,
-    href: "https://github.com/mahmou9d/todolist-advanced",
-    iconLists: ["/images/re.svg", "/images/icons8-redux-48.png"],
-  },
-  {
-    projectTitle: "Weather APP",
-    category: ["Simple"],
-    imgPath: "/images/Screenshot 2025-04-23 180418.webp",
-    link: "https://peaceful-pothos-2d7a29.netlify.app",
-    desc: `React weather app — shows real-time city, date, temperatures, condition & icon. Responsive UI, supports English & Arabic.
-`,
-    href: "https://github.com/mahmou9d/weather",
-    iconLists: ["/images/re.svg"],
-  },
+  // {
+  //   projectTitle: "CRUD APP",
+  //   category: ["Complex"],
+  //   imgPath: "/images/Screenshot 2025-09-05 231543.webp",
+  //   link: "https://curd-mk8q.vercel.app/",
+  //   desc: `React + Redux Toolkit CRUD app with real backend — add, view, read, and delete books. Form handled with React Hook Form & Yup.`,
+  //   href: "https://github.com/mahmou9d/curd",
+  //   iconLists: [
+  //     "/images/re.svg",
+  //     "/images/tail.svg",
+  //     "/images/icons8-redux-48.png",
+  //   ],
+  // },
+  // {
+  //   projectTitle: "Advanced Todolist",
+  //   category: ["Complex"],
+  //   imgPath: "/images/Screenshot 2025-09-05 230324.webp",
+  //   link: "https://list-advanced.web.app",
+  //   desc: `Task management app built with React & Context API — Arabic UI, CRUD tasks, filters, and localStorage persistence.`,
+  //   href: "https://github.com/mahmou9d/todolist-advanced",
+  //   iconLists: ["/images/re.svg", "/images/icons8-redux-48.png"],
+  // },
+  //   {
+  //     projectTitle: "Weather APP",
+  //     category: ["Simple"],
+  //     imgPath: "/images/Screenshot 2025-04-23 180418.webp",
+  //     link: "https://peaceful-pothos-2d7a29.netlify.app",
+  //     desc: `React weather app — shows real-time city, date, temperatures, condition & icon. Responsive UI, supports English & Arabic.
+  // `,
+  //     href: "https://github.com/mahmou9d/weather",
+  //     iconLists: ["/images/re.svg"],
+  //   },
 
   {
     projectTitle: "Landing Page",

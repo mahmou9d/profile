@@ -1,153 +1,306 @@
 import "./main.css";
-import { Link, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { FaLocationArrow } from "react-icons/fa6";
-import { PinContainer } from "@/components/ui/3d-pin";
 import { myProjects } from "../6-projects/myProjects";
+import { useRef, useState } from "react";
+import { Radio } from "lucide-react";
 
-const Main = () => {
-  const projects = myProjects.slice(0,3)
+// Enhanced Project Card Component
+const ProjectCard = ({ item, index }: { item: any; index: number }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const cardRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+
   return (
-    <main id="artical" className="fixedd">
-      <motion.h2
-        className="text-5xl font-extrabold text-center mb-16 maintitle border-b-4 border-blue-700 w-fit pb-4"
-        initial={{ opacity: 0, y: -50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
+    <motion.div
+      ref={cardRef}
+      className="project-card-container"
+      style={{ y, opacity }}
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.7,
+        delay: index * 0.15,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      viewport={{ once: true, amount: 0.3 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+    >
+      <a
+        href={item.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="project-card-link"
       >
-        Projects
-      </motion.h2>
-      {/* <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        style={{ padding: "4px" }}
-        className="mySwiper"
-      >
-        <SwiperSlide>
-          <a
-            href="https://benevolent-beignet-116c19.netlify.app/"
-            target="_blank"
-          >
-            <img
-              width={"100%"}
-              height={"100%"}
-              src="./images/Screenshot 2025-09-05 222413.webp"
-              alt=""
-              style={{ borderRadius: "10px" }}
-            />
-          </a>
-        </SwiperSlide>
-        <SwiperSlide>
-          <a href="https://famous-swan-6e1bb4.netlify.app/" target="_blank">
-            <img
-              width={"100%"}
-              height={"100%"}
-              src="/images/Screenshot 2025-09-05 222801.webp"
-              alt=""
-              style={{ borderRadius: "10px" }}
-            />
-          </a>
-        </SwiperSlide>
-        <SwiperSlide>
-          <a
-            href="https://guileless-tiramisu-18d615.netlify.app/"
-            target="_blank"
-          >
-            <img
-              width={"100%"}
-              height={"100%"}
-              src="/images/Screenshot 2025-09-05 224742.webp"
-              alt=""
-              style={{ borderRadius: "10px" }}
-            />
-          </a>
-        </SwiperSlide>
-      </Swiper> */}
-      <div className="flex flex-wrap items-center justify-center p-4 gap-16">
-        {projects.map((item,i) => (
-          <div
-            className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw] "
-            key={i}
-          >
-            <PinContainer
-              title="Live Demo"
-              href={item.link}
-            >
-              <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
-                <div
-                  className="relative w-full h-full overflow-hidden lg:rounded-3xl"
-                  style={{ backgroundColor: "#13162D" }}
-                >
-                  <img src="/images/bg.png" alt="bgimg" />
-                </div>
+        <div className="project-card">
+          {/* Animated Border Gradient */}
+          <div className="card-border-gradient"></div>
+
+          {/* Main Content */}
+          <div className="card-inner">
+            {/* Image Section */}
+            <div className="project-image-section">
+              {/* Background Layer */}
+              <div className="image-bg-layer">
+                <img src="/images/bg.png" alt="background" />
+                <div className="image-overlay"></div>
+              </div>
+
+              {/* Project Screenshot */}
+              <motion.div
+                className="project-screenshot"
+                animate={
+                  isHovered ? { y: -8, scale: 1.02 } : { y: 0, scale: 1 }
+                }
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              >
                 <img
                   src={item.imgPath}
-                  alt="cover"
-                  className="z-10 absolute bottom-0"
+                  alt={item.projectTitle}
+                  loading="lazy"
                 />
-              </div>
+              </motion.div>
 
-              <h1 className="text font-bold lg:text-2xl md:text-xl text-white text-base line-clamp-1">
-                {item.projectTitle}
-              </h1>
-
-              <p
-                className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2"
-                style={{
-                  color: "#BEC1DD",
-                  margin: "1vh 0",
+              {/* Status Badge */}
+              <motion.div
+                className="status-badge"
+                initial={{ scale: 0, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{
+                  delay: 0.3,
+                  type: "spring",
+                  stiffness: 200,
                 }}
+                viewport={{ once: true }}
               >
-                {item.desc}
-              </p>
+                <span className="status-dot"></span>
+                <span className="status-text">Live</span>
+              </motion.div>
 
-              <div className="flex items-center justify-between mt-7 mb-3">
-                <div className="flex items-center">
-                  {item.iconLists?.map((icon, index) => (
-                    <div
-                      key={index}
-                      className="  rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
-                      style={{
-                        transform: `translateX(-${5 * index + 2}px)`,
-                      }}
-                    >
-                      <img src={icon} alt="icon5" className="p-2" />
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex justify-center items-center">
-                  <p className="flex lg:text-xl md:text-xs text-sm text-white">
-                    Check Live Site
-                  </p>
-                  <FaLocationArrow className="ms-3" color="#CBACF9" />
-                </div>
+              {/* Project Number */}
+              <div className="project-number">
+                {String(index + 1).padStart(2, "0")}
               </div>
-            </PinContainer>
+
+              {/* Hover Overlay */}
+              <motion.div
+                className="hover-overlay"
+                animate={isHovered ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <motion.div
+                  className="view-project-icon"
+                  animate={
+                    isHovered
+                      ? { scale: 1, rotate: 0 }
+                      : { scale: 0, rotate: -180 }
+                  }
+                  transition={{ duration: 0.4, type: "spring" }}
+                >
+                  <Radio />
+                </motion.div>
+              </motion.div>
+            </div>
+
+            {/* Content Section */}
+            <div className="project-content-section">
+              {/* Category Tag */}
+              <motion.div
+                className="project-category"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 + index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                Web Application
+              </motion.div>
+
+              {/* Title */}
+              <motion.h3
+                className="project-title-text"
+                animate={isHovered ? { x: 5 } : { x: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {item.projectTitle}
+              </motion.h3>
+
+              {/* Description */}
+              <p className="project-desc-text">{item.desc}</p>
+
+              {/* Divider Line */}
+              <div className="content-divider"></div>
+
+              {/* Footer - Tech Stack & CTA */}
+              <div className="project-card-footer">
+                {/* Tech Stack */}
+                <div className="tech-stack-list">
+                  {item.iconLists
+                    ?.slice(0, 4)
+                    .map((icon: string, idx: number) => (
+                      <motion.div
+                        key={idx}
+                        className="tech-badge"
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{
+                          delay: 0.5 + index * 0.1 + idx * 0.05,
+                          type: "spring",
+                          stiffness: 200,
+                        }}
+                        viewport={{ once: true }}
+                        whileHover={{ scale: 1.15, y: -3 }}
+                      >
+                        <img src={icon} alt={`tech-${idx}`} />
+                      </motion.div>
+                    ))}
+                  {item.iconLists?.length > 4 && (
+                    <div className="tech-badge-more">
+                      +{item.iconLists.length - 4}
+                    </div>
+                  )}
+                </div>
+
+                {/* View Project CTA */}
+                <motion.div
+                  className="view-project-cta"
+                  animate={isHovered ? { x: 5 } : { x: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <span className="cta-label">View Project</span>
+                  <motion.div
+                    animate={
+                      isHovered ? { x: 5, rotate: -45 } : { x: 0, rotate: 0 }
+                    }
+                    transition={{ duration: 0.3 }}
+                  >
+                    <FaLocationArrow />
+                  </motion.div>
+                </motion.div>
+              </div>
+            </div>
           </div>
+
+          {/* Decorative Corner Elements */}
+          <div className="corner-decorations">
+            <div className="corner corner-tl"></div>
+            <div className="corner corner-tr"></div>
+            <div className="corner corner-bl"></div>
+            <div className="corner corner-br"></div>
+          </div>
+        </div>
+      </a>
+    </motion.div>
+  );
+};
+
+const Main = () => {
+  const projects = myProjects.slice(0, 3);
+  const containerRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -100]);
+
+  return (
+    <main id="artical" className="main-section" ref={containerRef}>
+      {/* Animated Background */}
+      <motion.div className="main-background" style={{ y: backgroundY }}>
+        <div className="bg-gradient-orb orb-1"></div>
+        <div className="bg-gradient-orb orb-2"></div>
+        <div className="bg-gradient-orb orb-3"></div>
+        {/* <div className="bg-mesh-pattern"></div> */}
+      </motion.div>
+
+      {/* Header Section */}
+      <div className="main-header-section">
+
+
+        {/* Title & Subtitle */}
+        <motion.div
+          className="header-content"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          <div className="header-tag">
+            <span className="tag-icon">✨</span>
+            <span className="tag-text">Portfolio</span>
+          </div>
+
+          <h2 className="main-heading">Featured Projects</h2>
+
+          <p className="main-subheading">
+            Explore my latest work - crafted with precision and passion
+          </p>
+        </motion.div>        {/* Decorative Top Line */}
+        <motion.div
+          className="header-top-line"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+          viewport={{ once: true }}
+        />
+      </div>
+
+      {/* Projects Grid */}
+      <div className="projects-showcase">
+        {projects.map((item, i) => (
+          <ProjectCard key={i} item={item} index={i} />
         ))}
       </div>
-      <Link
-        to={"projects"}
-        onClick={() => {
-          setTimeout(() => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }, 300);
-        }}
-        className="button"
+
+      {/* View All Button */}
+      <motion.div
+        className="view-all-section"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.3 }}
+        viewport={{ once: true }}
       >
-        <button className="frontbut">More projects</button>
-      </Link>
+        <Link
+          to="projects"
+          onClick={() => {
+            setTimeout(() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }, 300);
+          }}
+        >
+          <motion.button
+            className="view-all-button"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <span className="button-bg-layer"></span>
+            <span className="button-content-layer">
+              <span className="button-label">View All Projects</span>
+              <motion.span
+                className="button-arrow"
+                animate={{ x: [0, 5, 0] }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                →
+              </motion.span>
+            </span>
+          </motion.button>
+        </Link>
+      </motion.div>
     </main>
   );
 };
