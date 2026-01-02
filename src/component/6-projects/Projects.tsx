@@ -155,7 +155,7 @@ const ProjectCard = ({ item, index }: { item: any; index: number }) => {
                       viewport={{ once: true }}
                       whileHover={{ scale: 1.2, y: -5 }}
                     >
-                      <img src={icon} alt={`tech-${idx}`} />
+                      <img src={icon} alt={`tech-${idx}`} loading="lazy"/>
                     </motion.div>
                   ))}
                 {item.iconLists?.length > 5 && (

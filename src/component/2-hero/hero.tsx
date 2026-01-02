@@ -3,7 +3,7 @@ import { memo, useMemo, useEffect, useState } from "react";
 import "./hero.css";
 import { BiLogoLinkedin } from "react-icons/bi";
 import { FaXTwitter, FaGithub } from "react-icons/fa6";
-import { motion, useAnimate, stagger } from "motion/react";
+import { motion, useAnimate, stagger, AnimatePresence } from "motion/react";
 import { IconType } from "react-icons";
 
 const words = `Front-End Developer | Computer Science Student
@@ -252,15 +252,17 @@ const AnimatedCodeVisualization = memo(() => {
 AnimatedCodeVisualization.displayName = "AnimatedCodeVisualization";
 
 const Hero = () => {
+  const [showSurprise, setShowSurprise] = useState(false);
+
   const socialIcons = useMemo(
     () => [
-      {
-        href: "https://x.com/MahmudSurvives",
-        Icon: FaXTwitter,
-        label: "Twitter Profile",
-        className: "hover1",
-        delay: 1,
-      },
+      // {
+      //   href: "https://x.com/MahmudSurvives",
+      //   Icon: FaXTwitter,
+      //   label: "Twitter Profile",
+      //   className: "hover1",
+      //   delay: 1,
+      // },
       {
         href: "https://github.com/mahmou9d",
         Icon: FaGithub,
@@ -279,6 +281,27 @@ const Hero = () => {
     []
   );
 
+  const handleDownloadCV = (e: any) => {
+    e.preventDefault();
+    setShowSurprise(true);
+
+    // Download CV immediately
+    setTimeout(() => {
+      // Create a temporary link to download CV
+      const link = document.createElement("a");
+      link.href = "/Mahmoud_Mohammed_FrontEnd_Developer.pdf";
+      link.download = "Mahmoud_Mohammed_FrontEnd_Developer.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }, 100);
+
+    // Hide surprise after 5 seconds
+    setTimeout(() => {
+      setShowSurprise(false);
+    }, 10000);
+  };
+
   return (
     <motion.section className="hero fixedd">
       {/* Floating Effects - Memoized */}
@@ -287,6 +310,8 @@ const Hero = () => {
 
       {/* Scan Line */}
       <motion.div className="hero-scan-line" />
+
+      {/* Confetti Effect - خارج الـ wrapper علشان يظهر في المنتصف */}
 
       <div className="borderr left-section">
         <motion.div className="parent-avater">
@@ -327,23 +352,35 @@ const Hero = () => {
         >
           <motion.a
             href="#contact"
-            className="hero-btn primary-btns"
+            className="hero-btns primary-btns"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <span className="btn-text">Contact Me</span>
-            <span className="btn-icon">→</span>
           </motion.a>
 
           <motion.a
-            href="/cv.pdf"
-            download
-            className="hero-btn secondary-btn"
+            href="#"
+            onClick={handleDownloadCV}
+            className="hero-btns secondary-btns"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <span className="btn-text">Download CV</span>
-            <span className="btn-icon">↓</span>
+            <AnimatePresence>
+              {showSurprise && (
+                <motion.img
+                  src="/confetti.gif"
+                  alt="Celebration"
+                  className="confetti-around-btn"
+                  loading="lazy"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+              )}
+            </AnimatePresence>
           </motion.a>
         </motion.div>
 

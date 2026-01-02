@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FaLocationArrow } from "react-icons/fa6";
 import { myProjects } from "../6-projects/myProjects";
-import { useRef, useState } from "react";
+// const myProjects = lazy(() => import("../6-projects/myProjects"));
+import { lazy, useRef, useState } from "react";
 import { Radio } from "lucide-react";
 
 // Enhanced Project Card Component
@@ -51,7 +52,7 @@ const ProjectCard = ({ item, index }: { item: any; index: number }) => {
             <div className="project-image-section">
               {/* Background Layer */}
               <div className="image-bg-layer">
-                <img src="/images/bg.png" alt="background" />
+                <img src="/images/bg.png" alt="background" loading="lazy"/>
                 <div className="image-overlay"></div>
               </div>
 
@@ -159,7 +160,7 @@ const ProjectCard = ({ item, index }: { item: any; index: number }) => {
                         viewport={{ once: true }}
                         whileHover={{ scale: 1.15, y: -3 }}
                       >
-                        <img src={icon} alt={`tech-${idx}`} />
+                        <img src={icon} alt={`tech-${idx}`} loading="lazy" />
                       </motion.div>
                     ))}
                   {item.iconLists?.length > 4 && (

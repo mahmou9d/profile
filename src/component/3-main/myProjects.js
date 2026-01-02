@@ -1,4 +1,4 @@
-export const myProjects = [
+export  const myProjects = [
   {
     projectTitle: "Advanced Todolist",
     category: ["Complex"],
