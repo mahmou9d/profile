@@ -2,9 +2,10 @@ import React from 'react';
 import './footer.css';
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaPhone, FaHeart, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
-import { Link } from 'react-router';
-
+import { Link,useNavigate, useLocation } from 'react-router';
 const Footer = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -27,23 +28,53 @@ const Footer = () => {
       color: "#1da1f2"
     },
   ];
-const links =[
+  interface links{
+    title:string
+    link:string
+    type:string
+  }
+const links: links[] = [
   {
-  title:'Home',
-  link:'#'
-},{
-  title:'Projects',
-  link:'/projects'
-},{
-  title:'About',
-  link:'/about'
-},{
-  title:'Skills',
-  link:'#skills'
-},{
-  title:'Contact',
-  link:'#contact'
-}]
+    title: "Home",
+    link: "/",
+    type: "route",
+  },
+  {
+    title: "Projects",
+    link: "/projects",
+    type: "route",
+  },
+  {
+    title: "About",
+    link: "/about",
+    type: "route",
+  },
+  {
+    title: "Skills",
+    link: "#skills",
+    type: "hash",
+  },
+  {
+    title: "Contact",
+    link: "#contact",
+    type: "hash",
+  },
+];
+ const handleLinkClick = (link: links) => {
+   if (link.type === "hash") {
+     if (location.pathname !== "/") {
+       navigate(`/${link.link}`);
+     } else {
+       const element = document.querySelector(link.link);
+       if (element) {
+         element.scrollIntoView({ behavior: "smooth", block: "start" });
+       }
+     }
+   } else {
+     navigate(link.link);
+     window.scrollTo({ top: 0, behavior: "smooth" });
+   }
+ };
   return (
     <footer className="footer-section">
       {/* Background Effects */}
@@ -92,16 +123,32 @@ const links =[
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 * index }}
-                  onClick={() => {
-                    setTimeout(() => {
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                    }, 300);
-                  }}
                 >
-                  <Link to={link.link} className="footer-link">
-                    <span className="link-icon">→</span>
-                    {link.title}
-                  </Link>
+                  {link.type === "hash" ? (
+                    <a
+                      href={link.link}
+                      className="footer-link"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleLinkClick(link);
+                      }}
+                    >
+                      <span className="link-icon">→</span>
+                      {link.title}
+                    </a>
+                  ) : (
+                    <a
+                      href={link.link}
+                      className="footer-link"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleLinkClick(link);
+                      }}
+                    >
+                      <span className="link-icon">→</span>
+                      {link.title}
+                    </a>
+                  )}
                 </motion.li>
               ))}
             </ul>
@@ -129,7 +176,7 @@ const links =[
                 transition={{ duration: 0.2 }}
               >
                 <div className="contact-icon">
-                  <FaPhone />
+                  <FaPhone className='rotate-90'/>
                 </div>
                 <span className="contact-text">01009014597</span>
               </motion.a>

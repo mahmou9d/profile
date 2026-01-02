@@ -96,116 +96,6 @@ const SuccessAnimation = () => (
     </div>
   </motion.div>
 );
-
-// // Enhanced Illustration Component
-// const ContactVisual = () => {
-//   return (
-//     <div className="contact-visual">
-//       {/* Main Email Card */}
-//       <motion.div
-//         className="email-card"
-//         animate={{
-//           y: [0, -15, 0],
-//         }}
-//         transition={{
-//           duration: 4,
-//           repeat: Infinity,
-//           ease: "easeInOut",
-//         }}
-//       >
-//         {/* Card Background */}
-//         <div className="card-bg">
-//           <div className="card-shine"></div>
-//         </div>
-
-//         {/* Email Icon */}
-//         <motion.div
-//           className="email-icon-wrapper"
-//           initial={{ scale: 0, rotate: -180 }}
-//           animate={{ scale: 1, rotate: 0 }}
-//           transition={{
-//             type: "spring",
-//             stiffness: 100,
-//             delay: 0.2,
-//           }}
-//         >
-//           <svg
-//             width="100"
-//             height="80"
-//             viewBox="0 0 100 80"
-//             fill="none"
-//             className="email-icon"
-//           >
-//             <motion.rect
-//               x="10"
-//               y="15"
-//               width="80"
-//               height="50"
-//               rx="6"
-//               fill="url(#emailGradient)"
-//               initial={{ scale: 0 }}
-//               animate={{ scale: 1 }}
-//               transition={{ duration: 0.5, delay: 0.3 }}
-//             />
-//             <motion.path
-//               d="M10 15 L50 45 L90 15"
-//               stroke="#00f5ff"
-//               strokeWidth="2.5"
-//               fill="none"
-//               initial={{ pathLength: 0 }}
-//               animate={{ pathLength: 1 }}
-//               transition={{ duration: 1, delay: 0.5 }}
-//             />
-//             <defs>
-//               <linearGradient
-//                 id="emailGradient"
-//                 x1="0%"
-//                 y1="0%"
-//                 x2="100%"
-//                 y2="100%"
-//               >
-//                 <stop offset="0%" stopColor="rgba(0, 245, 255, 0.2)" />
-//                 <stop offset="100%" stopColor="rgba(0, 217, 255, 0.3)" />
-//               </linearGradient>
-//             </defs>
-//           </svg>
-//         </motion.div>
-
-//         {/* Decorative Elements */}
-//         <div className="card-decorations">
-//           {[...Array(3)].map((_, i) => (
-//             <motion.div
-//               key={i}
-//               className="decoration-line"
-//               initial={{ scaleX: 0 }}
-//               animate={{ scaleX: 1 }}
-//               transition={{ duration: 0.6, delay: 0.8 + i * 0.1 }}
-//             />
-//           ))}
-//         </div>
-//       </motion.div>
-
-//       {/* Floating Orbs */}
-//       {[...Array(4)].map((_, i) => (
-//         <motion.div
-//           key={i}
-//           className={`floating-orb orb-${i + 1}`}
-//           animate={{
-//             y: [0, -25, 0],
-//             x: [0, i % 2 === 0 ? 15 : -15, 0],
-//             scale: [1, 1.15, 1],
-//           }}
-//           transition={{
-//             duration: 3 + i * 0.5,
-//             repeat: Infinity,
-//             ease: "easeInOut",
-//             delay: i * 0.4,
-//           }}
-//         />
-//       ))}
-//     </div>
-//   );
-// };
 // Animated Contact Illustration
 const ContactVisual = () => (
   <div className="contact-illustration">
@@ -381,9 +271,7 @@ const Contact = () => {
             <div className="title-icons">
               <span>📬</span>
 
-              <h1 className="contact-title">
-                Let's Connect
-              </h1>
+              <h1 className="contact-title">Let's Connect</h1>
             </div>
 
             <p className="main-subheading">

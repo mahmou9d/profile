@@ -3,7 +3,6 @@ import "./About.css";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 
-// Enhanced Skill Card Component
 const SkillCard = ({ item, index }: { item: any; index: number }) => {
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef(null);

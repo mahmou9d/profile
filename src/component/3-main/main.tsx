@@ -3,38 +3,52 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FaLocationArrow } from "react-icons/fa6";
 import { myProjects } from "../6-projects/myProjects";
-// const myProjects = lazy(() => import("../6-projects/myProjects"));
-import { lazy, useRef, useState } from "react";
+import { memo, useRef, useState, useCallback } from "react";
 import { Radio } from "lucide-react";
 
-// Enhanced Project Card Component
-const ProjectCard = ({ item, index }: { item: any; index: number }) => {
+// Optimized animations configurations
+const CARD_TRANSITION = {
+  duration: 0.7,
+  ease: [0.22, 1, 0.36, 1],
+};
+
+const HOVER_TRANSITION = {
+  duration: 0.3,
+  ease: "easeOut" as const,
+};
+
+// Memoized ProjectCard Component
+const ProjectCard = memo(({ item, index }: { item: any; index: number }) => {
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef(null);
 
+  // Simplified scroll animations
   const { scrollYProgress } = useScroll({
     target: cardRef,
     offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const y = useTransform(scrollYProgress, [0, 1], [30, -30]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+
+  const handleMouseEnter = useCallback(() => setIsHovered(true), []);
+  const handleMouseLeave = useCallback(() => setIsHovered(false), []);
 
   return (
     <motion.div
       ref={cardRef}
       className="project-card-container"
       style={{ y, opacity }}
-      initial={{ opacity: 0, y: 60 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{
-        duration: 0.7,
-        delay: index * 0.15,
-        ease: [0.22, 1, 0.36, 1],
+        duration: 0.6,
+        delay: index * 0.1,
+        ease: "easeOut",
       }}
       viewport={{ once: true, amount: 0.3 }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <a
         href={item.link}
@@ -43,26 +57,24 @@ const ProjectCard = ({ item, index }: { item: any; index: number }) => {
         className="project-card-link"
       >
         <div className="project-card">
-          {/* Animated Border Gradient */}
+          {/* Animated Border - only visible on hover */}
           <div className="card-border-gradient"></div>
 
-          {/* Main Content */}
           <div className="card-inner">
             {/* Image Section */}
             <div className="project-image-section">
-              {/* Background Layer */}
               <div className="image-bg-layer">
-                <img src="/images/bg.png" alt="background" loading="lazy"/>
+                {/* <img src="/images/bg.png" alt="" loading="lazy" /> */}
                 <div className="image-overlay"></div>
               </div>
 
-              {/* Project Screenshot */}
+              {/* Simplified screenshot animation */}
               <motion.div
                 className="project-screenshot"
                 animate={
-                  isHovered ? { y: -8, scale: 1.02 } : { y: 0, scale: 1 }
+                  isHovered ? { y: -6, scale: 1.015 } : { y: 0, scale: 1 }
                 }
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                transition={HOVER_TRANSITION}
               >
                 <img
                   src={item.imgPath}
@@ -72,20 +84,10 @@ const ProjectCard = ({ item, index }: { item: any; index: number }) => {
               </motion.div>
 
               {/* Status Badge */}
-              <motion.div
-                className="status-badge"
-                initial={{ scale: 0, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{
-                  delay: 0.3,
-                  type: "spring",
-                  stiffness: 200,
-                }}
-                viewport={{ once: true }}
-              >
+              <div className="status-badge">
                 <span className="status-dot"></span>
                 <span className="status-text">Live</span>
-              </motion.div>
+              </div>
 
               {/* Project Number */}
               <div className="project-number">
@@ -95,17 +97,16 @@ const ProjectCard = ({ item, index }: { item: any; index: number }) => {
               {/* Hover Overlay */}
               <motion.div
                 className="hover-overlay"
-                animate={isHovered ? { opacity: 1 } : { opacity: 0 }}
-                transition={{ duration: 0.3 }}
+                animate={{ opacity: isHovered ? 1 : 0 }}
+                transition={HOVER_TRANSITION}
               >
                 <motion.div
                   className="view-project-icon"
-                  animate={
-                    isHovered
-                      ? { scale: 1, rotate: 0 }
-                      : { scale: 0, rotate: -180 }
-                  }
-                  transition={{ duration: 0.4, type: "spring" }}
+                  animate={{
+                    scale: isHovered ? 1 : 0,
+                    rotate: isHovered ? 0 : -180,
+                  }}
+                  transition={HOVER_TRANSITION}
                 >
                   <Radio />
                 </motion.div>
@@ -115,21 +116,13 @@ const ProjectCard = ({ item, index }: { item: any; index: number }) => {
             {/* Content Section */}
             <div className="project-content-section">
               {/* Category Tag */}
-              <motion.div
-                className="project-category"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 + index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                Web Application
-              </motion.div>
+              <div className="project-category">Web Application</div>
 
               {/* Title */}
               <motion.h3
                 className="project-title-text"
-                animate={isHovered ? { x: 5 } : { x: 0 }}
-                transition={{ duration: 0.3 }}
+                animate={{ x: isHovered ? 5 : 0 }}
+                transition={HOVER_TRANSITION}
               >
                 {item.projectTitle}
               </motion.h3>
@@ -137,31 +130,19 @@ const ProjectCard = ({ item, index }: { item: any; index: number }) => {
               {/* Description */}
               <p className="project-desc-text">{item.desc}</p>
 
-              {/* Divider Line */}
+              {/* Divider */}
               <div className="content-divider"></div>
 
-              {/* Footer - Tech Stack & CTA */}
+              {/* Footer */}
               <div className="project-card-footer">
                 {/* Tech Stack */}
                 <div className="tech-stack-list">
                   {item.iconLists
                     ?.slice(0, 4)
                     .map((icon: string, idx: number) => (
-                      <motion.div
-                        key={idx}
-                        className="tech-badge"
-                        initial={{ opacity: 0, scale: 0 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{
-                          delay: 0.5 + index * 0.1 + idx * 0.05,
-                          type: "spring",
-                          stiffness: 200,
-                        }}
-                        viewport={{ once: true }}
-                        whileHover={{ scale: 1.15, y: -3 }}
-                      >
-                        <img src={icon} alt={`tech-${idx}`} loading="lazy" />
-                      </motion.div>
+                      <div key={idx} className="tech-badge">
+                        <img src={icon} alt="" loading="lazy" />
+                      </div>
                     ))}
                   {item.iconLists?.length > 4 && (
                     <div className="tech-badge-more">
@@ -170,18 +151,19 @@ const ProjectCard = ({ item, index }: { item: any; index: number }) => {
                   )}
                 </div>
 
-                {/* View Project CTA */}
+                {/* CTA */}
                 <motion.div
                   className="view-project-cta"
-                  animate={isHovered ? { x: 5 } : { x: 0 }}
-                  transition={{ duration: 0.3 }}
+                  animate={{ x: isHovered ? 5 : 0 }}
+                  transition={HOVER_TRANSITION}
                 >
                   <span className="cta-label">View Project</span>
                   <motion.div
-                    animate={
-                      isHovered ? { x: 5, rotate: -45 } : { x: 0, rotate: 0 }
-                    }
-                    transition={{ duration: 0.3 }}
+                    animate={{
+                      x: isHovered ? 5 : 0,
+                      rotate: isHovered ? -45 : 0,
+                    }}
+                    transition={HOVER_TRANSITION}
                   >
                     <FaLocationArrow />
                   </motion.div>
@@ -190,7 +172,7 @@ const ProjectCard = ({ item, index }: { item: any; index: number }) => {
             </div>
           </div>
 
-          {/* Decorative Corner Elements */}
+          {/* Corner Decorations - only on hover */}
           <div className="corner-decorations">
             <div className="corner corner-tl"></div>
             <div className="corner corner-tr"></div>
@@ -201,10 +183,12 @@ const ProjectCard = ({ item, index }: { item: any; index: number }) => {
       </a>
     </motion.div>
   );
-};
+});
 
-const Main = () => {
-  const projects = myProjects.slice(0, 3);
+ProjectCard.displayName = "ProjectCard";
+
+// Memoized Background Component
+const AnimatedBackground = memo(() => {
   const containerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -212,49 +196,74 @@ const Main = () => {
     offset: ["start end", "end start"],
   });
 
-  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   return (
-    <main id="artical" className="main-section" ref={containerRef}>
-      {/* Animated Background */}
-      <motion.div className="main-background" style={{ y: backgroundY }}>
-        <div className="bg-gradient-orb orb-1"></div>
-        <div className="bg-gradient-orb orb-2"></div>
-        <div className="bg-gradient-orb orb-3"></div>
-        {/* <div className="bg-mesh-pattern"></div> */}
-      </motion.div>
+    <motion.div
+      ref={containerRef}
+      className="main-background"
+      style={{ y: backgroundY }}
+    >
+      <div className="bg-gradient-orb orb-1"></div>
+      <div className="bg-gradient-orb orb-2"></div>
+      <div className="bg-gradient-orb orb-3"></div>
+    </motion.div>
+  );
+});
 
-      {/* Header Section */}
-      <div className="main-header-section">
+AnimatedBackground.displayName = "AnimatedBackground";
 
-
-        {/* Title & Subtitle */}
-        <motion.div
-          className="header-content"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <div className="header-tag">
-            <span className="tag-icon">✨</span>
-            <span className="tag-text">Portfolio</span>
-          </div>
-
-          <h2 className="main-heading">Featured Projects</h2>
-
-          <p className="main-subheading">
-            Explore my latest work - crafted with precision and passion
-          </p>
-        </motion.div>        {/* Decorative Top Line */}
-        <motion.div
-          className="header-top-line"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-          viewport={{ once: true }}
-        />
+// Memoized Header Component
+const MainHeader = memo(() => (
+  <div className="main-header-section">
+    <motion.div
+      className="header-content"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      viewport={{ once: true }}
+    >
+      <div className="header-tag">
+        <span className="tag-icon">✨</span>
+        <span className="tag-text">Portfolio</span>
       </div>
+
+      <h2 className="main-heading">Featured Projects</h2>
+
+      <p className="main-subheading">
+        Explore my latest work - crafted with precision and passion
+      </p>
+    </motion.div>
+
+    <motion.div
+      className="header-top-line"
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      transition={{ duration: 1, ease: "easeInOut" }}
+      viewport={{ once: true }}
+    />
+  </div>
+));
+
+MainHeader.displayName = "MainHeader";
+
+// Main Component
+const Main = () => {
+  const projects = myProjects.slice(0, 3);
+
+  const handleViewAll = useCallback(() => {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 300);
+  }, []);
+
+  return (
+    <main id="artical" className="main-section">
+      {/* Background */}
+      <AnimatedBackground />
+
+      {/* Header */}
+      <MainHeader />
 
       {/* Projects Grid */}
       <div className="projects-showcase">
@@ -266,19 +275,12 @@ const Main = () => {
       {/* View All Button */}
       <motion.div
         className="view-all-section"
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.3 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
         viewport={{ once: true }}
       >
-        <Link
-          to="projects"
-          onClick={() => {
-            setTimeout(() => {
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }, 300);
-          }}
-        >
+        <Link to="projects" onClick={handleViewAll}>
           <motion.button
             className="view-all-button"
             whileHover={{ scale: 1.03 }}
@@ -306,4 +308,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default memo(Main);

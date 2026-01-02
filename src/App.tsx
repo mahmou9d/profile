@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { lazy, useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUp } from "lucide-react";
 import Header from "./component/1-header/header";
@@ -7,9 +7,28 @@ import Hero from "./component/2-hero/hero";
 import Main from "./component/3-main/main";
 import Contact from "./component/4-contact/contact";
 import Footer from "./component/5-footer/footer";
-import Projects from "./component/6-projects/Projects";
 import About from "./component/about/About";
-import Skills from "./component/skills/Skills";
+
+const Projects = lazy(() => import("./component/6-projects/Projects"));
+const Skills = lazy(() => import("./component/skills/Skills"));
+
+// Component جديد للـ scroll handling
+const ScrollToHashElement = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      setTimeout(() => {
+        const element = document.querySelector(location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    }
+  }, [location]);
+
+  return null;
+};
 
 const App = () => {
   const [showScrollBTN, setShowScrollBTN] = useState<boolean>(false);
@@ -39,6 +58,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
+      <ScrollToHashElement />
       <div id="up" className="containerr">
         <Header />
         <Routes>
