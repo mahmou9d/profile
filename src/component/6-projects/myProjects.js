@@ -33,10 +33,10 @@ export const myProjects = [
     ],
   },
   {
-    projectTitle: "Prime Ecom",
+    projectTitle: "Prime Ecommerce",
     category: ["Simple"],
-    imgPath: "/images/Screenshot 2025-10-19 133052.png",
-    link: "https://guileless-tiramisu-18d615.netlify.app/",
+    imgPath: "/images/Screenshot 2026-01-03 231730.png",
+    link: "https://prime-ecommerce-rho.vercel.app/",
     desc: `E-commerce app built with React, Redux Toolkit & TypeScript — featuring product browsing, search, auth, cart, wishlist, and discounts.`,
     href: "https://github.com/mahmou9d/advancedE-commerce",
     iconLists: [
