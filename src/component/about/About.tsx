@@ -243,7 +243,7 @@ const About = () => {
             transition={{ type: "spring", stiffness: 200, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            1+
+            +
           </motion.div>
           <div className="stat-label">Years Experience</div>
         </div>

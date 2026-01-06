@@ -46,7 +46,7 @@ export const aboutproduct = [
     title: "RTK Query",
   },
   {
-    icon: "/svg/tanstack-query.svg",
+    icon: "/images/tanstack.png",
     title: "TanStack Query",
   },
   {

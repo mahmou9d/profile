@@ -47,28 +47,13 @@ export const myProjects = [
       "/images/hookform.svg",
     ],
   },
-  {
-    projectTitle: "Meeting Clone",
-    category: ["Simple"],
-    imgPath: "/images/Screenshot 2025-10-19 132556.png",
-    link: "https://meeting-clone.vercel.app/",
-    desc: `Video meeting app built with Next.js, Stream, and TypeScript — offering real-time calls, chat, scheduling, and screen sharing.`,
-    href: "https://github.com/mahmou9d/Meeting-Clone",
-    iconLists: [
-      "/images/nextjs.svg",
-      "/images/re.svg",
-      "/images/tail.svg",
-      "/images/ts.svg",
-      "https://getstream.io/_astro-assets/stream.svg",
-    ],
-  },
 
   {
-    projectTitle: "Modern Profile",
+    projectTitle: "Loading page",
     category: ["Simple"],
-    imgPath: "/images/Screenshot 2025-09-05 222801.webp",
-    link: "https://famous-swan-6e1bb4.netlify.app/",
-    desc: `A modern and responsive developer portfolio beautifully built with Next.js, TypeScript, Tailwind CSS, and Aceternity UI.`,
+    imgPath: "/images/Screenshot 2026-01-05 214814.png",
+    link: "https://next-profile-qmto.vercel.app/",
+    desc: `A modern and responsive beautifully built with Next.js, TypeScript, Tailwind CSS, and Aceternity UI.`,
     href: "https://github.com/mahmou9d/NextProfile",
     iconLists: [
       "/images/nextjs.svg",
@@ -77,7 +62,6 @@ export const myProjects = [
       "/images/ts.svg",
     ],
   },
-
   {
     projectTitle: "M&MSTORE",
     category: ["Complex"],
@@ -91,6 +75,21 @@ export const myProjects = [
       "/images/tail.svg",
       "/images/ts.svg",
       "/images/scss-svgrepo-com.svg",
+    ],
+  },
+  {
+    projectTitle: "Meeting Clone",
+    category: ["Simple"],
+    imgPath: "/images/Screenshot 2025-10-19 132556.png",
+    link: "https://meeting-clone.vercel.app/",
+    desc: `Video meeting app built with Next.js, Stream, and TypeScript — offering real-time calls, chat, scheduling, and screen sharing.`,
+    href: "https://github.com/mahmou9d/Meeting-Clone",
+    iconLists: [
+      "/images/nextjs.svg",
+      "/images/re.svg",
+      "/images/tail.svg",
+      "/images/ts.svg",
+      "https://getstream.io/_astro-assets/stream.svg",
     ],
   },
   {
@@ -160,15 +159,15 @@ export const myProjects = [
   //     iconLists: ["/images/re.svg"],
   //   },
 
-  {
-    projectTitle: "Landing Page",
-    category: ["Complex"],
-    imgPath: "/images/Screenshot 2025-07-31 120310.webp",
-    desc: `Hero section built with React, SCSS & Framer Motion — gradient headline, benefits, email input, and smooth animations.`,
-    link: "https://timely-florentine-bb449e.netlify.app/",
-    href: "https://github.com/mahmou9d/React_Scss",
-    iconLists: ["/images/re.svg", "/images/scss-svgrepo-com.svg"],
-  },
+  // {
+  //   projectTitle: "Landing Page",
+  //   category: ["Complex"],
+  //   imgPath: "/images/Screenshot 2025-07-31 120310.webp",
+  //   desc: `Hero section built with React, SCSS & Framer Motion — gradient headline, benefits, email input, and smooth animations.`,
+  //   link: "https://timely-florentine-bb449e.netlify.app/",
+  //   href: "https://github.com/mahmou9d/React_Scss",
+  //   iconLists: ["/images/re.svg", "/images/scss-svgrepo-com.svg"],
+  // },
 ];
 //   {
 //     projectTitle: "Profile",
