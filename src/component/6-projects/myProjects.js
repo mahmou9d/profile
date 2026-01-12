@@ -4,10 +4,10 @@ export const myProjects = [
     category: ["Simple"],
     imgPath: "/images/Screenshot 2025-10-19 132415.png",
     link: "https://vegecommerce-ct1s.vercel.app/",
-    desc: `E-commerce app with Next.js,RTK Query. Features product browsing, cart, wishlist, checkout, and admin dashboard. Built with real backend API.`,
+    desc: `E-commerce app with React.js,RTK Query. Features product browsing, cart, wishlist, checkout, and admin dashboard. Built with real backend API.`,
     href: "https://github.com/mahmou9d/vegecommerce",
     iconLists: [
-      "/images/nextjs.svg",
+      // "/images/nextjs.svg",
       "/images/re.svg",
       "/images/tail.svg",
       "/images/ts.svg",
