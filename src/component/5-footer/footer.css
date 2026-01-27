@@ -38,7 +38,7 @@
   top: -100px;
   left: -100px;
   background: radial-gradient(circle, rgba(0, 245, 255, 0.15), transparent 70%);
-  filter: blur(80px);
+  /* filter: blur(80px); */
 }
 
 .footer-gradient-2 {
@@ -48,7 +48,7 @@
   bottom: -100px;
   right: -100px;
   background: radial-gradient(circle, rgba(139, 92, 246, 0.12), transparent 70%);
-  filter: blur(80px);
+  /* filter: blur(80px); */
 }
 
 .light .footer-gradient-1 {
@@ -356,7 +356,7 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 0;
-  filter: blur(15px);
+  /* filter: blur(15px); */
 }
 
 .social-link:hover .social-glow {

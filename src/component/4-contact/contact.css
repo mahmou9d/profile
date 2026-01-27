@@ -30,7 +30,7 @@
 .bg-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(120px);
+  /* filter: blur(120px); */
   opacity: 0.4;
 }
 
@@ -265,11 +265,11 @@
 
 .label-icon {
   font-size: 1.2rem;
-  filter: drop-shadow(0 0 8px var(--primary-cyan));
+  /* filter: drop-shadow(0 0 8px var(--primary-cyan)); */
 }
 
 .light .label-icon {
-  filter: drop-shadow(0 0 8px #3b82f6);
+  /* filter: drop-shadow(0 0 8px #3b82f6); */
 }
 
 .input-container {
@@ -345,7 +345,7 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 0;
-  filter: blur(8px);
+  /* filter: blur(8px); */
 }
 
 .input-container.focused .input-glow {
@@ -725,7 +725,7 @@
   position: absolute;
   border-radius: 50%;
   background: radial-gradient(circle, var(--primary-cyan), transparent 70%);
-  filter: blur(40px);
+  /* filter: blur(40px); */
   opacity: 0.4;
 }
 

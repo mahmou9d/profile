@@ -113,20 +113,20 @@
 .logo-img {
   width: 180px;
   height: auto;
-  filter: drop-shadow(0 4px 20px rgba(0, 245, 255, 0.45));
-  transition: filter 0.3s ease;
+  /* filter: drop-shadow(0 4px 20px rgba(0, 245, 255, 0.45)); */
+  /* transition: filter 0.3s ease; */
 }
 
 .light .logo-img {
-  filter: drop-shadow(0 4px 20px rgba(59, 130, 246, 0.35));
+  /* filter: drop-shadow(0 4px 20px rgba(59, 130, 246, 0.35)); */
 }
 
 .logo-wrapper:hover .logo-img {
-  filter: drop-shadow(0 6px 32px rgba(0, 245, 255, 0.65));
+  /* filter: drop-shadow(0 6px 32px rgba(0, 245, 255, 0.65)); */
 }
 
 .light .logo-wrapper:hover .logo-img {
-  filter: drop-shadow(0 6px 32px rgba(59, 130, 246, 0.55));
+  /* filter: drop-shadow(0 6px 32px rgba(59, 130, 246, 0.55)); */
 }
 
 .logo-sparkle {
@@ -134,13 +134,13 @@
   top: -6px;
   right: -6px;
   color: var(--primary-glow);
-  filter: drop-shadow(0 0 12px var(--primary-glow));
+  /* filter: drop-shadow(0 0 12px var(--primary-glow)); */
   z-index: 3;
 }
 
 .light .logo-sparkle {
   color: #3b82f6;
-  filter: drop-shadow(0 0 12px #3b82f6);
+  /* filter: drop-shadow(0 0 12px #3b82f6); */
 }
 
 /* ===== Navigation ===== */
@@ -201,7 +201,7 @@
   opacity: 0;
   transition: opacity 0.4s ease;
   mix-blend-mode: screen;
-  filter: blur(22px);
+  /* filter: blur(22px); */
   z-index: 1;
 }
 
@@ -347,7 +347,7 @@
 
 .theme-icon {
   color: var(--primary-glow);
-  filter: drop-shadow(0 0 10px var(--primary-glow));
+  /* filter: drop-shadow(0 0 10px var(--primary-glow)); */
   position: relative;
   z-index: 3;
   transition: all 0.3s ease;
@@ -355,15 +355,15 @@
 
 .light .theme-icon {
   color: #3b82f6;
-  filter: drop-shadow(0 0 10px #3b82f6);
+  /* filter: drop-shadow(0 0 10px #3b82f6); */
 }
 
 .theme-btn:hover .theme-icon {
-  filter: drop-shadow(0 0 16px var(--primary-glow));
+  /* filter: drop-shadow(0 0 16px var(--primary-glow)); */
 }
 
 .light .theme-btn:hover .theme-icon {
-  filter: drop-shadow(0 0 16px #3b82f6);
+  /* filter: drop-shadow(0 0 16px #3b82f6); */
 }
 
 .theme-btn-ripple {
@@ -389,7 +389,7 @@
   position: absolute;
   inset: -15px;
   background: radial-gradient(circle, var(--primary-glow), transparent 70%);
-  filter: blur(20px);
+  /* filter: blur(20px); */
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -510,7 +510,7 @@
 .menu-bg-shape {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  /* filter: blur(80px); */
   animation: shapeFloat 15s ease-in-out infinite;
 }
 
@@ -612,7 +612,7 @@
   inset: -12px;
   background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
   opacity: 0;
-  filter: blur(18px);
+  /* filter: blur(18px); */
   transition: opacity 0.3s ease;
   pointer-events: none;
 }
@@ -732,7 +732,7 @@
   background: var(--item-color);
   opacity: 0;
   transition: opacity 0.4s ease;
-  filter: blur(24px);
+  /* filter: blur(24px); */
   z-index: -1;
 }
 

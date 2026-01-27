@@ -30,7 +30,7 @@
 .bg-gradient-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
+  /* filter: blur(100px); */
   opacity: 0.4;
   will-change: transform;
 }
