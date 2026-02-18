@@ -3,7 +3,7 @@ export const myProjects = [
     projectTitle: "XtraMarket",
     category: ["Simple"],
     imgPath: "/images/Screenshot 2025-10-19 132415.png",
-    link: "https://vegecommerce-ct1s.vercel.app/",
+    link: "https://vegecommerce2-2.vercel.app/",
     desc: `E-commerce app with React.js,RTK Query. Features product browsing, cart, wishlist, checkout, and admin dashboard. Built with real backend API.`,
     href: "https://github.com/mahmou9d/vegecommerce",
     iconLists: [

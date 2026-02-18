@@ -29,7 +29,7 @@ const Logo = memo(() => (
         className="logo-img"
         src="./mahmoud-high-resolution-logo-transparent.webp"
         alt="Mahmoud"
-        loading="eager"
+        loading="lazy"
       />
       <motion.div
         className="logo-sparkle"
