@@ -1,10 +1,56 @@
 export const myProjects = [
   {
+    projectTitle: "webvitas",
+    category: ["Simple"],
+    imgPath: "/images/Screenshot 2026-02-20 161438.png",
+    link: "https://www.webvitas.com/",
+    desc: `A high-end digital agency platform built for selling premium web solutions. Optimized for conversions with a sleek, high-performance interface.`,
+    href: "https://github.com/mahmou9d/NextProfile",
+    iconLists: [
+      "/images/nextjs.svg",
+      "/images/re.svg",
+      "/images/tail.svg",
+      "/images/ts.svg",
+    ],
+  },
+  {
+    projectTitle: "Novera",
+    category: ["Simple"],
+    imgPath: "/images/Screenshot 2026-02-20 160919.png",
+    link: "https://novera-tau.vercel.app/",
+    desc: `A high-performance perfume boutique built with Next.js. Optimized for speed and SEO, featuring a sophisticated cart system and a seamless luxury shopping flow.`,
+    href: "https://github.com/mahmou9d/Novera/",
+    iconLists: [
+      "/images/nextjs.svg",
+      // "/images/re.svg",
+      "/images/tail.svg",
+      "/images/ts.svg",
+      "/images/icons8-redux-48.png",
+      "/images/stream.svg",
+    ],
+  },
+  {
+    projectTitle: "Avura",
+    category: ["Simple"],
+    imgPath: "/images/Screenshot 2026-02-20 161043.png",
+    link: "https://avura-orpin.vercel.app/",
+    desc: `A premium perfume store engineered for speed and SEO. Features a sensory UI and high-performance cart system, delivering a seamless luxury shopping experience.`,
+    href: "https://github.com/mahmou9d/Avura/",
+    iconLists: [
+      "/images/nextjs.svg",
+      // "/images/re.svg",
+      "/images/tail.svg",
+      "/images/ts.svg",
+      "/images/icons8-redux-48.png",
+      "/images/stream.svg",
+    ],
+  },
+  {
     projectTitle: "XtraMarket",
     category: ["Simple"],
     imgPath: "/images/Screenshot 2025-10-19 132415.png",
     link: "https://vegecommerce2-2.vercel.app/",
-    desc: `E-commerce app with React.js,RTK Query. Features product browsing, cart, wishlist, checkout, and admin dashboard. Built with real backend API.`,
+    desc: `A high-performance React ecosystem featuring real-time inventory, an enterprise admin dashboard, and a secure checkout flow optimized for conversions.`,
     href: "https://github.com/mahmou9d/vegecommerce",
     iconLists: [
       // "/images/nextjs.svg",
@@ -48,20 +94,6 @@ export const myProjects = [
     ],
   },
 
-  {
-    projectTitle: "Loading page",
-    category: ["Simple"],
-    imgPath: "/images/Screenshot 2026-01-05 214814.png",
-    link: "https://next-profile-qmto.vercel.app/",
-    desc: `A modern and responsive beautifully built with Next.js, TypeScript, Tailwind CSS, and Aceternity UI.`,
-    href: "https://github.com/mahmou9d/NextProfile",
-    iconLists: [
-      "/images/nextjs.svg",
-      "/images/re.svg",
-      "/images/tail.svg",
-      "/images/ts.svg",
-    ],
-  },
   {
     projectTitle: "M&MSTORE",
     category: ["Complex"],
