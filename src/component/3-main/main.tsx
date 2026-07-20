@@ -204,9 +204,9 @@ const AnimatedBackground = memo(() => {
       className="main-background"
       style={{ y: backgroundY }}
     >
-      <div className="bg-gradient-orb orb-1"></div>
-      <div className="bg-gradient-orb orb-2"></div>
-      <div className="bg-gradient-orb orb-3"></div>
+      {/* <div className="bg-gradient-orb orb-1"></div> */}
+      {/* <div className="bg-gradient-orb orb-2"></div> */}
+      {/* <div className="bg-gradient-orb orb-3"></div> */}
     </motion.div>
   );
 });

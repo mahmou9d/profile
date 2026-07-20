@@ -269,8 +269,8 @@ const Hero = () => {
             className="avater"
             src="/images/WhatsApp Image 2025-07-29 at 1.48.11 AM.webp"
             alt="Mahmoud Mohamed"
-            loading="lazy"
-            
+            loading="eager"
+            fetchPriority="high"
           />
         </motion.div>
 

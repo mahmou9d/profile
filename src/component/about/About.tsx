@@ -165,9 +165,9 @@ const About = () => {
     <div className="about-section" ref={containerRef}>
       {/* Animated Background */}
       <motion.div className="about-background" style={{ y: backgroundY }}>
-        <div className="about-bg-orb orb-1"></div>
-        <div className="about-bg-orb orb-2"></div>
-        <div className="about-bg-orb orb-3"></div>
+        {/* <div className="about-bg-orb orb-1"></div> */}
+        {/* <div className="about-bg-orb orb-2"></div> */}
+        {/* <div className="about-bg-orb orb-3"></div> */}
         {/* <div className="about-bg-mesh"></div> */}
       </motion.div>
 

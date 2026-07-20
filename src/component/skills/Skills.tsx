@@ -41,8 +41,8 @@ const SKILLS = [
 // Memoized Background Component
 const SkillsBackground = memo(() => (
   <div className="skills-bg-effects">
-    <div className="bg-gradient-1"></div>
-    <div className="bg-gradient-2"></div>
+    {/* <div className="bg-gradient-1"></div> */}
+    {/* <div className="bg-gradient-2"></div> */}
   </div>
 ));
 SkillsBackground.displayName = "SkillsBackground";
@@ -155,7 +155,7 @@ const SkillCard = memo(
         </motion.div>
       </motion.div>
     );
-  }
+  },
 );
 SkillCard.displayName = "SkillCard";
 

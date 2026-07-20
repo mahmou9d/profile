@@ -641,18 +641,18 @@ section.hero .right-section {
 }
 
 section.hero .right-section::before {
-  content: "";
-  position: absolute;
-  inset: -30px;
-  background: radial-gradient(
+  /* content: ""; */
+  /* position: absolute; */
+  /* inset: -30px; */
+  /* background: radial-gradient(
     circle,
     rgba(0, 245, 255, 0.25) 0%,
     rgba(255, 0, 255, 0.15) 50%,
     transparent 70%
-  );
+  ); */
   /* filter: blur(50px); */
-  pointer-events: none;
-  animation: rightGlow 6s ease-in-out infinite;
+  /* pointer-events: none; */
+  /* animation: rightGlow 6s ease-in-out infinite; */
 }
 
 .light section.hero .right-section::before {
