@@ -1,44 +1,19 @@
-import { useState, useEffect, useMemo, memo } from "react";
-import "./header.css";
-import { Link, useLocation } from "react-router";
+import { useState, useEffect, memo } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Moon, Sun, X, Sparkles } from "lucide-react";
+import { X, Menu } from "lucide-react";
+import "./header.css";
 
 const NAV_ITEMS = [
-  { path: "/", label: "Home", color: "#00f5ff" },
-  { path: "/projects", label: "Projects", color: "#ff00ff" },
-  { path: "/About", label: "About", color: "#ffff00" },
+  { path: "/", label: "Home" },
+  { path: "/projects", label: "Projects" },
+  { path: "/about", label: "About" },
 ];
 
-const LOGO_ANIMATION = {
-  scale: [1, 1.3, 1],
-  opacity: [0.4, 1, 0.4],
-  rotate: [0, 180, 360],
-};
-
-const LOGO_TRANSITION = {
-  duration: 3,
-  repeat: Infinity,
-  ease: "easeInOut" as const,
-};
-
 const Logo = memo(() => (
-  <Link to="/" className="logo-container">
-    <div className="logo-wrapper">
-      <img
-        className="logo-img"
-        src="./mahmoud-high-resolution-logo-transparent.webp"
-        alt="Mahmoud"
-        loading="eager"
-        fetchPriority="high"
-      />
-      <motion.div
-        className="logo-sparkle"
-        animate={LOGO_ANIMATION}
-        transition={LOGO_TRANSITION}
-      >
-        <Sparkles size={18} />
-      </motion.div>
+  <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="logo-container">
+    <div className="header-logo-text">
+      MAHMOUD <span className="header-logo-accent">MOHAMED</span>
     </div>
   </Link>
 ));
@@ -56,71 +31,26 @@ const NavItem = memo(
         to={item.path}
         onClick={handleClick}
         className={`nav-link ${isActive ? "active" : ""}`}
-        style={{ "--nav-color": item.color } as any}
       >
         <span className="nav-link-text">{item.label}</span>
-        <motion.div
-          className="nav-link-underline"
-          initial={false}
-          animate={{ scaleX: isActive ? 2 : 0 }}
-          transition={{ duration: 0.4, ease: "easeInOut" }}
-        />
-        <div className="nav-link-glow"></div>
-        <div className="nav-link-particles">
-          {[...Array(8)].map((_, i) => (
-            <span key={i} className="particle"></span>
-          ))}
-        </div>
+        {isActive && (
+          <motion.div
+            layoutId="activeUnderline"
+            className="nav-link-underline"
+            transition={{ type: "spring", stiffness: 380, damping: 30 }}
+          />
+        )}
       </Link>
     );
-  }
+  },
 );
 
 NavItem.displayName = "NavItem";
 
-const ThemeButton = memo(
-  ({
-    theme,
-    toggleTheme,
-  }: {
-    theme: string | null;
-    toggleTheme: () => void;
-  }) => (
-    <motion.button
-      onClick={toggleTheme}
-      className="theme-btn"
-      whileHover={{ scale: 1.12 }}
-      whileTap={{ scale: 0.92 }}
-    >
-      <motion.div
-        className="theme-btn-inner"
-        animate={{ rotate: theme === "dark" ? 0 : 360 }}
-        transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
-      >
-        <div className="theme-icon-bg"></div>
-        <motion.div
-          initial={false}
-          animate={{ scale: [1, 1.2, 1] }}
-          transition={{ duration: 0.3 }}
-          key={theme}
-        >
-          {theme === "dark" ? (
-            <Moon className="theme-icon" size={19} />
-          ) : (
-            <Sun className="theme-icon" size={19} />
-          )}
-        </motion.div>
-      </motion.div>
-      <div className="theme-btn-ripple"></div>
-      <div className="theme-btn-glow"></div>
-    </motion.button>
-  )
-);
 
-ThemeButton.displayName = "ThemeButton";
 
 const MobileMenu = memo(
-  ({ showModal, setShowModal, location, theme, toggleTheme }: any) => (
+  ({ showModal, setShowModal, location }: any) => (
     <AnimatePresence>
       {showModal && (
         <>
@@ -129,149 +59,52 @@ const MobileMenu = memo(
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.2 }}
             onClick={() => setShowModal(false)}
           />
 
           <motion.div
             className="mobile-menu"
-            initial={{ x: "100%", opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: "100%", opacity: 0 }}
-            transition={{
-              type: "spring",
-              damping: 25,
-              stiffness: 250,
-              mass: 0.8,
-            }}
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 220 }}
           >
-            <div className="mobile-menu-bg">
-              <div className="menu-bg-shape shape-1"></div>
-              <div className="menu-bg-shape shape-2"></div>
-              <div className="menu-bg-shape shape-3"></div>
+            <div className="mobile-menu-header">
+              <Logo />
+              <button
+                className="mobile-close"
+                onClick={() => setShowModal(false)}
+                aria-label="Close menu"
+              >
+                <X size={24} />
+              </button>
             </div>
-            <div className="menu-grid-pattern"></div>
 
-            <motion.button
-              className="mobile-close"
-              onClick={() => setShowModal(false)}
-              whileHover={{ rotate: 90, scale: 1.15 }}
-              whileTap={{ scale: 0.88 }}
-              transition={{ type: "spring", stiffness: 400 }}
-            >
-              <X size={26} />
-              <div className="mobile-close-glow"></div>
-            </motion.button>
-
-            <motion.div
-              className="mobile-menu-title"
-              initial={{ opacity: 0, y: -30, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 0.15, type: "spring", stiffness: 200 }}
-            >
-              <h2>Navigation</h2>
-              <motion.div
-                className="title-line"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-              />
-            </motion.div>
-
-            <div className="mobile-nav-list">
+            <nav className="mobile-nav-list">
               {NAV_ITEMS.map((item, index) => {
-                const isActive = location.pathname === item.path;
+                const isActive =
+                  location.pathname.toLowerCase() === item.path.toLowerCase();
                 return (
-                  <motion.div
+                  <Link
                     key={item.path}
-                    initial={{ opacity: 0, x: 60, scale: 0.9 }}
-                    animate={{ opacity: 1, x: 0, scale: 1 }}
-                    transition={{
-                      delay: 0.25 + index * 0.08,
-                      type: "spring",
-                      stiffness: 200,
-                      damping: 20,
-                    }}
+                    to={item.path}
+                    className={`mobile-nav-link ${isActive ? "active" : ""}`}
+                    onClick={() => setShowModal(false)}
                   >
-                    <Link
-                      to={item.path}
-                      className={`mobile-nav-link ${isActive ? "active" : ""}`}
-                      style={{ "--item-color": item.color } as any}
-                      onClick={() => setShowModal(false)}
-                    >
-                      <motion.div
-                        className="mobile-nav-number"
-                        animate={
-                          isActive
-                            ? { scale: [1, 1.2, 1], rotate: [0, 10, 0] }
-                            : {}
-                        }
-                        transition={{ duration: 0.5 }}
-                      >
-                        0{index + 1}
-                      </motion.div>
-                      <div className="mobile-nav-content">
-                        <span className="mobile-nav-label">{item.label}</span>
-                        <motion.div
-                          className="mobile-nav-arrow"
-                          animate={{ x: isActive ? 8 : 0 }}
-                          transition={{ type: "spring", stiffness: 300 }}
-                        >
-                          →
-                        </motion.div>
-                      </div>
-                      <div className="mobile-nav-glow"></div>
-                      {isActive && (
-                        <motion.div
-                          className="active-indicator"
-                          layoutId="activeMenuItem"
-                          transition={{ type: "spring", stiffness: 300 }}
-                        />
-                      )}
-                    </Link>
-                  </motion.div>
+                    <span className="mobile-nav-number">0{index + 1}</span>
+                    <span className="mobile-nav-label">{item.label}</span>
+                  </Link>
                 );
               })}
-            </div>
+            </nav>
 
-            <motion.div
-              className="mobile-theme-section"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.5,
-                type: "spring",
-                stiffness: 200,
-              }}
-            >
-              <motion.button
-                onClick={toggleTheme}
-                className="mobile-theme-btn"
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <motion.div
-                  className="mobile-theme-icon"
-                  animate={{ rotate: theme === "dark" ? 0 : 360 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  {theme === "dark" ? <Sun size={22} /> : <Moon size={22} />}
-                </motion.div>
-                <span>
-                  Switch to {theme === "dark" ? "Light" : "Dark"} Mode
-                </span>
-                <motion.div
-                  className="mobile-theme-indicator"
-                  animate={{ scale: [1, 1.3, 1], opacity: [1, 0.5, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-              </motion.button>
-            </motion.div>
+
           </motion.div>
         </>
       )}
     </AnimatePresence>
-  )
+  ),
 );
 
 MobileMenu.displayName = "MobileMenu";
@@ -281,54 +114,26 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  const [theme, setTheme] = useState<string | null>(
-    () => localStorage.getItem("currentMode") ?? "dark"
-  );
-
   useEffect(() => {
-    const root = document.body;
-    if (theme === "light") {
-      root.classList.remove("dark");
-      root.classList.add("light");
-    } else {
-      root.classList.remove("light");
-      root.classList.add("dark");
-    }
-  }, [theme]);
+    document.body.classList.remove("light");
+    document.body.classList.add("dark");
+  }, []);
 
-  // Close modal on route change
   useEffect(() => {
     setShowModal(false);
   }, [location]);
 
-  // Scroll handler with throttling
   useEffect(() => {
-    let timeoutId:any;
     const handleScroll = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        setScrolled(window.scrollY > 20);
-      }, 50); // Throttle to 50ms
+      setScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      clearTimeout(timeoutId);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    localStorage.setItem("currentMode", newTheme);
-    setTheme(newTheme);
-  };
 
   return (
     <>
       <header className={`creative-header ${scrolled ? "scrolled" : ""}`}>
-        <div className="header-glow"></div>
-
         <div className="header-wrapper">
           <Logo />
 
@@ -337,35 +142,22 @@ const Header = () => {
               <NavItem
                 key={item.path}
                 item={item}
-                isActive={location.pathname === item.path}
+                isActive={
+                  location.pathname.toLowerCase() === item.path.toLowerCase()
+                }
               />
             ))}
           </nav>
 
           <div className="header-actions">
-            <ThemeButton theme={theme} toggleTheme={toggleTheme} />
 
-            <motion.button
+            <button
               onClick={() => setShowModal(true)}
               className="mobile-toggle"
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.92 }}
+              aria-label="Open menu"
             >
-              <motion.div className="mobile-toggle-lines">
-                <motion.span
-                  animate={{ width: showModal ? "0px" : "22px" }}
-                  transition={{ duration: 0.3 }}
-                />
-                <motion.span
-                  animate={{ width: showModal ? "0px" : "18px" }}
-                  transition={{ duration: 0.3, delay: 0.05 }}
-                />
-                <motion.span
-                  animate={{ width: showModal ? "0px" : "22px" }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                />
-              </motion.div>
-            </motion.button>
+              <Menu size={24} />
+            </button>
           </div>
         </div>
       </header>
@@ -374,11 +166,9 @@ const Header = () => {
         showModal={showModal}
         setShowModal={setShowModal}
         location={location}
-        theme={theme}
-        toggleTheme={toggleTheme}
       />
     </>
   );
 };
 
-export default Header;
+export default memo(Header);

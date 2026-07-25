@@ -1,181 +1,466 @@
-import { motion, useScroll } from "framer-motion";
+import { memo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Title from "../Title/Title";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiExpress,
+  SiNestjs,
+  SiPostgresql,
+  SiMongodb,
+  SiPrisma,
+  SiDocker,
+  SiGit,
+  SiRedux,
+  SiJavascript,
+  SiLinux,
+  SiFigma,
+  SiCss3,
+  SiHtml5,
+} from "react-icons/si";
+import {
+  FiFolder,
+  FiFile,
+  FiChevronRight,
+  FiChevronDown,
+  FiInfo,
+} from "react-icons/fi";
 import "./Skills.css";
-import { memo, useRef, useCallback } from "react";
 
-// Static skills data
-const SKILLS = [
+type SkillFile = {
+  name: string;
+  size: string;
+  icon: React.ComponentType<{
+    className?: string;
+    style?: React.CSSProperties;
+  }>;
+  color: string;
+  code: string;
+};
+
+type Folder = {
+  name: string;
+  files: SkillFile[];
+};
+
+const EXPLORER_DATA: Folder[] = [
   {
-    img: "/images/speed.png",
-    icon: "⚡",
-    text: "Fast Performance",
-    desc: "Our websites are engineered for lightning-fast load times and seamless navigation. Every line of code and every image is optimized to deliver exceptional performance.",
-    gradient: "from-cyan-500 via-blue-500 to-purple-600",
-    accentColor: "#00f5ff",
+    name: "frontend",
+    files: [
+      {
+        name: "React.tsx",
+        size: "4.2 KB",
+        icon: SiReact,
+        color: "#61dafb",
+        code: `// React Functional Component
+import React, { useState } from 'react';
+
+export const InteractiveUI: React.FC = () => {
+  const [active, setActive] = useState(true);
+  return (
+    <div className="flex items-center gap-2">
+      <span>React state management & virtual DOM optimization</span>
+      <button onClick={() => setActive(!active)}>Toggle state</button>
+    </div>
+  );
+};`,
+      },
+      {
+        name: "Next.js",
+        size: "5.8 KB",
+        icon: SiNextdotjs,
+        color: "#ffffff",
+        code: `// Next.js App Router Page
+import { Suspense } from 'react';
+import { fetchServerData } from '@/lib/api';
+
+export default async function Page() {
+  const data = await fetchServerData();
+  return (
+    <main>
+      <h1>Server-Side Rendered (SSR) Dashboard</h1>
+      <Suspense fallback={<p>Optimizing load performance...</p>}>
+        <DataList items={data} />
+      </Suspense>
+    </main>
+  );
+}`,
+      },
+      {
+        name: "TypeScript.ts",
+        size: "3.1 KB",
+        icon: SiTypescript,
+        color: "#3178c6",
+        code: `// Strong-typed state configuration
+export interface ServerResponse<T> {
+  data: T;
+  status: 200 | 400 | 500;
+  message: string;
+}
+
+export type UserRole = 'admin' | 'developer' | 'guest';
+
+export function configureSession(role: UserRole): boolean {
+  return role === 'developer';
+}`,
+      },
+      {
+        name: "ReduxToolkit.ts",
+        size: "4.6 KB",
+        icon: SiRedux,
+        color: "#764abc",
+        code: `// Global state slice configuration
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+const authSlice = createSlice({
+  name: 'auth',
+  initialState: { isAuthenticated: false },
+  reducers: {
+    login(state) {
+      state.isAuthenticated = true;
+    }
+  }
+});`,
+      },
+      {
+        name: "Tailwind.css",
+        size: "2.5 KB",
+        icon: SiTailwindcss,
+        color: "#38bdf8",
+        code: `/* Tailwind configuration utility classes */
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased;
+  }
+}
+
+.custom-card {
+  @apply backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl;
+}`,
+      },
+    ],
   },
   {
-    img: "/images/cleancode.png",
-    icon: "✨",
-    text: "Clean Code",
-    desc: "We believe that great design starts with clean code. Our development standards emphasize readability, reusability, and maintainability.",
-    gradient: "from-emerald-500 via-teal-500 to-cyan-600",
-    accentColor: "#10b981",
+    name: "backend",
+    files: [
+      {
+        name: "Node.js",
+        size: "6.1 KB",
+        icon: SiNodedotjs,
+        color: "#68a063",
+        code: `// Node asynchronous stream control
+const fs = require('fs');
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  const src = fs.createReadStream('./data.json');
+  src.pipe(res);
+});
+
+server.listen(8080);`,
+      },
+      {
+        name: "Express.ts",
+        size: "4.8 KB",
+        icon: SiExpress,
+        color: "#ffffff",
+        code: `// Express REST API controller middleware
+import express, { Request, Response } from 'express';
+const app = express();
+
+app.get('/api/v1/health', (req: Request, res: Response) => {
+  res.status(200).json({ 
+    status: 'healthy', 
+    uptime: process.uptime() 
+  });
+});`,
+      },
+    ],
   },
   {
-    img: "/images/seo.png",
-    icon: "🎯",
-    text: "SEO Friendly",
-    desc: "Your website is built with search visibility in mind from day one. We implement SEO-friendly structures, clean URLs, and optimized meta tags.",
-    gradient: "from-orange-500 via-pink-500 to-rose-600",
-    accentColor: "#f97316",
+    name: "database",
+    files: [
+      {
+        name: "MongoDB.json",
+        size: "3.4 KB",
+        icon: SiMongodb,
+        color: "#47a248",
+        code: `// MongoDB document collection definition
+{
+  "_id": "65e6fc85ab651d2f099719ea",
+  "username": "mahmou9d",
+  "skills": ["react", "nextjs", "nodejs", "docker"],
+  "metrics": {
+    "activeProjects": 8,
+    "commits": 1240
+  }
+}`,
+      },
+    ],
   },
   {
-    img: "/images/responsive.png",
-    icon: "📱",
-    text: "Responsive Design",
-    desc: "Whether on desktop, tablet, or smartphone, your website will look pixel-perfect and perform flawlessly across all devices.",
-    gradient: "from-violet-500 via-purple-500 to-fuchsia-600",
-    accentColor: "#8b5cf6",
+    name: "devops",
+    files: [
+      {
+        name: "Docker.dockerfile",
+        size: "2.1 KB",
+        icon: SiDocker,
+        color: "#2496ed",
+        code: `# Dockerfile multi-stage production build
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM nginx:alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80`,
+      },
+      {
+        name: "Git.gitconfig",
+        size: "1.2 KB",
+        icon: SiGit,
+        color: "#f05032",
+        code: `# Git user configurations
+[user]
+	name = Mahmoud Mohamed
+	email = mahmoud.mohamed@example.com
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status`,
+      },
+    ],
   },
 ];
 
-// Memoized Background Component
-const SkillsBackground = memo(() => (
-  <div className="skills-bg-effects">
-    {/* <div className="bg-gradient-1"></div> */}
-    {/* <div className="bg-gradient-2"></div> */}
+type TechItem = {
+  name: string;
+  Icon: React.ComponentType<{
+    className?: string;
+    style?: React.CSSProperties;
+  }>;
+  color: string;
+};
+
+const TECH_STACK: TechItem[] = [
+  { name: "React", Icon: SiReact, color: "#61dafb" },
+  { name: "Next.js", Icon: SiNextdotjs, color: "#ffffff" },
+  { name: "TypeScript", Icon: SiTypescript, color: "#3178c6" },
+  { name: "JavaScript", Icon: SiJavascript, color: "#f7df1e" },
+  { name: "Tailwind", Icon: SiTailwindcss, color: "#38bdf8" },
+  { name: "Redux", Icon: SiRedux, color: "#764abc" },
+  { name: "HTML5", Icon: SiHtml5, color: "#e34f26" },
+  { name: "CSS3", Icon: SiCss3, color: "#1572b6" },
+  { name: "Node.js", Icon: SiNodedotjs, color: "#68a063" },
+  { name: "Express", Icon: SiExpress, color: "#ffffff" },
+  { name: "MongoDB", Icon: SiMongodb, color: "#47a248" },
+  { name: "Docker", Icon: SiDocker, color: "#2496ed" },
+  { name: "Git", Icon: SiGit, color: "#f05032" },
+  { name: "Figma", Icon: SiFigma, color: "#f24e1e" },
+];
+
+const DOUBLED = [...TECH_STACK, ...TECH_STACK];
+const DOUBLED_REV = [...TECH_STACK].reverse().concat([...TECH_STACK].reverse());
+
+const TechPill = memo(({ item }: { item: TechItem }) => (
+  <div className="tech-pill">
+    <item.Icon className="tech-pill-icon" style={{ color: item.color }} />
+    <span className="tech-pill-name">{item.name}</span>
   </div>
 ));
-SkillsBackground.displayName = "SkillsBackground";
+TechPill.displayName = "TechPill";
 
-// Memoized Header Component
-const SkillsHeader = memo(() => (
-  <div className="projects-header">
-    <motion.div
-      className="header-content-wrapper"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
-      viewport={{ once: true }}
-    >
-      <div className="header-tag-badge">
-        <span className="tag-badge-text">Skills</span>
+const Skills = () => {
+  const [openFolders, setOpenFolders] = useState<Record<string, boolean>>({
+    frontend: true,
+    backend: true,
+    database: false,
+    devops: false,
+  });
+  const [selectedFile, setSelectedFile] = useState<SkillFile>(
+    EXPLORER_DATA[0].files[0],
+  );
+
+  const toggleFolder = (folderName: string) => {
+    setOpenFolders((prev) => ({
+      ...prev,
+      [folderName]: !prev[folderName],
+    }));
+  };
+
+  const SelectedFileIcon = selectedFile.icon;
+
+  return (
+    <section id="skills" className="skills-section">
+      {/* Title */}
+      <Title
+        className="skills-title-wrapper"
+        titleClassName="skills-heading"
+        accentClassName="skills-heading-accent"
+        subtitleClassName="skills-desc"
+        title="Technical"
+        accentText="Explorer"
+        subtitle="Browse through my technology stack file-by-file to see real implementations."
+        tag="h2"
+        animate={true}
+        titleDelay={0.07}
+        subtitleDelay={0.13}
+      />
+
+      {/* Dual counter-scrolling marquee */}
+      <div className="marquee-container" style={{ marginBottom: "1.5rem" }}>
+        <div className="marquee-wrapper">
+          <div className="marquee-fade-left" />
+          <div className="marquee-fade-right" />
+          <div className="marquee-track">
+            {DOUBLED.map((item, i) => (
+              <TechPill key={i} item={item} />
+            ))}
+          </div>
+        </div>
+        <div className="marquee-wrapper">
+          <div className="marquee-fade-left" />
+          <div className="marquee-fade-right" />
+          <div className="marquee-track marquee-track-reverse">
+            {DOUBLED_REV.map((item, i) => (
+              <TechPill key={i} item={item} />
+            ))}
+          </div>
+        </div>
       </div>
 
-      <h2 className="projects-main-title">Core Skills</h2>
-
-      <p className="projects-main-subtitle">
-        Excellence in every pixel, precision in every line of code
-      </p>
-    </motion.div>
-
-    <motion.div
-      className="header-decoration-line"
-      initial={{ scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      transition={{ duration: 1, ease: "easeInOut" }}
-      viewport={{ once: true }}
-    />
-  </div>
-));
-SkillsHeader.displayName = "SkillsHeader";
-
-// Optimized SkillCard Component
-const SkillCard = memo(
-  ({ item, index }: { item: (typeof SKILLS)[0]; index: number }) => {
-    const isEven = index % 2 === 0;
-
-    return (
-      <motion.div
-        className="skill-item"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        {/* Content */}
-        <motion.div
-          className="skill-content-wrapper"
-          initial={{ opacity: 0, x: isEven ? -30 : 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          <div className="skill-icon-badge">
-            <span className="skill-icon">{item.icon}</span>
-          </div>
-
-          <h3 className="skill-title">{item.text}</h3>
-
-          <p className="skill-description">{item.desc}</p>
-
-          <div className="skill-number">
-            {String(index + 1).padStart(2, "0")}
-          </div>
-        </motion.div>
-
-        {/* Image */}
-        <motion.div
-          className="skill-image-wrapper"
-          initial={{ opacity: 0, x: isEven ? 30 : -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          <motion.div
-            className="skill-card"
-            whileHover={{ scale: 1.03 }}
-            transition={{ duration: 0.3 }}
-          >
-            {/* Animated gradient border */}
-            <div
-              className={`skill-card-border bg-gradient-to-br ${item.gradient}`}
-            ></div>
-
-            {/* Image container */}
-            <div className="skill-card-content">
-              <img
-                src={item.img}
-                alt={item.text}
-                loading="lazy"
-                className="skill-image"
-              />
-
-              {/* Overlay effects */}
-              <div className="skill-card-overlay"></div>
+      {/* Bento Grid */}
+      <div className="skills-bento-grid">
+        {/* Card 1: Interactive File Explorer (Spans 2 columns) */}
+        <div className="explorer-card">
+          <div className="explorer-window">
+            {/* Header bar */}
+            <div className="explorer-header">
+              <div className="explorer-buttons">
+                <span className="exp-btn close"></span>
+                <span className="exp-btn minimize"></span>
+                <span className="exp-btn maximize"></span>
+              </div>
+              <span className="explorer-title">workspace - mahmoud-stack</span>
             </div>
 
-            {/* Corner decorations */}
-            <div className="skill-card-corners">
-              <div className="corner corner-tl"></div>
-              <div className="corner corner-tr"></div>
-              <div className="corner corner-bl"></div>
-              <div className="corner corner-br"></div>
+            {/* Main Window Splitter */}
+            <div className="explorer-body">
+              {/* Sidebar */}
+              <div className="explorer-sidebar">
+                <div className="sidebar-section-title">EXPLORER</div>
+                <div className="folders-list">
+                  {EXPLORER_DATA.map((folder) => (
+                    <div key={folder.name} className="folder-item-wrapper">
+                      {/* Folder Name */}
+                      <button
+                        onClick={() => toggleFolder(folder.name)}
+                        className={`folder-row ${openFolders[folder.name] ? "open" : ""}`}
+                      >
+                        {openFolders[folder.name] ? (
+                          <FiChevronDown size={14} />
+                        ) : (
+                          <FiChevronRight size={14} />
+                        )}
+                        <FiFolder size={14} className="folder-icon" />
+                        <span className="folder-name-text">{folder.name}</span>
+                      </button>
+
+                      {/* Folder Files */}
+                      <AnimatePresence initial={false}>
+                        {openFolders[folder.name] && (
+                          <motion.div
+                            className="files-list"
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            {folder.files.map((file) => (
+                              <button
+                                key={file.name}
+                                onClick={() => setSelectedFile(file)}
+                                className={`file-row ${selectedFile.name === file.name ? "active" : ""}`}
+                              >
+                                <FiFile
+                                  className="file-type-icon"
+                                  style={{ color: file.color }}
+                                />
+                                <span className="file-name-text">
+                                  {file.name}
+                                </span>
+                                <span className="file-size-tag">
+                                  {file.size}
+                                </span>
+                              </button>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Editor Workspace */}
+              <div className="explorer-editor">
+                {/* Tabs bar */}
+                <div className="editor-tabs">
+                  <div className="active-tab">
+                    {SelectedFileIcon && (
+                      <SelectedFileIcon
+                        className="tab-icon"
+                        style={{ color: selectedFile.color }}
+                      />
+                    )}
+                    <span className="tab-name">{selectedFile.name}</span>
+                  </div>
+                </div>
+
+                {/* Editor Content */}
+                <div className="editor-content">
+                  <pre>
+                    <code>
+                      {selectedFile.code.split("\n").map((line, idx) => (
+                        <div key={idx} className="editor-line">
+                          <span className="editor-line-number">{idx + 1}</span>
+                          <span className="editor-line-text">{line}</span>
+                        </div>
+                      ))}
+                    </code>
+                  </pre>
+                </div>
+              </div>
             </div>
-          </motion.div>
-        </motion.div>
-      </motion.div>
-    );
-  },
-);
-SkillCard.displayName = "SkillCard";
+          </div>
+        </div>
 
-// Main Skills Component
-const Skills = () => {
-  return (
-    <div id="skills" className="skills-container">
-      {/* Background effects */}
-      <SkillsBackground />
-
-      {/* Header Section */}
-      <SkillsHeader />
-
-      {/* Skills section */}
-      <section className="skills-section">
-        {SKILLS.map((item, i) => (
-          <SkillCard key={item.text} item={item} index={i} />
-        ))}
-      </section>
-    </div>
+        {/* Card 2: Right stacked sidebar info cards */}
+        <div className="info-cards-stack">
+          {/* Subcard 2: Tools & Utilities */}
+          <div className="skills-subcard tools-card">
+            <h3>Design & Workflow Tools</h3>
+            <div className="tools-grid">
+              <div className="tool-item">
+                <SiGit className="tool-icon" style={{ color: "#f05032" }} />
+                <span>Git</span>
+              </div>
+              <div className="tool-item">
+                <SiFigma className="tool-icon" style={{ color: "#f24e1e" }} />
+                <span>Figma</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

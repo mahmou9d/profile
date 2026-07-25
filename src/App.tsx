@@ -63,6 +63,7 @@ const ScrollToHashElement = () => {
 
 const App = () => {
   const [showScrollBTN, setShowScrollBTN] = useState<boolean>(false);
+  const [scrollProgress, setScrollProgress] = useState<number>(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,6 +71,12 @@ const App = () => {
         setShowScrollBTN(true);
       } else {
         setShowScrollBTN(false);
+      }
+
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        const progress = (window.scrollY / totalHeight) * 100;
+        setScrollProgress(progress);
       }
     };
 
@@ -165,29 +172,35 @@ const App = () => {
 
         <Footer />
       </div>
-      {/* Enhanced Scroll to Top Button */}
+      {/* Enhanced Scroll to Top Button with Circular Progress Track */}
       <AnimatePresence>
         {showScrollBTN && (
           <motion.button
             onClick={scrollToTop}
-            className="scroll"
-            initial={{ scale: 0, opacity: 0, rotate: -180 }}
-            animate={{ scale: 1, opacity: 1, rotate: 0 }}
-            exit={{ scale: 0, opacity: 0, rotate: 180 }}
-            transition={{
-              type: "spring",
-              stiffness: 260,
-              damping: 20,
-            }}
-            whileHover={{
-              scale: 1.15,
-              rotate: [0, -10, 10, 0],
-              transition: { duration: 0.3 },
-            }}
-            whileTap={{ scale: 0.9 }}
+            className="scroll-to-top"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             aria-label="Scroll to top"
           >
-            <ArrowUp size={24} />
+            <svg className="progress-ring" width="46" height="46">
+              <circle
+                className="progress-ring__circle"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                fill="transparent"
+                r="20"
+                cx="23"
+                cy="23"
+                style={{
+                  strokeDasharray: `${2 * Math.PI * 20}`,
+                  strokeDashoffset: `${2 * Math.PI * 20 - (scrollProgress / 100) * (2 * Math.PI * 20)}`,
+                }}
+              />
+            </svg>
+            <ArrowUp size={18} className="scroll-arrow-icon" />
           </motion.button>
         )}
       </AnimatePresence>

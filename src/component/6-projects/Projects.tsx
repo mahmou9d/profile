@@ -1,326 +1,185 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useState, useRef, memo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { myProjects } from "./myProjects";
+import { FiGithub, FiExternalLink, FiFilter, FiLayers } from "react-icons/fi";
+import Title from "../Title/Title";
 import "./Projects.css";
-import { Link } from "react-router-dom";
-import { FaExternalLinkAlt, FaGithub, FaCode } from "react-icons/fa";
-import { useRef, useState } from "react";
-import { Radio } from "lucide-react";
 
-// Enhanced Project Card Component
-const ProjectCard = ({ item, index }: { item: any; index: number }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef(null);
+interface ProjectItem {
+  projectTitle: string;
+  category: string[];
+  imgPath: string;
+  link: string;
+  desc: string;
+  href: string;
+  iconLists: string[];
+}
 
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start end", "end start"],
-  });
+const ProjectCard = memo(
+  ({ item, index }: { item: ProjectItem; index: number }) => {
+    return (
+      <motion.div
+        layout
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        transition={{ duration: 0.4, delay: index * 0.05 }}
+        className="p-card"
+      >
+        {/* Dynamic spot border hover */}
+        <div className="p-card-glow" />
 
-  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+        {/* Image container */}
+        <div className="p-image-wrap">
+          <img
+            src={item.imgPath}
+            alt={item.projectTitle}
+            loading="lazy"
+            className="p-image"
+          />
+          <div className="p-image-overlay" />
 
-  return (
-    <motion.div
-      ref={cardRef}
-      className="project-card-item"
-      style={{ y, opacity }}
-      initial={{ opacity: 0, y: 60, scale: 0.95 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{
-        duration: 0.5,
-        delay: index * 0.08,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-    >
-      <div className="project-card-wrapper">
-        {/* Animated Border */}
-        <div className="project-border-gradient"></div>
-
-        {/* Card Content */}
-        <div className="project-card-inner">
-          {/* Image Section */}
-          <div className="project-image-area">
-            {/* Background with overlay */}
-            <div className="image-background">
-              <img
-                src={item.imgPath}
-                alt={item.projectTitle}
-                loading="lazy"
-                className="bg-image"
-              />
-              <div className="image-overlay-gradient"></div>
-            </div>
-
-            {/* Main Image */}
-            <motion.div
-              className="main-image-container"
-              animate={isHovered ? { y: -8, scale: 1.02 } : { y: 0, scale: 1 }}
-              transition={{ duration: 0.4 }}
-            >
-              <img
-                src={item.imgPath}
-                alt={item.projectTitle}
-                loading="lazy"
-                className="main-image"
-              />
-            </motion.div>
-            <motion.div
-              className="status-badge"
-              initial={{ scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{
-                delay: 0.3,
-                type: "spring",
-                stiffness: 200,
-              }}
-              viewport={{ once: true }}
-            >
-              <span className="status-dot"></span>
-              <span className="status-text">Live</span>
-            </motion.div>
-            {/* Project Number Badge */}
-            <motion.div
-              className="project-num-badge"
-              initial={{ scale: 0, rotate: -180 }}
-              whileInView={{ scale: 1, rotate: 0 }}
-              transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              {String(index + 1).padStart(2, "0")}
-            </motion.div>
-
-            {/* Hover Overlay */}
-            <motion.div
-              className="hover-layer"
-              animate={isHovered ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.div
-                className="view-icon"
-                animate={
-                  isHovered
-                    ? { scale: 1, rotate: 0 }
-                    : { scale: 0, rotate: -180 }
-                }
-                transition={{ duration: 0.4, type: "spring" }}
-              >
-                <Radio />
-              </motion.div>
-            </motion.div>
+          {/* Top badges */}
+          <div className="p-badges">
+            <span className="p-badge-live">
+              <span className="p-live-dot"></span>
+              Production
+            </span>
           </div>
+        </div>
 
-          {/* Content Section */}
-          <div className="project-info-area">
-            {/* Category Tag */}
-            <motion.div
-              className="project-category"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              Web Application
-            </motion.div>
-            {/* Title */}
-            <motion.h3
-              className="project-card-title"
-              animate={isHovered ? { x: 5 } : { x: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              {item.projectTitle}
-            </motion.h3>
+        {/* Project details */}
+        <div className="p-info">
+          <h3 className="p-title">{item.projectTitle}</h3>
+          <p className="p-desc">{item.desc}</p>
 
-            {/* Description */}
-            <p className="project-card-desc">{item.desc}</p>
-
-            {/* Tech Stack */}
-            <div className="tech-stack-container">
-              <div className="tech-stack-icons">
-                {item.iconLists
-                  ?.slice(0, 5)
-                  .map((icon: string, idx: number) => (
-                    <motion.div
-                      key={idx}
-                      className="tech-icon-item"
-                      initial={{ opacity: 0, scale: 0 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{
-                        delay: 0.3 + idx * 0.05,
-                        type: "spring",
-                        stiffness: 200,
-                      }}
-                      viewport={{ once: true }}
-                      whileHover={{ scale: 1.2, y: -5 }}
-                    >
-                      <img src={icon} alt={`tech-${idx}`} loading="lazy"/>
-                    </motion.div>
-                  ))}
-                {item.iconLists?.length > 5 && (
-                  <div className="tech-more-badge">
-                    +{item.iconLists.length - 5}
-                  </div>
-                )}
+          {/* Tech stack */}
+          <div className="p-tech-row">
+            {item.iconLists?.slice(0, 6).map((icon, idx) => (
+              <div key={idx} className="p-tech-icon" title="Technology">
+                <img src={icon} alt="tech icon" loading="lazy" />
               </div>
-            </div>
+            ))}
+            {item.iconLists && item.iconLists.length > 6 && (
+              <span className="p-tech-more">+{item.iconLists.length - 6}</span>
+            )}
+          </div>
 
-            {/* Divider */}
-            <div className="card-divider"></div>
+          {/* Actions divider */}
+          <div className="p-divider" />
 
-            {/* Action Buttons */}
-            <div className="project-actions">
-              <Link
-                to={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="action-btn primary-btn"
-              >
-                <span className="btn-bg"></span>
-                <span className="btn-content">
-                  <FaExternalLinkAlt />
-                  <span>Live Demo</span>
-                </span>
-              </Link>
-
-              <Link
-                to={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="action-btn secondary-btn"
-              >
-                <FaGithub />
-                <span>GitHub</span>
-              </Link>
-            </div>
+          {/* Action Links */}
+          <div className="p-actions">
+            <a
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-btn p-btn-primary"
+            >
+              <span>Live Demo</span>
+              <FiExternalLink size={14} />
+            </a>
+            <a
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-btn p-btn-secondary"
+              title="View Codebase"
+            >
+              <FiGithub size={15} />
+              <span>Code</span>
+            </a>
           </div>
         </div>
+      </motion.div>
+    );
+  },
+);
 
-        {/* Corner Decorations */}
-        <div className="card-corners">
-          <div className="corner-line corner-tl"></div>
-          <div className="corner-line corner-tr"></div>
-          <div className="corner-line corner-bl"></div>
-          <div className="corner-line corner-br"></div>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
+ProjectCard.displayName = "ProjectCard";
 
 const Projects = () => {
-  const containerRef = useRef(null);
+  const [filter, setFilter] = useState("All");
+  const categories = ["All", "Next.js", "React", "TypeScript", "Redux"];
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
+  const filteredProjects = myProjects.filter((project) => {
+    if (filter === "All") return true;
+    if (filter === "Next.js") {
+      return project.iconLists.some((icon) => icon.includes("nextjs"));
+    }
+    if (filter === "React") {
+      return project.iconLists.some(
+        (icon) => icon.includes("re.svg") || icon.includes("react"),
+      );
+    }
+    if (filter === "TypeScript") {
+      return project.iconLists.some(
+        (icon) => icon.includes("ts.svg") || icon.includes("typescript"),
+      );
+    }
+    if (filter === "Redux") {
+      return project.iconLists.some(
+        (icon) => icon.includes("redux") || icon.includes("redux-48"),
+      );
+    }
+    return true;
   });
 
-  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -100]);
-
   return (
-    <div className="projects-page" ref={containerRef}>
-      {/* Animated Background */}
-      <motion.div className="projects-background" style={{ y: backgroundY }}>
-        <div className="bg-orb-1"></div>
-        <div className="bg-orb-2"></div>
-        <div className="bg-orb-3"></div>
-        {/* <div className="bg-grid-pattern"></div> */}
-      </motion.div>
+    <div className="p-page">
+      {/* Background orbs & grain */}
+      <div className="p-bg-noise" aria-hidden />
+      <div className="p-bg-orb p-orb-cyan" aria-hidden />
+      <div className="p-bg-orb p-orb-purple" aria-hidden />
 
-      {/* Header Section */}
-      <div className="projects-header">
-        {/* Title & Subtitle */}
-        <motion.div
-          className="header-content-wrapper"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <div className="header-tag-badge">
-            <span className="tag-badge-icon">💼</span>
-            <span className="tag-badge-text">Portfolio</span>
-          </div>
-
-          <div className="title-icons">
-            <span>🚀</span>
-            <h1 className="projects-main-title">My Projects</h1>
-          </div>
-
-          <p className="projects-main-subtitle">
-            A collection of my recent work - built with modern technologies
-          </p>
-        </motion.div>{" "}
-        {/* Decorative Top Line */}
-        <motion.div
-          className="header-decoration-line"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-          viewport={{ once: true }}
+      <div className="p-container">
+        {/* Header Title */}
+        <Title
+          className="p-header"
+          titleClassName="p-main-title"
+          accentClassName="p-title-accent"
+          subtitleClassName="p-subtitle"
+          title="Creative"
+          accentText="Portfolio"
+          subtitle="A curated list of web applications built with modern architectures, performance optimization, and clean styling."
+          tag="h1"
+          animate={true}
+          titleDelay={0.07}
+          subtitleDelay={0.13}
         />
+
+        {/* Filter Toolbar */}
+        <div className="p-filter-bar">
+          <div className="p-filter-lbl">
+            <FiFilter className="p-filter-icon" />
+            <span>FILTER BY TECH</span>
+          </div>
+          <div className="p-filter-options">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setFilter(cat)}
+                className={`p-filter-btn${filter === cat ? " active" : ""}`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Grid Area */}
+        <motion.div layout className="p-grid">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, index) => (
+              <ProjectCard
+                key={project.projectTitle}
+                item={project}
+                index={index}
+              />
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
-
-      {/* Projects Grid */}
-      <div className="projects-grid-container">
-        {myProjects.map((item, i) => (
-          <ProjectCard key={i} item={item} index={i} />
-        ))}
-      </div>
-
-      {/* Stats Section */}
-      <motion.div
-        className="projects-stats"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        viewport={{ once: true }}
-      >
-        <div className="stat-item">
-          <motion.div
-            className="stat-number"
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            {myProjects.length}+
-          </motion.div>
-          <div className="stat-label">Projects</div>
-        </div>
-
-        <div className="stat-divider"></div>
-
-        <div className="stat-item">
-          <motion.div
-            className="stat-number"
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 200, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            10+
-          </motion.div>
-          <div className="stat-label">Technologies</div>
-        </div>
-
-        <div className="stat-divider"></div>
-
-        <div className="stat-item">
-          <motion.div
-            className="stat-number"
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 200, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            100%
-          </motion.div>
-          <div className="stat-label">Responsive</div>
-        </div>
-      </motion.div>
     </div>
   );
 };

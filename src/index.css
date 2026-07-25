@@ -24,20 +24,6 @@
 }
 
 /* ===== Light Theme ===== */
-.light {
-    --primary-glow: #3b82f6;
-    --secondary-glow: #8b5cf6;
-    --accent-glow: #06b6d4;
-    --hero-accent: #ec4899;
-    
-    --primaryy: #fafafa;
-    --seconderr: #ffffff;
-    --border: #3b82f6;
-    --title: #0a0a0a;
-    --subtitle: rgba(10, 10, 10, 0.8);
-    --mainColor: #3b82f6;
-    --secmainCol: #8b5cf6;
-}
 
 /* ===== Base Styles ===== */
 html {
@@ -77,12 +63,6 @@ body::before {
     z-index: 0;
 }
 
-.light body::before {
-    background-image: 
-        linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
-}
-
 /* ===== Enhanced Container ===== */
 .containerr {
     /* border: 2px solid rgba(0, 245, 255, 0.3); */
@@ -102,15 +82,6 @@ body::before {
     /* clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%); */
 }
 
-.light .containerr {
-    border: 2px solid rgba(59, 130, 246, 0.25);
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 
-        0 0 40px rgba(59, 130, 246, 0.2),
-        0 0 80px rgba(59, 130, 246, 0.1),
-        inset 0 0 60px rgba(59, 130, 246, 0.03);
-}
-
 /* Container Corner Effect */
 .containerr::before {
     content: "";
@@ -121,10 +92,6 @@ body::before {
     height: 22px;
     background: linear-gradient(135deg, transparent 50%, var(--primary-glow) 50%);
     clip-path: polygon(100% 0, 100% 100%, 0 100%);
-}
-
-.light .containerr::before {
-    background: linear-gradient(135deg, transparent 50%, #3b82f6 50%);
 }
 
 /* ===== Enhanced Divider ===== */
@@ -164,20 +131,6 @@ body::before {
     }
 }
 
-.light .divider {
-    background: linear-gradient(
-        90deg,
-        transparent,
-        #3b82f6,
-        #8b5cf6,
-        #06b6d4,
-        transparent
-    );
-    box-shadow: 
-        0 0 20px #3b82f6,
-        0 0 40px rgba(59, 130, 246, 0.3);
-}
-
 /* Divider Particles */
 .divider::before,
 .divider::after {
@@ -200,12 +153,6 @@ body::before {
 .divider::after {
     right: 0;
     animation-delay: 1.5s;
-}
-
-.light .divider::before,
-.light .divider::after {
-    background: #3b82f6;
-    box-shadow: 0 0 12px #3b82f6;
 }
 
 @keyframes particleMove {
@@ -260,97 +207,58 @@ button:disabled {
     box-shadow: 0 0 15px var(--hero-accent);
 }
 
-.light ::-webkit-scrollbar-track {
-    background: #f0f0f0;
-    border: 2px solid rgba(59, 130, 246, 0.2);
-}
-
-.light ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #3b82f6, #8b5cf6);
-    box-shadow: 0 0 10px #3b82f6;
-}
-
 html {
     scrollbar-color: var(--primary-glow) rgba(0, 0, 0, 0.5);
 }
 
 /* ===== Enhanced Scroll to Top Button ===== */
-.scroll {
-    background: rgba(0, 245, 255, 0.15);
-    /* backdrop-filter: blur(10px); */
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    position: fixed !important; /* أكد عليه */
+.scroll-to-top {
+    position: fixed !important;
     bottom: 2rem !important;
     right: 2rem !important;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(10, 16, 36, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--primary-glow);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid var(--primary-glow);
-    font-size: 1.5rem;
-    color: var(--primary-glow);
-    z-index: 99999;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 
-        0 0 20px rgba(0, 245, 255, 0.4),
-        0 0 40px rgba(0, 245, 255, 0.2);
-    overflow: visible;
+    z-index: 99999;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transition: all 0.25s ease;
 }
 
-.light .scroll {
-    background: rgba(59, 130, 246, 0.15);
-    border-color: #3b82f6;
-    color: #3b82f6;
-    box-shadow: 
-        0 0 20px rgba(59, 130, 246, 0.3),
-        0 0 40px rgba(59, 130, 246, 0.15);
+.scroll-to-top:hover {
+    border-color: rgba(0, 245, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.25);
+    transform: translateY(-2px);
 }
 
-.scroll::before {
-    content: "";
+.progress-ring {
     position: absolute;
-    inset: -8px;
-    border: 2px solid var(--primary-glow);
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    top: -1px;
+    left: -1px;
+    transform: rotate(-90deg);
 }
 
-.light .scroll::before {
-    border-color: #3b82f6;
+.progress-ring__circle {
+    transition: stroke-dashoffset 0.1s;
+    transform-origin: 50% 50%;
 }
 
-.scroll:hover {
-    background: rgba(0, 245, 255, 0.25);
-    transform: translateY(-8px) scale(1.1);
-    box-shadow: 
-        0 12px 40px rgba(0, 245, 255, 0.6),
-        0 0 60px rgba(0, 245, 255, 0.4);
+.scroll-arrow-icon {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.2s ease;
 }
 
-.light .scroll:hover {
-    background: rgba(59, 130, 246, 0.25);
-    box-shadow: 
-        0 12px 40px rgba(59, 130, 246, 0.5),
-        0 0 60px rgba(59, 130, 246, 0.3);
-}
-
-.scroll:hover::before {
-    opacity: 1;
-    animation: scrollRipple 1.5s ease-out infinite;
-}
-
-@keyframes scrollRipple {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1.5);
-        opacity: 0;
-    }
+.scroll-to-top:hover .scroll-arrow-icon {
+    transform: translateY(-2px);
 }
 
 /* ===== Main Title ===== */
@@ -372,21 +280,6 @@ html {
     background-clip: text;
     animation: gradientShift 5s ease infinite;
     filter: drop-shadow(0 0 15px rgba(0, 245, 255, 0.3));
-}
-
-.light .maintitle {
-    background: linear-gradient(
-        135deg,
-        #3b82f6 0%,
-        #8b5cf6 35%,
-        #06b6d4 70%,
-        #ec4899 100%
-    );
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.2));
 }
 
 @keyframes gradientShift {
@@ -418,13 +311,15 @@ html {
         --padding: 1rem;
     }
     
-    .scroll {
-        width: 2.5rem;
-        height: 2.5rem;
-        opacity: 0.9;
-        font-size: 1.2rem;
-        right: 1rem;
-        bottom: 1.5rem;
+    .scroll-to-top {
+        width: 40px;
+        height: 40px;
+        right: 1.25rem !important;
+        bottom: 1.25rem !important;
+    }
+    
+    .scroll-to-top .progress-ring {
+        display: none;
     }
     
     .maintitle {

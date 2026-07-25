@@ -1,307 +1,179 @@
-import "./main.css";
+import { memo, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { FaLocationArrow } from "react-icons/fa6";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaLocationArrow, FaGithub } from "react-icons/fa6";
 import { myProjects } from "../6-projects/myProjects";
-import { memo, useRef, useState, useCallback } from "react";
-import { Radio } from "lucide-react";
+import Title from "../Title/Title";
+import "./main.css";
 
-// Optimized animations configurations
-const CARD_TRANSITION = {
-  duration: 0.7,
-  ease: [0.22, 1, 0.36, 1],
-};
-
-const HOVER_TRANSITION = {
-  duration: 0.3,
-  ease: "easeOut" as const,
-};
-
-// Memoized ProjectCard Component
-const ProjectCard = memo(({ item, index }: { item: any; index: number }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef(null);
-
-  // Simplified scroll animations
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [30, -30]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-
-  const handleMouseEnter = useCallback(() => setIsHovered(true), []);
-  const handleMouseLeave = useCallback(() => setIsHovered(false), []);
-
-  return (
-    <motion.div
-      ref={cardRef}
-      className="project-card-container"
-      style={{ y, opacity }}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.1,
-        ease: "easeOut",
-      }}
-      viewport={{ once: true, amount: 0.3 }}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <a
-        href={item.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="project-card-link"
-      >
-        <div className="project-card">
-          {/* Animated Border - only visible on hover */}
-          <div className="card-border-gradient"></div>
-
-          <div className="card-inner">
-            {/* Image Section */}
-            <div className="project-image-section">
-              <div className="image-bg-layer">
-                {/* <img src="/images/bg.png" alt="" loading="lazy" /> */}
-                <div className="image-overlay"></div>
-              </div>
-
-              {/* Simplified screenshot animation */}
-              <motion.div
-                className="project-screenshot"
-                animate={
-                  isHovered ? { y: -6, scale: 1.015 } : { y: 0, scale: 1 }
-                }
-                transition={HOVER_TRANSITION}
-              >
-                <img
-                  src={item.imgPath}
-                  alt={item.projectTitle}
-                  loading="lazy"
-                />
-              </motion.div>
-
-              {/* Status Badge */}
-              <div className="status-badge">
-                <span className="status-dot"></span>
-                <span className="status-text">Live</span>
-              </div>
-
-              {/* Project Number */}
-              <div className="project-number">
-                {String(index + 1).padStart(2, "0")}
-              </div>
-
-              {/* Hover Overlay */}
-              <motion.div
-                className="hover-overlay"
-                animate={{ opacity: isHovered ? 1 : 0 }}
-                transition={HOVER_TRANSITION}
-              >
-                <motion.div
-                  className="view-project-icon"
-                  animate={{
-                    scale: isHovered ? 1 : 0,
-                    rotate: isHovered ? 0 : -180,
-                  }}
-                  transition={HOVER_TRANSITION}
-                >
-                  <Radio />
-                </motion.div>
-              </motion.div>
-            </div>
-
-            {/* Content Section */}
-            <div className="project-content-section">
-              {/* Category Tag */}
-              <div className="project-category">Web Application</div>
-
-              {/* Title */}
-              <motion.h3
-                className="project-title-text"
-                animate={{ x: isHovered ? 5 : 0 }}
-                transition={HOVER_TRANSITION}
-              >
-                {item.projectTitle}
-              </motion.h3>
-
-              {/* Description */}
-              <p className="project-desc-text">{item.desc}</p>
-
-              {/* Divider */}
-              <div className="content-divider"></div>
-
-              {/* Footer */}
-              <div className="project-card-footer">
-                {/* Tech Stack */}
-                <div className="tech-stack-list">
-                  {item.iconLists
-                    ?.slice(0, 4)
-                    .map((icon: string, idx: number) => (
-                      <div key={idx} className="tech-badge">
-                        <img src={icon} alt="" loading="lazy" />
-                      </div>
-                    ))}
-                  {item.iconLists?.length > 4 && (
-                    <div className="tech-badge-more">
-                      +{item.iconLists.length - 4}
-                    </div>
-                  )}
-                </div>
-
-                {/* CTA */}
-                <motion.div
-                  className="view-project-cta"
-                  animate={{ x: isHovered ? 5 : 0 }}
-                  transition={HOVER_TRANSITION}
-                >
-                  <span className="cta-label">View Project</span>
-                  <motion.div
-                    animate={{
-                      x: isHovered ? 5 : 0,
-                      rotate: isHovered ? -45 : 0,
-                    }}
-                    transition={HOVER_TRANSITION}
-                  >
-                    <FaLocationArrow />
-                  </motion.div>
-                </motion.div>
-              </div>
-            </div>
-          </div>
-
-          {/* Corner Decorations - only on hover */}
-          <div className="corner-decorations">
-            <div className="corner corner-tl"></div>
-            <div className="corner corner-tr"></div>
-            <div className="corner corner-bl"></div>
-            <div className="corner corner-br"></div>
-          </div>
-        </div>
-      </a>
-    </motion.div>
-  );
-});
-
-ProjectCard.displayName = "ProjectCard";
-
-// Memoized Background Component
-const AnimatedBackground = memo(() => {
-  const containerRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -50]);
-
-  return (
-    <motion.div
-      ref={containerRef}
-      className="main-background"
-      style={{ y: backgroundY }}
-    >
-      {/* <div className="bg-gradient-orb orb-1"></div> */}
-      {/* <div className="bg-gradient-orb orb-2"></div> */}
-      {/* <div className="bg-gradient-orb orb-3"></div> */}
-    </motion.div>
-  );
-});
-
-AnimatedBackground.displayName = "AnimatedBackground";
-
-// Memoized Header Component
+// Header Component
 const MainHeader = memo(() => (
   <div className="main-header-section">
-    <motion.div
+    <Title
       className="header-content"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
-      viewport={{ once: true }}
-    >
-      <div className="header-tag">
-        <span className="tag-icon">✨</span>
-        <span className="tag-text">Portfolio</span>
-      </div>
-
-      <h2 className="main-heading">Featured Projects</h2>
-
-      <p className="main-subheading">
-        Explore my latest work - crafted with precision and passion
-      </p>
-    </motion.div>
-
-    <motion.div
-      className="header-top-line"
-      initial={{ scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      transition={{ duration: 1, ease: "easeInOut" }}
-      viewport={{ once: true }}
+      titleClassName="main-heading"
+      accentClassName="main-heading-accent"
+      subtitleClassName="main-subheading"
+      title="Featured"
+      accentText="Projects"
+      subtitle="An interactive catalog of full-stack applications and frontend interfaces built with precision."
+      tag="h2"
+      yOffset={20}
+      titleDelay={0}
+      subtitleDelay={0.1}
     />
   </div>
 ));
 
 MainHeader.displayName = "MainHeader";
 
-// Main Component
 const Main = () => {
   const projects = myProjects.slice(0, 3);
+  const [activeIdx, setActiveIdx] = useState(0);
 
   const handleViewAll = useCallback(() => {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 300);
+    }, 100);
   }, []);
 
   return (
     <main id="artical" className="main-section">
-      {/* Background */}
-      <AnimatedBackground />
+      {/* ambient glow orbs */}
+      <div className="main-orb main-orb-1" aria-hidden />
+      <div className="main-orb main-orb-2" aria-hidden />
 
-      {/* Header */}
       <MainHeader />
 
-      {/* Projects Grid */}
-      <div className="projects-showcase">
-        {projects.map((item, i) => (
-          <ProjectCard key={i} item={item} index={i} />
-        ))}
+      {/* Interactive Split Showcase Container */}
+      <div className="projects-interactive-split">
+        {/* Left Side: Interactive Catalog Directory */}
+        <div className="projects-directory">
+          {projects.map((item, i) => {
+            const isActive = activeIdx === i;
+            return (
+              <div
+                key={item.projectTitle}
+                className={`directory-row ${isActive ? "active" : ""}`}
+                onMouseEnter={() => setActiveIdx(i)}
+              >
+                {/* Directory Item Header */}
+                <div className="directory-header-row">
+                  <span className="directory-index">0{i + 1}</span>
+                  <h3 className="directory-title">{item.projectTitle}</h3>
+                </div>
+
+                {/* Collapsible details block for active item */}
+                <AnimatePresence initial={false}>
+                  {isActive && (
+                    <motion.div
+                      className="directory-details"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                    >
+                      <p className="directory-desc">{item.desc}</p>
+
+                      {/* Tech stack badges */}
+                      <div className="directory-tech-list">
+                        {item.iconLists
+                          ?.slice(0, 4)
+                          .map((icon: string, idx: number) => (
+                            <div key={idx} className="directory-tech-badge">
+                              <img src={icon} alt="" loading="lazy" />
+                            </div>
+                          ))}
+                      </div>
+
+                      {/* Links Row */}
+                      <div className="directory-links">
+                        <motion.a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="directory-btn directory-btn-primary"
+                          whileHover={{ y: -1 }}
+                          whileTap={{ y: 0 }}
+                        >
+                          Visit Live <FaLocationArrow size={10} />
+                        </motion.a>
+
+                        {item.href && (
+                          <motion.a
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="directory-btn directory-btn-secondary"
+                            whileHover={{ y: -1 }}
+                            whileTap={{ y: 0 }}
+                          >
+                            GitHub <FaGithub size={11} />
+                          </motion.a>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Right Side: Showcase Viewport Screen */}
+        <div className="projects-viewport">
+          <div className="viewport-glow-bg"></div>
+
+          <div className="browser-mockup-frame">
+            {/* Mockup header */}
+            <div className="browser-header">
+              <div className="browser-circles">
+                <span className="b-dot close"></span>
+                <span className="b-dot minimize"></span>
+                <span className="b-dot maximize"></span>
+              </div>
+              <span className="browser-url">
+                {projects[activeIdx].link.replace("https://", "")}
+              </span>
+            </div>
+
+            {/* Mockup body with image transition */}
+            <div className="browser-body">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={activeIdx}
+                  src={projects[activeIdx].imgPath}
+                  alt={projects[activeIdx].projectTitle}
+                  loading="lazy"
+                  className="browser-screenshot"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* View All Button */}
+      {/* View All CTA */}
       <motion.div
         className="view-all-section"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
         viewport={{ once: true }}
       >
-        <Link to="projects" onClick={handleViewAll}>
-          <motion.button
-            className="view-all-button"
-            whileHover={{ scale: 1.03 }}
+        <Link to="projects" className="view-all-link">
+          <motion.span
+            className="view-all-btn"
+            onClick={handleViewAll}
+            whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <span className="button-bg-layer"></span>
-            <span className="button-content-layer">
-              <span className="button-label">View All Projects</span>
-              <motion.span
-                className="button-arrow"
-                animate={{ x: [0, 5, 0] }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                →
-              </motion.span>
-            </span>
-          </motion.button>
+            Explore All Projects →
+          </motion.span>
         </Link>
       </motion.div>
     </main>
