@@ -96,7 +96,7 @@ const Main = () => {
                           whileHover={{ y: -1 }}
                           whileTap={{ y: 0 }}
                         >
-                          Visit Live <FaLocationArrow size={10} />
+                          Visit Live <FaLocationArrow size={15} />
                         </motion.a>
 
                         {item.href && (
@@ -108,7 +108,7 @@ const Main = () => {
                             whileHover={{ y: -1 }}
                             whileTap={{ y: 0 }}
                           >
-                            GitHub <FaGithub size={11} />
+                            GitHub <FaGithub size={15} />
                           </motion.a>
                         )}
                       </div>

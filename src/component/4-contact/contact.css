@@ -469,14 +469,15 @@
   font-family: inherit;
   letter-spacing: 0.04em;
   width: 100%;
-  color: #020617;
-  background: linear-gradient(120deg, #00f5ff 0%, #a78bfa 100%);
-  transition: opacity 0.2s, box-shadow 0.2s;
+  color: #00f5ff;
+  background: rgba(0, 245, 255, 0.03);
+  transition: all 0.25s ease;
 }
 
 .ct-submit:hover:not(:disabled) {
-  opacity: 0.9;
-  box-shadow: 0 8px 36px rgba(0, 245, 255, 0.3), 0 0 0 1px rgba(0, 245, 255, 0.2);
+  background: rgba(0, 245, 255, 0.08);
+  border-color: #00f5ff;
+  box-shadow: 0 4px 15px rgba(0, 245, 255, 0.1);
 }
 
 .ct-submit:disabled {

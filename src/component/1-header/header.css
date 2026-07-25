@@ -107,9 +107,7 @@
 
 /* ===== Theme Control Button ===== */
 .header-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+display: none;
 }
 
 .theme-btn {
@@ -302,4 +300,10 @@
   font-size: 1rem;
 
 }
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 }
