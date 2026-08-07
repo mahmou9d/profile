@@ -34,7 +34,7 @@ export const myProjects = [
     imgPath: "/images/Screenshot 2026-02-20 161043.png",
     link: "https://miskstores.com",
     desc: `A premium perfume store engineered for speed and SEO. Features a sensory UI and high-performance cart system, delivering a seamless luxury shopping experience.`,
-    href: "https://github.com/mahmou9d/Avura/",
+    href: "https://github.com/mahmou9d/misk",
     iconLists: [
       "/images/nextjs.svg",
       // "/images/re.svg",
