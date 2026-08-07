@@ -1,5 +1,20 @@
 export const myProjects = [
-  {
+      {
+    projectTitle: "Elearning",
+    category: ["Simple"],
+    imgPath: "/images/Screenshot 2026-08-07 204402.png",
+    link: "https://front-lms-five.vercel.app/",
+    desc: `Full-stack LMS built with Next.js, Node.js, Express, MongoDB, and Redis, featuring JWT authentication, Stripe payments, and real-time Socket.io notifications.`,
+    href: "https://github.com/mahmou9d/LMS",
+    iconLists: [
+      "/images/nextjs.svg",
+      "/images/nodedotjs.svg",
+      "/images/expressdotjs.svg",
+      "/images/mongodb.svg",
+      "/images/socket.svg",
+      "/images/redis.svg"
+    ],
+  },{
     projectTitle: "webvitas",
     category: ["Simple"],
     imgPath: "/images/Screenshot 2026-02-20 161438.png",

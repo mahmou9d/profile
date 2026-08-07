@@ -165,7 +165,7 @@ server.listen(8080);`,
       {
         name: "Express.ts",
         size: "4.8 KB",
-        icon: SiExpress,
+        icon: "/images/expressdotjs.svg",
         color: "#ffffff",
         code: `// Express REST API controller middleware
 import express, { Request, Response } from 'express';
@@ -259,7 +259,7 @@ const TECH_STACK: TechItem[] = [
   { name: "HTML5", Icon: SiHtml5, color: "#e34f26" },
   { name: "CSS3", Icon: SiCss3, color: "#1572b6" },
   { name: "Node.js", Icon: SiNodedotjs, color: "#68a063" },
-  { name: "Express", Icon: SiExpress, color: "#ffffff" },
+  { name: "Express", Icon: "/images/expressdotjs.svg", color: "#ffffff" },
   { name: "MongoDB", Icon: SiMongodb, color: "#47a248" },
   { name: "Docker", Icon: SiDocker, color: "#2496ed" },
   { name: "Git", Icon: SiGit, color: "#f05032" },
