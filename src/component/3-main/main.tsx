@@ -93,8 +93,6 @@ const Main = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="directory-btn directory-btn-primary"
-                          whileHover={{ y: -1 }}
-                          whileTap={{ y: 0 }}
                         >
                           Visit Live <FaLocationArrow size={15} />
                         </motion.a>
