@@ -8,95 +8,47 @@ import Main from "./component/3-main/main";
 import Contact from "./component/4-contact/contact";
 import Footer from "./component/5-footer/footer";
 
+const Skills   = lazy(() => import("./component/skills/Skills"));
 const Projects = lazy(() => import("./component/6-projects/Projects"));
-const Skills = lazy(() => import("./component/skills/Skills"));
-const About = lazy(() => import("./component/about/About"));
+const About    = lazy(() => import("./component/about/About"));
 
-// Premium Loading Spinner fallback for lazy loaded components
 const PageLoader = () => (
-  <div
-    style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      minHeight: "60vh",
-      width: "100%",
-    }}
-  >
-    <div
-      style={{
-        width: "50px",
-        height: "50px",
-        borderRadius: "50%",
-        border: "3px solid rgba(0, 245, 255, 0.1)",
-        borderTopColor: "#00f5ff",
-        animation: "spin 1s infinite linear",
-        boxShadow: "0 0 15px rgba(0, 245, 255, 0.2)",
-      }}
-    />
-    <style>{`
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-    `}</style>
-  </div>
+  <div className="page-loader"><div className="page-loader-ring" /></div>
 );
 
-// Component جديد للـ scroll handling
-const ScrollToHashElement = () => {
+const ScrollToHash = () => {
   const location = useLocation();
-
   useEffect(() => {
     if (location.hash) {
       setTimeout(() => {
-        const element = document.querySelector(location.hash);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }, 100);
+        document.querySelector(location.hash)
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 120);
     }
   }, [location]);
-
   return null;
 };
 
 const App = () => {
-  const [showScrollBTN, setShowScrollBTN] = useState<boolean>(false);
-  const [scrollProgress, setScrollProgress] = useState<number>(0);
+  const [showBtn, setShowBtn] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 200) {
-        setShowScrollBTN(true);
-      } else {
-        setShowScrollBTN(false);
-      }
-
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalHeight > 0) {
-        const progress = (window.scrollY / totalHeight) * 100;
-        setScrollProgress(progress);
-      }
+    const onScroll = () => {
+      setShowBtn(window.scrollY > 300);
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      if (total > 0) setProgress((window.scrollY / total) * 100);
     };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+  const r = 20;
+  const circ = 2 * Math.PI * r;
 
   return (
     <BrowserRouter>
-      <ScrollToHashElement />
+      <ScrollToHash />
       <div id="up" className="containerr">
         <Header />
         <Suspense fallback={<PageLoader />}>
@@ -104,41 +56,10 @@ const App = () => {
             <Route
               path="/"
               element={
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.6 }}
-                >
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
                   <Hero />
-
-                  <motion.div
-                    className="divider"
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                  />
-
                   <Skills />
-
-                  <motion.div
-                    className="divider"
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                  />
-
                   <Main />
-
-                  <motion.div
-                    className="divider"
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                  />
-
                   <Contact />
                 </motion.div>
               }
@@ -146,11 +67,7 @@ const App = () => {
             <Route
               path="/projects"
               element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                >
+                <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
                   <Projects />
                 </motion.div>
               }
@@ -158,49 +75,45 @@ const App = () => {
             <Route
               path="/about"
               element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                >
+                <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
                   <About />
                 </motion.div>
               }
             />
           </Routes>
         </Suspense>
-
         <Footer />
       </div>
-      {/* Enhanced Scroll to Top Button with Circular Progress Track */}
+
+      {/* Scroll to top */}
       <AnimatePresence>
-        {showScrollBTN && (
+        {showBtn && (
           <motion.button
-            onClick={scrollToTop}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="scroll-to-top"
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.7 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            exit={{ opacity: 0, scale: 0.7 }}
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.92 }}
             aria-label="Scroll to top"
           >
-            <svg className="progress-ring" width="46" height="46">
+            <svg className="progress-ring" width="44" height="44">
               <circle
                 className="progress-ring__circle"
-                stroke="currentColor"
-                strokeWidth="2.5"
+                stroke="#3B82F6"
+                strokeWidth="2"
                 fill="transparent"
-                r="20"
-                cx="23"
-                cy="23"
+                r={r}
+                cx="22"
+                cy="22"
                 style={{
-                  strokeDasharray: `${2 * Math.PI * 20}`,
-                  strokeDashoffset: `${2 * Math.PI * 20 - (scrollProgress / 100) * (2 * Math.PI * 20)}`,
+                  strokeDasharray: circ,
+                  strokeDashoffset: circ - (progress / 100) * circ,
                 }}
               />
             </svg>
-            <ArrowUp size={18} className="scroll-arrow-icon" />
+            <ArrowUp size={15} className="scroll-arrow-icon" />
           </motion.button>
         )}
       </AnimatePresence>

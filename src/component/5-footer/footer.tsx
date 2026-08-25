@@ -1,89 +1,63 @@
-import React from "react";
+import { memo } from "react";
 import { useNavigate, useLocation } from "react-router";
-
 import "./footer.css";
 
-interface FooterLink {
-  title: string;
-  link: string;
-  type: "route" | "hash";
-}
-
-const FOOTER_LINKS: FooterLink[] = [
-  { title: "Home", link: "/", type: "route" },
-  { title: "Projects", link: "/projects", type: "route" },
-  { title: "About", link: "/about", type: "route" },
-  { title: "Skills", link: "#skills", type: "hash" },
-  { title: "Contact", link: "#contact", type: "hash" },
+const NAV = [
+  { label: "Home", path: "/", hash: false },
+  { label: "Projects", path: "/projects", hash: false },
+  { label: "About", path: "/about", hash: false },
+  { label: "Skills", path: "/#skills", hash: true },
+  { label: "Contact", path: "/#contact", hash: true },
 ];
 
 const Footer = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const currentYear = new Date().getFullYear();
 
-  const handleLinkClick = (link: FooterLink) => {
-    if (link.type === "hash") {
+  const handleClick = (item: (typeof NAV)[0]) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (item.hash) {
+      const id = item.path.split("#")[1];
       if (location.pathname !== "/") {
-        navigate(`/${link.link}`);
+        navigate(`/#${id}`);
       } else {
-        const element = document.querySelector(link.link);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
       }
     } else {
-      navigate(link.link);
+      navigate(item.path);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   return (
-    <footer className="ft-section">
-      <div className="ft-glow-reflector" aria-hidden />
+    <footer className="ft">
+      <div className="ft__inner">
+        <h2 className="ft__name">
+          <span style={{ color: "var(--accent)" }}>Mahmoud</span> Mohamed{" "}
+          <span className="ft__name-accent">.</span>
+        </h2>
 
-      <div className="ft-container">
-        {/* Top: Brand Header */}
-        <div className="ft-brand-hero">
-          <h2 className="ft-display-name">
-            MAHMOUD <span className="ft-name-accent">MOHAMED</span>
-          </h2>
-        </div>
-
-        {/* Middle: Clean Horizontal Navigation */}
-        <div className="ft-navigation">
-          {FOOTER_LINKS.map((link, index) => (
-            <React.Fragment key={link.title}>
-              {index > 0 && <span className="ft-nav-separator">/</span>}
-              <a
-                href={link.link}
-                className="ft-nav-link"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick(link);
-                }}
-              >
-                {link.title}
-              </a>
-            </React.Fragment>
-          ))}
-        </div>
-
-        {/* Bottom Meta Row */}
-        <div className="ft-meta-row">
-          <p className="ft-copyright">
-            &copy; {currentYear}{" "}
-            <span className="ft-copy-name">Mahmoud Mohamed</span>. All rights
-            reserved.
+        <div className="ft__bar">
+          <p className="ft__copy">
+            © {new Date().getFullYear()} Mahmoud Mohamed
           </p>
-          <div className="ft-status-line">
-            <span className="ft-status-dot"></span>
-            <span className="ft-status-text">available for work</span>
-          </div>
+
+          <nav className="ft__nav">
+            {NAV.map((item) => (
+              <a
+                key={item.label}
+                href={item.path}
+                className="ft__nav-link"
+                onClick={handleClick(item)}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
         </div>
       </div>
     </footer>
   );
 };
 
-export default Footer;
+export default memo(Footer);

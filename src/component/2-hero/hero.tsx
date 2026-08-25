@@ -1,294 +1,156 @@
 import { memo, useCallback } from "react";
+import { motion, Variants } from "framer-motion";
 import { BiLogoLinkedin } from "react-icons/bi";
 import { FaGithub, FaWhatsapp } from "react-icons/fa6";
-import { motion } from "framer-motion";
-import { IconType } from "react-icons";
+import { FiMapPin } from "react-icons/fi";
 import "./hero.css";
 
-const SOCIAL_ITEMS = [
-  {
-    href: "https://github.com/mahmou9d",
-    Icon: FaGithub,
-    label: "GitHub Profile",
+const CONTAINER: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+};
+
+const ITEM: Variants = {
+  hidden: { opacity: 0, y: 22 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
   },
-  {
-    href: "https://www.linkedin.com/in/mahmoud-mohammed-901327336/",
-    Icon: BiLogoLinkedin,
-    label: "LinkedIn Profile",
-  },
-  {
-    href: "https://wa.me/201009014597",
-    Icon: FaWhatsapp,
-    label: "WhatsApp Contact",
-  },
+};
+
+const STACK = [
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Node.js",
+  "MongoDB",
+  "React Native",
 ];
 
-const SocialIcon = memo(
-  ({ href, Icon, label }: { href: string; Icon: IconType; label: string }) => (
-    <motion.a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={label}
-      className="social"
-      whileHover={{ scale: 1.08, y: -4 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      <Icon className="social-icon" />
-    </motion.a>
-  ),
-);
-
-SocialIcon.displayName = "SocialIcon";
-
-const AnimatedCodeVisualization = memo(() => (
-  <div className="code-visualization">
-    {/* Static subtle background glow */}
-    <div className="terminal-glow-bg"></div>
-
-    <motion.div
-      className="terminal-window"
-      initial={{ scale: 0.95, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-    >
-      <div className="terminal-header">
-        <div className="terminal-buttons">
-          <span className="terminal-btn close"></span>
-          <span className="terminal-btn minimize"></span>
-          <span className="terminal-btn maximize"></span>
-        </div>
-        <span className="terminal-title">developer.ts</span>
-      </div>
-
-      <div className="terminal-body">
-        {/* Line 1 */}
-        <div className="code-line">
-          <span className="line-number">1</span>
-          <span className="code-text">
-            <span className="token keyword">import</span> &#123;{" "}
-            <span className="token type">Developer</span> &#125;{" "}
-            <span className="token keyword">from</span>{" "}
-            <span className="token string">'./types'</span>;
-          </span>
-        </div>
-        {/* Line 2 */}
-        <div className="code-line">
-          <span className="line-number">2</span>
-          <span className="code-text"></span>
-        </div>
-        {/* Line 3 */}
-        <div className="code-line">
-          <span className="line-number">3</span>
-          <span className="code-text">
-            <span className="token keyword">export</span>{" "}
-            <span className="token keyword">const</span>{" "}
-            <span className="token variable">mahmoud</span>:{" "}
-            <span className="token type">Developer</span> = &#123;
-          </span>
-        </div>
-        {/* Line 4 */}
-        <div className="code-line">
-          <span className="line-number">4</span>
-          <span className="code-text">
-            &nbsp;&nbsp;<span className="token property">name</span>:{" "}
-            <span className="token string">'Mahmoud Mohamed'</span>,
-          </span>
-        </div>
-        {/* Line 5 */}
-        <div className="code-line">
-          <span className="line-number">5</span>
-          <span className="code-text">
-            &nbsp;&nbsp;<span className="token property">role</span>:{" "}
-            <span className="token string">'Full Stack Engineer'</span>,
-          </span>
-        </div>
-        {/* Line 6 */}
-        <div className="code-line">
-          <span className="line-number">6</span>
-          <span className="code-text">
-            &nbsp;&nbsp;<span className="token property">skills</span>: &#123;
-          </span>
-        </div>
-        {/* Line 7 */}
-        <div className="code-line">
-          <span className="line-number">7</span>
-          <span className="code-text">
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <span className="token property">frontend</span>: [
-            <span className="token string">'React'</span>,{" "}
-            <span className="token string">'Next.js'</span>,{" "}
-            <span className="token string">'Tailwind'</span>,{" "}
-            <span className="token string">'Redux'</span>],
-          </span>
-        </div>
-        {/* Line 8 */}
-        <div className="code-line">
-          <span className="line-number">8</span>
-          <span className="code-text">
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <span className="token property">backend</span>: [
-            <span className="token string">'Node.js'</span>,{" "}
-            <span className="token string">'Express'</span>],
-          </span>
-        </div>
-        {/* Line 9 */}
-        <div className="code-line">
-          <span className="line-number">9</span>
-          <span className="code-text">
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <span className="token property">database</span>: [
-            <span className="token string">'MongoDB'</span>],
-          </span>
-        </div>
-        {/* Line 10 */}
-        <div className="code-line">
-          <span className="line-number">10</span>
-          <span className="code-text">
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <span className="token property">devops</span>: [
-            <span className="token string">'Docker'</span>,{" "}
-            <span className="token string">'Git & GitHub'</span>]
-          </span>
-        </div>
-        {/* Line 11 */}
-        <div className="code-line">
-          <span className="line-number">11</span>
-          <span className="code-text">&nbsp;&nbsp;&#125;,</span>
-        </div>
-        {/* Line 12 */}
-        <div className="code-line">
-          <span className="line-number">12</span>
-          <span className="code-text">
-            &nbsp;&nbsp;<span className="token property">hireable</span>:{" "}
-            <span className="token boolean">true</span>
-          </span>
-        </div>
-        {/* Line 13 */}
-        <div className="code-line">
-          <span className="line-number">13</span>
-          <span className="code-text">
-            &#125;;
-            <motion.span
-              className="cursor"
-              animate={{ opacity: [1, 0] }}
-              transition={{
-                duration: 0.8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            >
-              |
-            </motion.span>
-          </span>
-        </div>
-      </div>
-    </motion.div>
-  </div>
-));
-
-AnimatedCodeVisualization.displayName = "AnimatedCodeVisualization";
-
 const Hero = () => {
-  const handleDownloadCV = useCallback((e: React.MouseEvent) => {
+  const handleCV = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
-    const link = document.createElement("a");
-    link.href = "/Mahmoud_Mohammed_FrontEnd_Developer.pdf";
-    link.download = "Mahmoud_Mohammed_FrontEnd_Developer.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    const a = document.createElement("a");
+    a.href = "/Mahmoud_Mohammed_.pdf";
+    a.download = "Mahmoud_Mohammed_.pdf";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   }, []);
 
   return (
-    <motion.section
-      className="hero-section"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
-    >
-      <div className="hero-split-grid">
-        {/* Left Column: Info & Actions */}
-        <div className="hero-left-content">
-          {/* ────────── STATUS CHIP ────────── */}
-          <div className="status-chip">
-            <span className="status-dot"></span>
-            <span className="status-text">available for work</span>
-          </div>
+    <section className="hero">
+      {/* ── Left ── */}
+      <motion.div
+        className="hero__left"
+        variants={CONTAINER}
+        initial="hidden"
+        animate="show"
+      >
+        {/* Heading */}
+        <motion.h1 className="hero__title" variants={ITEM}>
+          Hi, I'm
+          <span className="hero__title-name">
+            <span style={{ color: "var(--accent)" }}>Mahmoud</span> Mohamed{" "}
+            <span style={{ color: "var(--accent)" }}>.</span>
+          </span>
+        </motion.h1>
 
-          <motion.h1
-            className="title"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            Full-Stack Developer{" "}
-            <span className="title-muted">end to end.</span>
-          </motion.h1>
+        {/* Subtitle */}
+        <motion.p className="hero__subtitle" variants={ITEM}>
+          Full-Stack Developer specializing in React, React Native, Next.js, and
+          Node.js. I build fast, clean, and scalable web and mobile applications
+          — from pixel-perfect interfaces to powerful APIs.{" "}
+          <span style={{ color: "var(--accent)", fontWeight: 600 }}>
+            AI-augmented workflow
+          </span>{" "}
+          — leveraging tools like ChatGPT, Claude, Gemini, Antigravity to ship
+          faster.
+        </motion.p>
 
-          <motion.p
-            className="sub-title"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            I am a Computer Science student and a Full-Stack Developer. I enjoy
-            designing and building high-quality websites and web applications.
-            My goal is to create clean user interfaces that are easy to use,
-            while building fast and secure systems behind the scenes. I handle
-            everything from pixel-perfect designs to database setups and server
-            APIs.
-          </motion.p>
-
-          <motion.div
-            className="hero-buttons"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <motion.a
-              href="#contact"
-              className="btn btn-primary"
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              Contact Me
-            </motion.a>
-
-            <motion.a
-              href="#"
-              onClick={handleDownloadCV}
-              className="btn btn-secondary"
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              Download CV
-            </motion.a>
-          </motion.div>
-
-          <motion.div
-            className="social-icons"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-          >
-            {SOCIAL_ITEMS.map((item, index) => (
-              <SocialIcon key={index} {...item} />
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Right Column: Code Editor Mockup */}
-        <motion.div
-          className="hero-right-visual"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <AnimatedCodeVisualization />
+        {/* Stack pills */}
+        <motion.div className="hero__stack" variants={ITEM}>
+          {STACK.map((s) => (
+            <span key={s} className="hero__stack-pill">
+              {s}
+            </span>
+          ))}
         </motion.div>
-      </div>
-    </motion.section>
+
+        {/* CTAs */}
+        <motion.div className="hero__actions" variants={ITEM}>
+          <motion.a
+            href="#contact"
+            className="hero__btn-main"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Get In Touch →
+          </motion.a>
+          <motion.a
+            href="#"
+            onClick={handleCV}
+            className="hero__btn-sec"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Download CV
+          </motion.a>
+        </motion.div>
+
+        {/* Socials */}
+        <motion.div className="hero__socials" variants={ITEM}>
+          <motion.a
+            href="https://github.com/mahmou9d"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+            className="hero__soc"
+            whileHover={{ y: -3, scale: 1.08 }}
+          >
+            <FaGithub />
+          </motion.a>
+          <motion.a
+            href="https://www.linkedin.com/in/mahmoud-mohammed-901327336/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            className="hero__soc"
+            whileHover={{ y: -3, scale: 1.08 }}
+          >
+            <BiLogoLinkedin />
+          </motion.a>
+          <motion.a
+            href="https://wa.me/201009014597"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="WhatsApp"
+            className="hero__soc"
+            whileHover={{ y: -3, scale: 1.08 }}
+          >
+            <FaWhatsapp />
+          </motion.a>
+        </motion.div>
+      </motion.div>
+
+      {/* ── Right: Photo ── */}
+      <motion.div
+        className="hero__right"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <div className="hero__photo-wrap">
+          <img
+            src="/images/WhatsApp Image 2025-07-29 at 1.48.11 AM.webp"
+            alt="Mahmoud Mohamed"
+            className="hero__photo"
+            fetchPriority="high"
+          />
+        </div>
+      </motion.div>
+    </section>
   );
 };
 

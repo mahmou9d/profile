@@ -14,20 +14,21 @@ export const myProjects = [
       "/images/socket.svg",
       "/images/redis.svg"
     ],
-  },{
-    projectTitle: "webvitas",
-    category: ["Simple"],
-    imgPath: "/images/Screenshot 2026-02-20 161438.png",
-    link: "https://www.webvitas.com/",
-    desc: `A high-end digital agency platform built for selling premium web solutions. Optimized for conversions with a sleek, high-performance interface.`,
-    href: "https://github.com/mahmou9d/copymisk",
-    iconLists: [
-      "/images/nextjs.svg",
-      "/images/re.svg",
-      "/images/tail.svg",
-      "/images/ts.svg",
-    ],
   },
+  // {
+  //   projectTitle: "webvitas",
+  //   category: ["Simple"],
+  //   imgPath: "/images/Screenshot 2026-02-20 161438.png",
+  //   link: "https://www.webvitas.com/",
+  //   desc: `A high-end digital agency platform built for selling premium web solutions. Optimized for conversions with a sleek, high-performance interface.`,
+  //   href: "https://github.com/mahmou9d/copymisk",
+  //   iconLists: [
+  //     "/images/nextjs.svg",
+  //     "/images/re.svg",
+  //     "/images/tail.svg",
+  //     "/images/ts.svg",
+  //   ],
+  // },
   {
     projectTitle: "misk Perfume",
     category: ["Simple"],
