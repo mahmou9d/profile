@@ -1,5 +1,5 @@
 export const myProjects = [
-      {
+  {
     projectTitle: "Elearning",
     category: ["Simple"],
     imgPath: "/images/Screenshot 2026-08-07 204402.png",
@@ -12,7 +12,7 @@ export const myProjects = [
       "/images/expressdotjs.svg",
       "/images/mongodb.svg",
       "/images/socket.svg",
-      "/images/redis.svg"
+      "/images/redis.svg",
     ],
   },
   // {
