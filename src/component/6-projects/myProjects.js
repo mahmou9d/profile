@@ -11,7 +11,7 @@ export const myProjects = [
       "/images/nodedotjs.svg",
       "/images/expressdotjs.svg",
       "/images/mongodb.svg",
-      "/images/socket.svg",
+      "/images/socket-io.svg",
       "/images/redis.svg",
     ],
   },
