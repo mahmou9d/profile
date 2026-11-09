@@ -75,4 +75,20 @@ export const aboutproduct = [
     icon: "/svg/css-3-svgrepo-com.svg",
     title: "CSS",
   },
+  {
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    title: "Node.js",
+  },
+  {
+    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg",
+    title: "Express",
+  },
+  {
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    title: "MongoDB",
+  },
+  {
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    title: "Docker",
+  },
 ];

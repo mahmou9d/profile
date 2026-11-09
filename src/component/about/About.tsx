@@ -1,270 +1,131 @@
-import { aboutproduct } from "./aboutproduct";
+import { memo } from "react";
+import { motion } from "framer-motion";
+import { FiCpu } from "react-icons/fi";
 import "./About.css";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
-
-const SkillCard = ({ item, index }: { item: any; index: number }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [30, -30]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
-
-  return (
-    <motion.div
-      ref={cardRef}
-      className="skill-card-container"
-      style={{ y, opacity }}
-      initial={{ opacity: 0, scale: 0.8, y: 40 }}
-      whileInView={{ opacity: 1, scale: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{
-        duration: 0.5,
-        delay: index * 0.05,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-    >
-      <div className="skill-card">
-        {/* Animated Border Gradient */}
-        <div className="skill-border-gradient"></div>
-
-        {/* Card Inner */}
-        <div className="skill-card-inner">
-          {/* Icon Container */}
-          <motion.div
-            className="skill-icon-wrapper"
-            animate={
-              isHovered
-                ? {
-                    scale: 1.1,
-                    rotate: [0, -5, 5, 0],
-                    y: -10,
-                  }
-                : {
-                    scale: 1,
-                    rotate: 0,
-                    y: 0,
-                  }
-            }
-            transition={{ duration: 0.4 }}
-          >
-            <img
-              src={item.icon}
-              alt={item?.title}
-              loading="lazy"
-              className="skill-icon-image"
-            />
-
-            {/* Glow Effect */}
-            <motion.div
-              className="skill-icon-glow"
-              animate={
-                isHovered
-                  ? {
-                      scale: 1.4,
-                      opacity: 0.6,
-                    }
-                  : {
-                      scale: 1,
-                      opacity: 0.3,
-                    }
-              }
-              transition={{ duration: 0.4 }}
-            />
-          </motion.div>
-
-          {/* Title (Optional) */}
-          {item.title && (
-            <motion.div
-              className="skill-title-text"
-              animate={
-                isHovered
-                  ? {
-                      opacity: 1,
-                      y: 0,
-                    }
-                  : {
-                      opacity: 0.7,
-                      y: 5,
-                    }
-              }
-              transition={{ duration: 0.3 }}
-            >
-              {item.title}
-            </motion.div>
-          )}
-
-          {/* Hover Indicator */}
-          <motion.div
-            className="hover-indicator"
-            animate={
-              isHovered
-                ? {
-                    scaleX: 1,
-                    opacity: 1,
-                  }
-                : {
-                    scaleX: 0,
-                    opacity: 0,
-                  }
-            }
-            transition={{ duration: 0.3 }}
-          />
-        </div>
-
-        {/* Corner Decorations */}
-        <motion.div
-          className="skill-corners"
-          animate={isHovered ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="skill-corner corner-tl"></div>
-          <div className="skill-corner corner-tr"></div>
-          <div className="skill-corner corner-bl"></div>
-          <div className="skill-corner corner-br"></div>
-        </motion.div>
-
-        {/* Skill Number Badge */}
-        <motion.div
-          className="skill-number-badge"
-          initial={{ scale: 0 }}
-          whileInView={{ scale: 1 }}
-          transition={{
-            type: "spring",
-            stiffness: 200,
-            delay: 0.2 + index * 0.05,
-          }}
-          viewport={{ once: true }}
-        >
-          {String(index + 1).padStart(2, "0")}
-        </motion.div>
-      </div>
-    </motion.div>
-  );
-};
 
 const About = () => {
-  const containerRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const titleY = useTransform(scrollYProgress, [0, 0.3], [50, 0]);
-
   return (
-    <div className="about-section" ref={containerRef}>
-      {/* Animated Background */}
-      <motion.div className="about-background" style={{ y: backgroundY }}>
-        {/* <div className="about-bg-orb orb-1"></div> */}
-        {/* <div className="about-bg-orb orb-2"></div> */}
-        {/* <div className="about-bg-orb orb-3"></div> */}
-        {/* <div className="about-bg-mesh"></div> */}
-      </motion.div>
-
-      {/* Header Section */}
-      <motion.div className="about-header" style={{ y: titleY }}>
-        {/* Tag & Title */}
+    <div className="ab-pg">
+      <div className="ab-pg__inner">
         <motion.div
-          className="about-header-content"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          viewport={{ once: true }}
+          className="ab-pg__head"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="about-tag">
-            <span className="about-tag-icon">⚡</span>
-            <span className="about-tag-text">Expertise</span>
-          </div>
+          <h1 className="ab-pg__heading">
+            Building digital
+            <br />
+            <span className="ab-pg__heading-accent">experiences.</span>
+          </h1>
+        </motion.div>
 
-          <div className="title-icons">
-            <span>🛠️</span>
-            <h1 className="about-main-title">My Skills & Tools</h1>
-          </div>
+        <div className="ab-pg__grid">
+          {/* Photo */}
+          <motion.div
+            className="ab-pg__photo-wrap"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <img
+              src="/images/WhatsApp Image 2025-07-29 at 1.48.11 AM.webp"
+              alt="Mahmoud Mohamed"
+              className="ab-pg__photo"
+            />
+          </motion.div>
 
-          <p className="about-main-subtitle">
-            Technologies and frameworks I work with to build amazing projects
-          </p>
-        </motion.div>{" "}
-        {/* Decorative Top Line */}
-        <motion.div
-          className="about-top-line"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-          viewport={{ once: true }}
-        />
-      </motion.div>
+          {/* Content */}
+          <motion.div
+            className="ab-pg__content"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="ab-pg__prose">
+              <p>
+                Hello! I'm{" "}
+                <strong>
+                  <span style={{ color: "var(--accent)" }}>Mahmoud</span>{" "}
+                  Mohamed <span style={{ color: "var(--accent)" }}>.</span>
+                </strong>{" "}
+                I'm a passionate Full-Stack Developer and a third-year student
+                at the Faculty of Computers and Information, Fayoum University.
+                I enjoy building modern web and mobile applications that are
+                fast, clean, and scalable.
+              </p>
 
-      {/* Skills Grid */}
-      <div className="skills-grid-wrapper">
-        {aboutproduct.map((item, i) => (
-          <SkillCard key={i} item={item} index={i} />
-        ))}
+              <p>
+                I'm passionate about creating high-quality digital products that
+                combine pixel-perfect design with excellent performance and user
+                experience. I continuously develop my skills by working on
+                different projects, learning new technologies, and exploring
+                both front-end and back-end development.
+              </p>
+
+              <p>
+                Beyond coding, I'm always looking for new challenges, learning
+                modern technologies, and building projects that help me grow as
+                a developer.
+              </p>
+
+              <div
+                style={{
+                  margin: "1.5rem 0 0",
+                  paddingTop: "1.5rem",
+                  borderTop: "1px solid var(--border)",
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "0.75rem",
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: "1.3rem",
+                    lineHeight: 1,
+                    flexShrink: 0,
+                    marginTop: "2px",
+                  }}
+                >
+                  <FiCpu style={{ color: "var(--accent)" }} />
+                </span>
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: "0.88rem",
+                    lineHeight: 1.7,
+                    color: "var(--text-muted)",
+                  }}
+                >
+                  I actively integrate{" "}
+                  <strong style={{ color: "var(--accent)" }}>AI tools</strong> —
+                  including ChatGPT, Claude, Gemini, Antigravity — into my daily
+                  workflow. I use them to accelerate development, debug smarter,
+                  and ship higher-quality code in less time. Knowing how to
+                  leverage AI effectively is a skill I consider as important as
+                  any framework.
+                </p>
+              </div>
+            </div>
+            <div className="ab-pg__stats">
+              <div className="ab-pg__stat">
+                <span className="ab-pg__stat-num">12+</span>
+                <span className="ab-pg__stat-lbl">Projects Built</span>
+              </div>
+              <div className="ab-pg__stat">
+                <span className="ab-pg__stat-num">10+</span>
+                <span className="ab-pg__stat-lbl">Tech Mastered</span>
+              </div>
+              <div className="ab-pg__stat">
+                <span className="ab-pg__stat-num">100%</span>
+                <span className="ab-pg__stat-lbl">Commitment</span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
-
-      {/* Stats Section */}
-      <motion.div
-        className="skills-stats-section"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.3 }}
-        viewport={{ once: true }}
-      >
-        <div className="stat-box">
-          <motion.div
-            className="stat-value"
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            {aboutproduct.length}+
-          </motion.div>
-          <div className="stat-label">Technologies</div>
-        </div>
-
-        <div className="stat-separator"></div>
-
-        <div className="stat-box">
-          <motion.div
-            className="stat-value"
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 200, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            +
-          </motion.div>
-          <div className="stat-label">Years Experience</div>
-        </div>
-
-        <div className="stat-separator"></div>
-
-        <div className="stat-box">
-          <motion.div
-            className="stat-value"
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 200, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            ∞
-          </motion.div>
-          <div className="stat-label">Always Learning</div>
-        </div>
-      </motion.div>
     </div>
   );
 };
 
-export default About;
+export default memo(About);

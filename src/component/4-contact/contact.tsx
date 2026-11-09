@@ -1,456 +1,198 @@
-import React, { useState } from "react";
-import "./contact.css";
+import { useState, memo } from "react";
 import { useForm, ValidationError } from "@formspree/react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { SiGithub, SiLinkedin, SiWhatsapp } from "react-icons/si";
+import { FiMail, FiMapPin, FiZap, FiCheck } from "react-icons/fi";
+import "./contact.css";
 
-// Success Animation Component
-const SuccessAnimation = () => (
-  <motion.div className="success-animation">
-    <motion.div
-      className="success-circle"
-      initial={{ scale: 0, rotate: -180 }}
-      animate={{ scale: 1, rotate: 0 }}
-      transition={{
-        type: "spring",
-        stiffness: 200,
-        damping: 15,
-        duration: 0.6,
-      }}
-    >
-      <motion.svg
-        width="80"
-        height="80"
-        viewBox="0 0 80 80"
-        className="success-icon"
-      >
-        <motion.circle
-          cx="40"
-          cy="40"
-          r="36"
-          fill="none"
-          stroke="url(#successGradient)"
-          strokeWidth="3"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-        />
-        <motion.path
-          d="M25 40 L35 50 L55 30"
-          fill="none"
-          stroke="#00f5ff"
-          strokeWidth="4"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        />
-        <defs>
-          <linearGradient
-            id="successGradient"
-            x1="0%"
-            y1="0%"
-            x2="100%"
-            y2="100%"
-          >
-            <stop offset="0%" stopColor="#00f5ff" />
-            <stop offset="100%" stopColor="#00d9ff" />
-          </linearGradient>
-        </defs>
-      </motion.svg>
-
-      {/* Glow Effect */}
-      <motion.div
-        className="success-glow"
-        animate={{
-          scale: [1, 1.5, 1],
-          opacity: [0.5, 0.8, 0.5],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-    </motion.div>
-
-    {/* Confetti Particles */}
-    <div className="confetti-container">
-      {[...Array(12)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="confetti"
-          initial={{ scale: 0, x: 0, y: 0 }}
-          animate={{
-            scale: [0, 1, 0],
-            x: Math.cos((i * Math.PI * 2) / 12) * 60,
-            y: Math.sin((i * Math.PI * 2) / 12) * 60,
-          }}
-          transition={{
-            duration: 1,
-            delay: 0.8 + i * 0.03,
-            ease: "easeOut",
-          }}
-        />
-      ))}
-    </div>
-  </motion.div>
-);
-// Animated Contact Illustration
-const ContactVisual = () => (
-  <div className="contact-illustration">
-    {/* Floating Email Envelope */}
-    <motion.div
-      className="floating-envelope"
-      animate={{
-        y: [0, -20, 0],
-        rotate: [0, 5, 0, -5, 0],
-      }}
-      transition={{
-        duration: 4,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    >
-      <svg width="200" height="160" viewBox="0 0 200 160" fill="none">
-        {/* Envelope Back */}
-        <motion.rect
-          x="20"
-          y="40"
-          width="160"
-          height="100"
-          rx="8"
-          fill="url(#envelopeGradient)"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.5, type: "spring" }}
-        />
-
-        {/* Envelope Flap */}
-        <motion.path
-          d="M20 40 L100 90 L180 40"
-          stroke="#00f5ff"
-          strokeWidth="3"
-          fill="none"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
-        />
-
-        {/* Letter Lines */}
-        <motion.line
-          x1="50"
-          y1="70"
-          x2="150"
-          y2="70"
-          stroke="rgba(0, 245, 255, 0.4)"
-          strokeWidth="2"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-        />
-        <motion.line
-          x1="50"
-          y1="90"
-          x2="130"
-          y2="90"
-          stroke="rgba(0, 245, 255, 0.3)"
-          strokeWidth="2"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
-        />
-        <motion.line
-          x1="50"
-          y1="110"
-          x2="140"
-          y2="110"
-          stroke="rgba(0, 245, 255, 0.3)"
-          strokeWidth="2"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
-        />
-
-        <defs>
-          <linearGradient
-            id="envelopeGradient"
-            x1="0%"
-            y1="0%"
-            x2="100%"
-            y2="100%"
-          >
-            <stop offset="0%" stopColor="rgba(0, 245, 255, 0.15)" />
-            <stop offset="100%" stopColor="rgba(0, 217, 255, 0.25)" />
-          </linearGradient>
-        </defs>
-      </svg>
-    </motion.div>
-
-    {/* Floating Particles Around Envelope */}
-    {[...Array(6)].map((_, i) => (
-      <motion.div
-        key={i}
-        className="illustration-particle"
-        style={{
-          position: "absolute",
-          left: `${30 + i * 15}%`,
-          top: `${20 + (i % 3) * 20}%`,
-        }}
-        animate={{
-          y: [0, -30, 0],
-          opacity: [0.3, 1, 0.3],
-          scale: [0.5, 1, 0.5],
-        }}
-        transition={{
-          duration: 3,
-          delay: i * 0.3,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-    ))}
-
-    {/* Decorative Circles */}
-    <motion.div
-      className="deco-circle circle-1"
-      animate={{
-        scale: [1, 1.2, 1],
-        rotate: [0, 180, 360],
-      }}
-      transition={{
-        duration: 8,
-        repeat: Infinity,
-        ease: "linear",
-      }}
-    />
-    <motion.div
-      className="deco-circle circle-2"
-      animate={{
-        scale: [1, 1.3, 1],
-        rotate: [360, 180, 0],
-      }}
-      transition={{
-        duration: 10,
-        repeat: Infinity,
-        ease: "linear",
-      }}
-    />
-  </div>
-);
 const Contact = () => {
   const [state, handleSubmit] = useForm("xwpvkwwp");
-  const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [focused, setFocused] = useState<string | null>(null);
 
   return (
-    <section id="contact" className="contact-section">
-      {/* Background Effects */}
-      <div className="contact-bg">
-        {/* <div className="bg-orb bg-orb-1"></div> */}
-        {/* <div className="bg-orb bg-orb-2"></div> */}
-        {/* <div className="bg-mesh"></div> */}
-      </div>
+    <section id="contact" className="ct">
+      <div className="ct__inner">
+        {/* Left info */}
+        <div className="ct__info">
+          <h2 className="ct__title">
+            Let's work
+            <br />
+            <span className="ct__title-accent">together.</span>
+          </h2>
+          <p className="ct__desc">
+            Open to full-stack roles, freelance contracts, and exciting
+            collaborations. I typically reply within 24 hours.
+          </p>
 
-      {/* Content Container */}
-      <div className="contact-container">
-        {/* Header Section */}
-        <div className="main-header-section">
-          {/* Decorative Top Line */}
-          {/* Title & Subtitle */}
-          <motion.div
-            className="header-content"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            <div className="header-tag">
-              <span className="tag-icon">✉️</span>
-              <span className="tag-text">Get in Touch</span>
+          <div className="ct__details">
+            <div className="ct__detail">
+              <div className="ct__detail-icon">
+                <FiMail />
+              </div>
+              <div className="ct__detail-text">
+                <span className="ct__detail-label">Email</span>
+                <span className="ct__detail-val">
+                  mahmoud.mohamed.jsx@gmail.com
+                </span>
+              </div>
             </div>
-            <div className="title-icons">
-              <span>📬</span>
-
-              <h1 className="contact-title">Let's Connect</h1>
+            <div className="ct__detail">
+              <div className="ct__detail-icon">
+                <FiMapPin />
+              </div>
+              <div className="ct__detail-text">
+                <span className="ct__detail-label">Location</span>
+                <span className="ct__detail-val">Cairo, Egypt</span>
+              </div>
             </div>
+            <div className="ct__detail">
+              <div className="ct__detail-icon">
+                <FiZap />
+              </div>
+              <div className="ct__detail-text">
+                <span className="ct__detail-label">Response Time</span>
+                <span className="ct__detail-val">Within 24 hours</span>
+              </div>
+            </div>
+          </div>
 
-            <p className="main-subheading">
-              Have a question or want to work together? Drop me a message!
-            </p>
-          </motion.div>{" "}
-          <motion.div
-            className="header-top-line"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
-            viewport={{ once: true }}
-          />
+          <div className="ct__socials">
+            <a
+              href="https://github.com/mahmou9d"
+              target="_blank"
+              rel="noreferrer"
+              className="ct__soc"
+            >
+              <SiGithub /> GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/mahmoud-mohammed-901327336/"
+              target="_blank"
+              rel="noreferrer"
+              className="ct__soc"
+            >
+              <SiLinkedin /> LinkedIn
+            </a>
+            <a
+              href="https://wa.me/201009014597"
+              target="_blank"
+              rel="noreferrer"
+              className="ct__soc"
+            >
+              <SiWhatsapp /> WhatsApp
+            </a>
+          </div>
         </div>
-        {/* Main Content */}
-        <div className="contact-content">
-          {/* Form Section */}
-          <motion.div
-            className="form-section"
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            <form onSubmit={handleSubmit} className="contact-form-wrapper">
-              {/* Email Field */}
-              <motion.div
-                className="input-group"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-              >
-                <label htmlFor="email" className="input-label">
-                  <span className="label-icon">📧</span>
-                  <span>Email Address</span>
+
+        {/* Right form */}
+        <div className="ct__form-wrap">
+          {state.succeeded ? (
+            <motion.div
+              key="ok"
+              className="ct__success"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="ct__success-check">
+                <FiCheck />
+              </div>
+              <h3 className="ct__success-title">Message Sent!</h3>
+              <p className="ct__success-sub">
+                I'll get back to you within 24 hours.
+              </p>
+            </motion.div>
+          ) : (
+            <motion.form
+              key="form"
+              className="ct__form"
+              onSubmit={handleSubmit}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <div>
+                <p className="ct__form-title">Send a message</p>
+                <p className="ct__form-sub">All fields are required</p>
+              </div>
+
+              <div className="ct__field">
+                <label htmlFor="ct-name" className="ct__lbl">
+                  Name
                 </label>
-                <div
-                  className={`input-container ${
-                    focusedField === "email" ? "focused" : ""
-                  }`}
-                >
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    required
-                    autoComplete="off"
-                    placeholder="your.email@example.com"
-                    onFocus={() => setFocusedField("email")}
-                    onBlur={() => setFocusedField(null)}
-                    className="form-input"
-                  />
-                  <div className="input-glow"></div>
-                </div>
+                <input
+                  id="ct-name"
+                  name="name"
+                  type="text"
+                  required
+                  autoComplete="off"
+                  placeholder="Mahmoud Mohamed"
+                  className="ct__inp"
+                  onFocus={() => setFocused("name")}
+                  onBlur={() => setFocused(null)}
+                />
+              </div>
+
+              <div className="ct__field">
+                <label htmlFor="ct-email" className="ct__lbl">
+                  Email
+                </label>
+                <input
+                  id="ct-email"
+                  name="email"
+                  type="email"
+                  required
+                  autoComplete="off"
+                  placeholder="name@example.com"
+                  className="ct__inp"
+                  onFocus={() => setFocused("email")}
+                  onBlur={() => setFocused(null)}
+                />
                 <ValidationError
                   prefix="Email"
                   field="email"
                   errors={state.errors}
-                  className="error-message"
+                  className="ct__err"
                 />
-              </motion.div>
+              </div>
 
-              {/* Message Field */}
-              <motion.div
-                className="input-group"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-              >
-                <label htmlFor="message" className="input-label">
-                  <span className="label-icon">💬</span>
-                  <span>Your Message</span>
+              <div className="ct__field">
+                <label htmlFor="ct-msg" className="ct__lbl">
+                  Message
                 </label>
-                <div
-                  className={`input-container ${
-                    focusedField === "message" ? "focused" : ""
-                  }`}
-                >
-                  <textarea
-                    name="message"
-                    id="message"
-                    required
-                    placeholder="Tell me about your project..."
-                    onFocus={() => setFocusedField("message")}
-                    onBlur={() => setFocusedField(null)}
-                    className="form-textarea"
-                  />
-                  <div className="input-glow"></div>
-                </div>
+                <textarea
+                  id="ct-msg"
+                  name="message"
+                  required
+                  placeholder="Tell me about your project or opportunity…"
+                  className="ct__ta"
+                  onFocus={() => setFocused("msg")}
+                  onBlur={() => setFocused(null)}
+                />
                 <ValidationError
                   prefix="Message"
                   field="message"
                   errors={state.errors}
-                  className="error-message"
+                  className="ct__err"
                 />
-              </motion.div>
+              </div>
 
-              {/* Submit Button */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.5 }}
+              <motion.button
+                type="submit"
+                disabled={state.submitting}
+                className="ct__submit"
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <motion.button
-                  type="submit"
-                  disabled={state.submitting}
-                  className="submit-button"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <span className="button-bg-gradient"></span>
-                  <span className="button-content">
-                    {state.submitting ? (
-                      <>
-                        <motion.span
-                          className="spinner"
-                          animate={{ rotate: 360 }}
-                          transition={{
-                            duration: 1,
-                            repeat: Infinity,
-                            ease: "linear",
-                          }}
-                        />
-                        <span>Sending...</span>
-                      </>
-                    ) : (
-                      <>
-                        <span className="button-icon">🚀</span>
-                        <span>Send Message</span>
-                      </>
-                    )}
-                  </span>
-                </motion.button>
-              </motion.div>
-
-              {/* Success Message */}
-              {state.succeeded && (
-                <motion.div
-                  className="success-container"
-                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 200,
-                    damping: 20,
-                  }}
-                >
-                  <SuccessAnimation />
-                  <motion.div
-                    className="success-text"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.6 }}
-                  >
-                    <h3>Message Sent! 🎉</h3>
-                    <p>Thanks for reaching out. I'll get back to you soon!</p>
-                  </motion.div>
-                </motion.div>
-              )}
-            </form>
-          </motion.div>
-
-          {/* Visual Section */}
-          <motion.div
-            className="visual-section"
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-          >
-            <ContactVisual />
-          </motion.div>
+                {state.submitting ? "Sending…" : "Send Message →"}
+              </motion.button>
+            </motion.form>
+          )}
         </div>
       </div>
     </section>
   );
 };
 
-export default Contact;
+export default memo(Contact);
