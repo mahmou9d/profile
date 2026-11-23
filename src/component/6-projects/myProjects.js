@@ -44,7 +44,7 @@ export const myProjects = [
       "/images/icons8-redux-48.png",
       "/images/hookform.svg",
     ],
-  }{
+  },{
     projectTitle: "misk Perfume",
     category: ["Simple"],
     imgPath: "/images/Screenshot 2026-02-20 161043.png",
