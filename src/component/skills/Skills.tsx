@@ -82,6 +82,8 @@ const MARQUEE_ICONS = [
   { name: "TanStack", icon: "/images/tanstack.png" },
   { name: "Socket.io", icon: "/images/socket-io.svg" },
   { name: "MUI", icon: "/images/material-ui.svg" },
+  { name: "Supabase", icon: "/images/supabase.svg" },
+  { name: "Firebase", icon: "/images/firebase.svg" },
 ];
 
 const DOUBLED = [...MARQUEE_ICONS, ...MARQUEE_ICONS];
