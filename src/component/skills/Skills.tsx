@@ -42,6 +42,7 @@ const CATEGORIES = [
       "MongoDB",
       "Supabase",
       "Firebase",
+      "Prisma",
       "Socket.io",
       "REST API",
       "JWT Auth",
@@ -86,6 +87,7 @@ const MARQUEE_ICONS = [
   { name: "MUI", icon: "/images/material-ui.svg" },
   { name: "Supabase", icon: "/images/supabase.svg" },
   { name: "Firebase", icon: "/images/firebase.svg" },
+  { name: "Prisma", icon: "/images/prisma.svg" },
 ];
 
 const DOUBLED = [...MARQUEE_ICONS, ...MARQUEE_ICONS];
