@@ -46,7 +46,6 @@ export const myProjects = [
       "/images/stripe.svg",
     ],
   },
-  ,
   // {
   //   projectTitle: "webvitas",
   //   category: ["Simple"],
@@ -59,21 +58,6 @@ export const myProjects = [
   //     "/images/re.svg",
   //     "/images/tail.svg",
   //     "/images/ts.svg",
-  //   ],
-  // },
-  // {
-  //   projectTitle: "Prime Ecom",
-  //   category: ["Simple"],
-  //   imgPath: "/images/Screenshot 2026-01-03 231730.png",
-  //   link: "https://prime-ecommerce-rho.vercel.app/",
-  //   desc: `E-commerce app built with React, Redux Toolkit & TypeScript — featuring product browsing, search, auth, cart, wishlist, and discounts.`,
-  //   href: "https://github.com/mahmou9d/advancedE-commerce",
-  //   iconLists: [
-  //     "/images/re.svg",
-  //     "/images/tail.svg",
-  //     "/images/ts.svg",
-  //     "/images/icons8-redux-48.png",
-  //     "/images/hookform.svg",
   //   ],
   // },
   {
