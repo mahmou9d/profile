@@ -19,14 +19,7 @@ const ITEM: Variants = {
   },
 };
 
-const STACK = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "Node.js",
-  "MongoDB",
-  "React Native",
-];
+const STACK = ["Next.js", "React", "TypeScript", "Node.js", "Express", "PostgreSQL", "MongoDB", "Prisma"];
 
 const Hero = () => {
   const handleCV = useCallback((e: React.MouseEvent) => {
