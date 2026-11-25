@@ -40,6 +40,8 @@ const CATEGORIES = [
       "Node.js",
       "Express",
       "MongoDB",
+      "Supabase",
+      "Firebase",
       "Socket.io",
       "REST API",
       "JWT Auth",
